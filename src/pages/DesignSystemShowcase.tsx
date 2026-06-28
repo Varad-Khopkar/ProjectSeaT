@@ -269,9 +269,9 @@ export const DesignSystemShowcase: React.FC = () => {
                 </Card>
 
                 <Card variant="interactive" padding="standard" className="text-left">
-                  <span className="font-caption text-brand-coral font-bold">Interactive Card</span>
-                  <h4 className="font-h4 text-brand-navy mt-1">Launch PSC Mission</h4>
-                  <p className="text-xs text-slate-500 mt-2">Triggers hover transitions, borders color changes, and scales down slightly on clicks.</p>
+                  <span className="font-caption text-brand-coral group-hover:text-brand-gold font-bold transition-colors duration-300">Interactive Card</span>
+                  <h4 className="font-h4 text-brand-navy group-hover:text-white mt-1 transition-colors duration-300">Launch PSC Mission</h4>
+                  <p className="text-xs text-slate-500 group-hover:text-slate-200 mt-2 transition-colors duration-300">Triggers hover transitions, borders color changes, and scales down slightly on clicks.</p>
                 </Card>
               </div>
             </div>

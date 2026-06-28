@@ -35,22 +35,22 @@ export const SimulationHub: React.FC = () => {
       {/* Mission cards grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {missions.map((mission) => (
-          <Card key={mission.id} variant="interactive" className="p-0 overflow-hidden group">
+          <Card key={mission.id} variant="interactive" className="p-0 overflow-hidden group hover:scale-[1.02] hover:bg-brand-navy hover:border-brand-navy transition-all duration-300">
             {/* Mission card banner */}
             <div className="relative bg-gradient-to-br from-brand-navy via-brand-blue to-brand-navy p-5 pb-8">
               <div className="flex items-start justify-between">
                 <Badge variant="blue">{mission.code}</Badge>
-                <Shield className="h-5 w-5 text-brand-gold/60" />
+                <Shield className="h-5 w-5 text-brand-gold/60 group-hover:text-brand-gold transition-colors duration-300" />
               </div>
               <h3 className="font-h3 text-white text-base mt-3 leading-snug">{mission.title}</h3>
-              <Anchor className="absolute -bottom-3 -right-2 h-16 w-16 text-white/5 rotate-12" />
+              <Anchor className="absolute -bottom-3 -right-2 h-16 w-16 text-white/5 rotate-12 group-hover:text-white/10 group-hover:scale-105 group-hover:rotate-6 transition-all duration-300" />
             </div>
 
             {/* Mission card body */}
-            <div className="p-4 space-y-3">
-              <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">{mission.description}</p>
+            <div className="p-4 space-y-3 transition-colors duration-300">
+              <p className="text-xs text-slate-500 group-hover:text-slate-200 leading-relaxed line-clamp-2 transition-colors duration-300">{mission.description}</p>
 
-              <div className="flex items-center gap-3 text-[11px] text-slate-400">
+              <div className="flex items-center gap-3 text-[11px] text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
                 <span className="flex items-center gap-1">
                   <Clock className="h-3 w-3" />
                   {mission.settings.timerLimitSeconds ? `${Math.floor(mission.settings.timerLimitSeconds / 60)} min` : 'Unlimited'}

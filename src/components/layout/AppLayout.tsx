@@ -38,7 +38,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         )}
 
         {/* Main Content Area */}
-        <div className="flex-1 min-w-0 flex flex-col min-h-[calc(100vh-4rem)]">
+        <div className="flex-1 min-w-0 flex flex-col min-h-[calc(100vh-7.5rem)]">
           <MainContainer>
             {children || <Outlet />}
           </MainContainer>
@@ -49,7 +49,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       <footer className="w-full bg-slate-900 border-t border-slate-800 text-slate-500 py-6 mt-auto">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
-            &copy; {new Date().getFullYear()} ProjectSeaT Maritime Platform (Demo). All rights reserved.
+            &copy; {new Date().getFullYear()} ProjectSeaT Maritime Training Platform. All rights reserved.
           </p>
           <div className="flex gap-4 text-[11px] font-mono text-slate-500">
             <span className="hover:text-slate-300 transition-colors cursor-pointer">Security Protocol</span>

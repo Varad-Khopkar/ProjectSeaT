@@ -52,7 +52,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false }) => {
         isMobileDrawer
           ? 'w-72 h-full'
           : cn(
-              'hidden lg:flex rounded-[20px] my-4 ml-4 h-[calc(100vh-2rem)] border border-brand-blue/30',
+              'hidden lg:flex rounded-[20px] my-4 ml-4 h-[calc(100vh-9rem)] border border-brand-blue/30 sticky top-32 overflow-y-auto',
               sidebarCollapsed ? 'w-20' : 'w-64'
             )
       )}
