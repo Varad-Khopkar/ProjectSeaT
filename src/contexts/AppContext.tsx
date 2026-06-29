@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
+import { useAuth } from '@/contexts/AuthContext'
+import { mockUser, mockLeaderboard } from '@/mock/db'
 
 export interface User {
   id: string
@@ -40,13 +42,6 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined)
 
 // Default mock values
-const initialUser: User = {
-  id: 'usr-1',
-  name: 'Capt. Henderson',
-  rank: 'Master Mariner',
-  avatar: 'CH',
-  email: 'henderson.c@sea-voyager.com',
-}
 
 const initialNotifications: Notification[] = [
   {
@@ -68,6 +63,7 @@ const initialNotifications: Notification[] = [
 ]
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { authUser } = useAuth()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false)
   const [globalLoading, setGlobalLoading] = useState(false)
@@ -76,6 +72,36 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     textScale: 'normal',
     highContrast: false,
   })
+
+  // Dynamically sync static mockUser and mockLeaderboard with logged-in user
+  if (authUser) {
+    mockUser.id = `usr-${authUser.username}`
+    mockUser.name = authUser.name
+    mockUser.rank = authUser.role || authUser.rank
+    mockUser.avatar = authUser.username === 'captain' ? 'CH' :
+                      authUser.username === 'officer' ? 'CS' :
+                      authUser.username === 'inspector' ? 'IR' :
+                      authUser.username === 'trainee' ? 'CW' : 'US'
+    mockUser.email = `${authUser.username}@sea-voyager.com`
+    mockUser.rankTitle = authUser.username === 'captain' ? 'Captain of the Fleet' :
+                         authUser.username === 'officer' ? 'Chief Operations Officer' :
+                         authUser.username === 'inspector' ? 'Lead Port State Auditor' :
+                         authUser.username === 'trainee' ? 'Trainee Officer' : 'Staff Member'
+
+    if (mockLeaderboard && mockLeaderboard[1]) {
+      mockLeaderboard[1].name = authUser.name
+      mockLeaderboard[1].rankTitle = authUser.role || authUser.rank
+      mockLeaderboard[1].avatar = mockUser.avatar
+    }
+  }
+
+  const activeUser: User = {
+    id: mockUser.id,
+    name: mockUser.name,
+    rank: mockUser.rank,
+    avatar: mockUser.avatar,
+    email: mockUser.email,
+  }
 
   const markNotificationRead = (id: string) => {
     setNotifications((prev) =>
@@ -90,7 +116,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setSidebarCollapsed,
         sidebarMobileOpen,
         setSidebarMobileOpen,
-        activeUser: initialUser,
+        activeUser,
         globalLoading,
         setGlobalLoading,
         notifications,

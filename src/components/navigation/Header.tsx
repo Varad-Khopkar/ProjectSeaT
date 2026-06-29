@@ -449,7 +449,10 @@ export const Header: React.FC = () => {
                   Account Settings
                 </Link>
                 <button
-                  onClick={() => setShowProfileMenu(false)}
+                  onClick={() => {
+                    setShowProfileMenu(false)
+                    navigate('/offboard')
+                  }}
                   className="w-full flex items-center gap-2 px-4 py-2 text-xs text-brand-coral hover:bg-slate-50 border-t border-slate-100 transition-colors cursor-pointer text-left"
                 >
                   <LogOut className="h-4 w-4" />

@@ -9,6 +9,7 @@ import { AppLayout } from '@/components/layout/AppLayout'
 import { LandingPage } from '@/pages/landing/LandingPage'
 import { InitializationScreen } from '@/pages/landing/InitializationScreen'
 import { LoginPage } from '@/pages/landing/LoginPage'
+import { OffboardingScreen } from '@/pages/landing/OffboardingScreen'
 
 // App pages
 import { Home } from '@/pages/Home'
@@ -75,6 +76,7 @@ function App() {
           <Route path="/landing" element={<LandingPage />} />
           <Route path="/init"    element={<InitializationScreen />} />
           <Route path="/login"   element={<LoginPage />} />
+          <Route path="/offboard" element={<OffboardingScreen />} />
 
           {/* All other paths go through the auth guard + existing layout */}
           <Route path="/*" element={<ProtectedApp />} />
