@@ -1,9 +1,13 @@
 import React from 'react'
 import { useSimulation } from '../state/SimulationContext'
-import { CheckCircle, Circle, Target } from 'lucide-react'
+import { CheckCircle, Circle, Target, X } from 'lucide-react'
 import { cn } from '@/utils/formatters'
 
-export const ObjectivePanel: React.FC = () => {
+interface ObjectivePanelProps {
+  onClose?: () => void
+}
+
+export const ObjectivePanel: React.FC<ObjectivePanelProps> = ({ onClose }) => {
   const { currentScene, state } = useSimulation()
 
   if (!currentScene) return null
@@ -15,14 +19,23 @@ export const ObjectivePanel: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="flex items-center gap-2 mb-4 pb-2 border-b border-white/10">
-        <Target className="h-4 w-4 text-brand-gold" />
-        <h3 className="font-h4 text-white text-xs font-bold uppercase tracking-wider">
+      <div className="flex items-center gap-2 mb-4 pb-2 border-b border-white/10 select-none">
+        <Target className="h-4 w-4 text-brand-gold shrink-0" />
+        <h3 className="font-h4 text-white text-[11px] font-bold uppercase tracking-wider">
           Objectives
         </h3>
-        <span className="ml-auto font-mono text-[9px] text-slate-300 bg-slate-800 px-2 py-0.5 rounded-full border border-white/5">
+        <span className="ml-auto font-mono text-[9px] text-slate-300 bg-slate-800 px-2 py-0.5 rounded-full border border-white/5 shrink-0">
           {completedIds.filter((id) => sceneObjectives.some((o) => o.id === id)).length}/{sceneObjectives.length}
         </span>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="ml-1 p-1 hover:bg-white/10 rounded-md text-slate-400 hover:text-white transition-all cursor-pointer shrink-0"
+            title="Hide (ESC)"
+          >
+            <X className="h-3.5 w-3.5" />
+          </button>
+        )}
       </div>
 
       <ul className="space-y-3">

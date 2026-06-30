@@ -4,7 +4,7 @@ import { useSimulation } from '../state/SimulationContext'
 import { SimulationLayout } from '../layouts/SimulationLayout'
 import { pscMissionTemplate } from '../mock/missionTemplate'
 import { Play, Clock, Compass, Star, ChevronRight, UserCheck } from 'lucide-react'
-import welcomeCaptain from '@/Images/SeaT Captain/welcome.png'
+import welcomeCaptain from '@/Images/SeaT Captain/Captain_welcome.png'
 
 export const SimulationPlay: React.FC = () => {
   const { missionId } = useParams<{ missionId: string }>()

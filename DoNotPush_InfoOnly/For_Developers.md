@@ -134,3 +134,35 @@ The simulation engine, context provider, UI components, and layouts are all reus
 ### 4.7 Navigation
 
 Added **Simulation Hub** entry to the sidebar navigation menu in [src/constants/index.ts](file:///c:/Users/admin/Documents/ProjectSeaT/src/constants/index.ts) with the `Compass` icon, appearing between Training Modules and Leaderboard.
+
+---
+
+## 5. Phase 3.2: Simulator Enhancements, ESC Handlers, and Authentication Offboarding
+
+Implemented core interactive simulation features, keyboard accessibility controls, and custom authentication flows:
+
+### 5.1 Single-Frame Viewport Overlay Layout
+- **Responsiveness and Aspect Ratio**: Refactored the active simulator viewport inside `SimulationLayout.tsx` to maintain a strict, responsive 16:9 canvas card centered in a dark fullscreen background (`bg-slate-950`).
+  - Constrained the canvas using:
+    ```css
+    width: '100vw',
+    height: '56.25vw',
+    maxHeight: '100vh',
+    maxWidth: '177.78vh',
+    ```
+    This completely eliminates browser scrollbars, ensuring a single-frame app presentation on any screen size.
+- **Absolute Overlay Position**: Restructured all HUD components (Header controls, Objective checklists, Dialog sheets, Hints footers, and Audit desk overlays) as absolute overlays layered *directly on top* of the scene viewport background.
+- **Captain's Briefing Screen**: Integrated the Captain's welcome scene (`Captain_welcome.png`) and welcome message dialogue, presenting a landing briefing screen overlay prior to opening the active full-screen simulator workspace.
+
+### 5.2 Keyboard Close Listeners (ESC Key)
+- Added global event listeners mapping the `Escape` key (`keydown` handler) to close active interactive screens:
+  - **Pause Menu Overlay**: Bounded within `MissionOverlay.tsx`.
+  - **Document Inspection Desk**: Bounded within `DocumentDesk.tsx`.
+  - **MLC Rest Hours logs Audit Panel**: Bounded within `RestHourLog.tsx`.
+  - **Interactive feedback panels**: Bounded within `FeedbackModal.tsx`.
+  - Automatically cleans up window event listeners on component unmounts.
+
+### 5.3 Custom Authentication Offboarding Sequence
+- **Logout Action**: Attached a route trigger handler to the header's sign out/logout actions.
+- **Port Break Offboarding**: Clicking logout routes to a dedicated path `/offboard` displaying a port offboarding break animation. The animation runs for a timed span of 5-8 seconds before deleting local auth tokens and redirecting the seafarer to the public `/landing` route.
+- **User Profile Management**: Refactored `AuthContext.tsx` and custom hooks to serve dynamic crew profiles, tracking levels, licenses, and badges.
