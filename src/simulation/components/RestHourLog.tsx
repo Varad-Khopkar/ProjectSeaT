@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSimulation } from '../state/SimulationContext'
 import { Clock, X, Check } from 'lucide-react'
 import { cn } from '@/utils/formatters'
@@ -18,6 +18,16 @@ interface RestLogItem {
 export const RestHourLog: React.FC = () => {
   const { state, completeRestHourAudit, toggleRestHourLog } = useSimulation()
   const [selectedLogs, setSelectedLogs] = useState<string[]>([])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && state.activeRestHourLog) {
+        toggleRestHourLog(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [state.activeRestHourLog, toggleRestHourLog])
 
   if (!state.activeRestHourLog) return null
 

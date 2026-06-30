@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSimulation } from '../state/SimulationContext'
 import { MissionHeader } from '../components/MissionHeader'
 import { MissionFooter } from '../components/MissionFooter'
 import { SceneContainer } from '../components/SceneContainer'
@@ -12,45 +13,60 @@ import { RestHourLog } from '../components/RestHourLog'
 /**
  * SimulationLayout
  *
- * The primary viewport layout for active simulation sessions.
- * Grid composition:
- *   - Top: MissionHeader (timer + score + pause + trust meter)
- *   - Center: SceneContainer (16:9 viewport with hotspot layer)
- *   - Right sidebar (desktop) / below (mobile): ObjectivePanel
- *   - Bottom: MissionFooter (hints)
- *   - Overlays: DialoguePanel (bottom sheet) + MissionOverlay (pause/complete) + FeedbackModal + DocumentDesk + RestHourLog
+ * Immersive 16:9 aspect-ratio layout for active sessions.
+ * Viewport is locked to the browser window size without cropping or stretching the background image.
+ * All controls and logs overlay absolute on top of the active scene.
  */
 export const SimulationLayout: React.FC = () => {
+  const { currentScene } = useSimulation()
+
+  if (!currentScene) return null
+
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-4">
-      {/* Mission status header */}
-      <MissionHeader />
-
-      {/* Main simulation viewport grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-4">
-        {/* Scene viewport */}
+    <div 
+      className="relative bg-slate-950 overflow-hidden shadow-2xl rounded-2xl flex items-center justify-center select-none border border-white/10"
+      style={{
+        width: '100vw',
+        height: '56.25vw', /* 16:9 Aspect Ratio */
+        maxHeight: '100vh',
+        maxWidth: '177.78vh', /* 16:9 Aspect Ratio */
+      }}
+    >
+      {/* Background Layer (Scene Viewport & Hotspots) */}
+      <div className="absolute inset-0 z-10 w-full h-full">
         <SceneContainer />
+      </div>
 
-        {/* Objectives sidebar */}
+      {/* OVERLAY LAYERS (z-30) */}
+
+      {/* Top Header Controls */}
+      <div className="absolute top-4 left-4 right-4 z-30 pointer-events-auto">
+        <MissionHeader />
+      </div>
+
+      {/* Floating Objectives Board */}
+      <div className="absolute top-20 right-4 bottom-28 z-30 w-72 sm:w-80 max-h-[58%] overflow-y-auto pointer-events-auto bg-slate-900/90 backdrop-blur-md border border-white/10 rounded-2xl shadow-large p-4 scrollbar-none">
         <ObjectivePanel />
       </div>
 
-      {/* Footer hints bar */}
-      <MissionFooter />
+      {/* Bottom Operational Hub (Scene Description + Location Hints) */}
+      <div className="absolute bottom-4 left-4 right-4 z-30 flex flex-col gap-2 max-w-4xl mx-auto w-[calc(100%-2rem)] pointer-events-auto">
+        {/* Scene description panel */}
+        <div className="bg-slate-900/95 backdrop-blur-md border border-white/10 rounded-xl px-4 py-2 text-[10.5px] text-slate-300 shadow-large text-left leading-normal font-sans">
+          {currentScene.description}
+        </div>
 
-      {/* Dialogue panel overlay — anchored to bottom of screen */}
+        {/* Mission Location Hints */}
+        <MissionFooter />
+      </div>
+
+      {/* dialogue panel overlay — anchored absolute to bottom of card */}
       <DialoguePanel />
 
-      {/* Full-screen overlay for pause / success / fail states */}
+      {/* Full-screen overlays & auditer logs */}
       <MissionOverlay />
-
-      {/* Explanation & Point Updates Modal */}
       <FeedbackModal />
-
-      {/* Document verification desk clipboard */}
       <DocumentDesk />
-
-      {/* MLC Rest hours logs audit panel */}
       <RestHourLog />
     </div>
   )

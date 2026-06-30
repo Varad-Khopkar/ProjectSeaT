@@ -8,7 +8,7 @@ export const DialoguePanel: React.FC = () => {
   if (!activeDialogue || state.status !== 'running') return null
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 p-4 sm:p-6 pointer-events-none">
+    <div className="absolute inset-x-0 bottom-4 z-40 px-4 pointer-events-none">
       <div className="max-w-2xl mx-auto pointer-events-auto">
         <div className="bg-slate-900/95 backdrop-blur-lg border border-slate-700/60 rounded-[16px] p-5 shadow-xl animate-in slide-in-from-bottom-4 duration-300">
           {/* Speaker header */}

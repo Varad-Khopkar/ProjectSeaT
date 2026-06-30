@@ -13,6 +13,16 @@ export const FeedbackModal: React.FC = () => {
   const { state, closeFeedback } = useSimulation()
   const feedback = state.activeFeedback
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && feedback) {
+        closeFeedback()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [feedback, closeFeedback])
+
   if (!feedback) return null
 
   const isSuccess = feedback.isSuccess

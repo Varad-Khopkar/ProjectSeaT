@@ -13,6 +13,16 @@ interface AppLayoutProps {
 export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const { sidebarMobileOpen, setSidebarMobileOpen, globalLoading } = useApp()
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && sidebarMobileOpen) {
+        setSidebarMobileOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [sidebarMobileOpen, setSidebarMobileOpen])
+
   return (
     <div className="flex flex-col min-h-screen bg-brand-pearl relative">
       {/* Top Header Navigation */}

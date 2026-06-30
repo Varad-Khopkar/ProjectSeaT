@@ -8,10 +8,10 @@ export const MissionFooter: React.FC = () => {
   if (!currentScene) return null
 
   return (
-    <footer className="w-full bg-slate-50 border border-slate-200/80 rounded-[12px] p-3 flex items-center gap-3 text-left font-sans text-xs text-slate-500 shadow-small">
-      <Info className="h-4.5 w-4.5 text-brand-blue shrink-0" />
+    <footer className="w-full bg-slate-900/95 backdrop-blur-md border border-white/10 rounded-xl p-2.5 flex items-center gap-3 text-left font-sans text-[11px] text-slate-300 shadow-large">
+      <Info className="h-4.5 w-4.5 text-brand-gold shrink-0" />
       <div className="flex-1">
-        <span className="font-semibold text-brand-navy">Current Location Hint: </span>
+        <span className="font-bold text-white">Current Location Hint: </span>
         <span>
           {currentScene.id === 'ship_office'
             ? 'Speak to the PSC inspector standing by the desk, or inspect the Oil Record Book logs.'
@@ -20,7 +20,7 @@ export const MissionFooter: React.FC = () => {
               : 'Audit the bilge lock valves on the oily water separator unit.'}
         </span>
       </div>
-      <div className="hidden sm:flex items-center gap-1 text-[10px] font-mono text-slate-400 font-semibold uppercase">
+      <div className="hidden sm:flex items-center gap-1 text-[9px] font-mono text-slate-500 font-semibold uppercase">
         <HelpCircle className="h-3.5 w-3.5" />
         <span>Watch Stand</span>
       </div>

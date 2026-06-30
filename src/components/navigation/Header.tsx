@@ -63,6 +63,7 @@ export const Header: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchItem[]>([])
   const [showSearchDropdown, setShowSearchDropdown] = useState(false)
+  const [activePanel, setActivePanel] = useState<'checklist' | 'certificates' | 'regulations' | 'notes' | 'documents' | 'emergency' | null>(null)
 
   // Simulation Clock simulated time state
   const [simTime, setSimTime] = useState('08:30:00')
@@ -90,6 +91,20 @@ export const Header: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleOutsideClick)
   }, [])
 
+  // Auto-close overlays and panels on ESC key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (activePanel) setActivePanel(null)
+        if (showSearchDropdown) setShowSearchDropdown(false)
+        if (showNotificationPopup) setShowNotificationPopup(false)
+        if (showProfileMenu) setShowProfileMenu(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [activePanel, showSearchDropdown, showNotificationPopup, showProfileMenu])
+
   // Calculate live mission progress details
   const isMissionActive = simState.status === 'running' || simState.status === 'paused'
   const totalObjectives = activeMission ? Object.values(activeMission.scenes).reduce(
@@ -101,7 +116,6 @@ export const Header: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [showScrollArrowLeft, setShowScrollArrowLeft] = useState(false)
   const [showScrollArrowRight, setShowScrollArrowRight] = useState(false)
-  const [activePanel, setActivePanel] = useState<'checklist' | 'certificates' | 'regulations' | 'notes' | 'documents' | 'emergency' | null>(null)
 
   const checkScroll = () => {
     const el = scrollContainerRef.current

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSimulation } from '../state/SimulationContext'
 import { Clipboard, X, Check, FileText } from 'lucide-react'
 import { cn } from '@/utils/formatters'
@@ -16,6 +16,16 @@ interface CertItem {
 export const DocumentDesk: React.FC = () => {
   const { state, completeDocumentAudit, toggleDocumentDesk } = useSimulation()
   const [selectedIssues, setSelectedIssues] = useState<string[]>([])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && state.activeDocumentDesk) {
+        toggleDocumentDesk(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [state.activeDocumentDesk, toggleDocumentDesk])
   
   if (!state.activeDocumentDesk) return null
 
