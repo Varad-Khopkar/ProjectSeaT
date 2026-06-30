@@ -1,5 +1,8 @@
 # ProjectSeaT | Developer Handover Documentation
 
+> [!IMPORTANT]
+> **Git Push Tracking Directive**: Developers and agent assistants must update **both** the markdown (.md) and CSV (.csv) versions of the **Production Push Info** files (located under `DoNotPush_InfoOnly/`) on every git push attempt, recording whether the push succeeded or failed.
+
 This document serves as the guide for engineers working on the Maritime Training Platform Frontend Demo. It summarizes all features, architectural configurations, design tokens, and files implemented from project bootstrapping through Phase 3.
 
 ---

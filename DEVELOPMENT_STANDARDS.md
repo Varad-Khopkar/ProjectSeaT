@@ -70,3 +70,21 @@ import { formatScore } from '@/utils/formatters'
 - **Tailwind Utility Classes**: Avoid nesting raw CSS style overrides. Use utility classes from Tailwind CSS v4.
 - **Design Tokens**: Centralize design tokens (colors, font-families, radii) inside the `@theme` block in `src/index.css`. Reference them via Tailwind custom classes (e.g., `bg-brand-navy`, `font-sans`).
 - **Responsive Layouts**: Apply **Responsive-First Design**. Use responsive prefix bounds (e.g. `flex flex-col lg:flex-row`) to adapt fluidly across small mobile, tablet, and desktop screens.
+
+---
+
+## 6. Git Push Deployment Log Rules
+
+To ensure a continuous audit trail of production releases and Vercel builds, the following guidelines must be followed:
+- **Logging Requirement**: Every git push execution (both successful pushes and failed push attempts) must be documented immediately.
+- **File Outputs**: The updates **must** be made to **both** files under the local reference directory `DoNotPush_InfoOnly/` in two formats:
+  1. `Production Push Info.md` (markdown summary table)
+  2. `Production Push Info.csv` (CSV format for spreadsheet imports)
+- **Required Metadata**: Each logged entry must include:
+  - Push Date (YYYY-MM-DD)
+  - Push Time with seconds (HH:MM:SS)
+  - Commit Hash
+  - Component Updated / Area of Change
+  - Things Pushed (Files Affected)
+  - Changes Pushed (Technical Description of updates)
+  - Push Execution Result (Success / Fail reason)
