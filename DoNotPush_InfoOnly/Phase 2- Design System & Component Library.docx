@@ -1,0 +1,364 @@
+# Phase 2: Design System & Component Library
+
+## Objective
+
+Build the complete visual foundation for ProjectSeaT before developing any application screens. The goal of this phase is to create a reusable design system and component library that will be used consistently throughout the project.
+
+Do **not** create any feature-specific pages, dashboards, or workflows in this phase. Focus only on the design language and reusable UI components.
+
+---
+
+# 1. Establish the Visual Identity
+
+Create a clean, modern interface inspired by the maritime world. The design should feel professional, elegant, and timeless without relying on cliché nautical graphics such as anchors, ropes, ship wheels, waves, or pirate elements.
+
+The visual inspiration should come from:
+
+* Sea voyagers' uniforms
+* Modern ships
+* Harbors
+* Maritime architecture
+* Coastal sunsets
+* Ocean horizons
+
+The overall aesthetic should be minimal, spacious, and premium.
+
+---
+
+# 2. Official Color Theme
+
+Use the following color palette throughout the project.
+
+| Role       | Name        | Hex     |
+| ---------- | ----------- | ------- |
+| Primary    | Harbor Navy | #12355B |
+| Secondary  | Ocean Blue  | #2F6690 |
+| Accent     | Sunset Gold | #F4A261 |
+| Highlight  | Coral       | #E76F51 |
+| Background | Pearl       | #FAF7F2 |
+
+Color usage guidelines:
+
+* Harbor Navy should be the primary brand color.
+* Ocean Blue should be used for interactive elements.
+* Sunset Gold should be reserved for primary CTAs, progress indicators, achievements, and important actions.
+* Coral should be used sparingly for emphasis and notifications.
+* Pearl should be the primary application background.
+
+---
+
+# 3. Typography
+
+Use **Manrope** as the primary typeface.
+
+Create a complete typography system including:
+
+* Display
+* H1
+* H2
+* H3
+* H4
+* Body Large
+* Body
+* Small
+* Caption
+
+Define:
+
+* Font weights
+* Line heights
+* Letter spacing
+* Responsive scaling
+
+---
+
+# 4. Spacing System
+
+Create an 8-point spacing system.
+
+Spacing scale:
+
+4px
+
+8px
+
+12px
+
+16px
+
+24px
+
+32px
+
+48px
+
+64px
+
+80px
+
+96px
+
+Apply this consistently across every component.
+
+---
+
+# 5. Border Radius
+
+Define standard radii:
+
+Buttons: 12px
+
+Inputs: 12px
+
+Cards: 16px
+
+Dialogs: 20px
+
+Pills: Fully rounded
+
+---
+
+# 6. Elevation
+
+Create four elevation levels:
+
+* None
+* Small
+* Medium
+* Large
+
+Use soft shadows.
+
+Avoid excessive blur or floating effects.
+
+---
+
+# 7. Design Tokens
+
+Create reusable design tokens for:
+
+* Colors
+* Typography
+* Spacing
+* Radius
+* Borders
+* Shadows
+* Animation duration
+* Opacity
+* Z-index
+
+These should be centralized for future scalability.
+
+---
+
+# 8. Layout Components
+
+Develop reusable layout components.
+
+Include:
+
+## App Layout
+
+* Header
+* Main Content Area
+* Optional Footer
+
+## Header
+
+Include placeholders for:
+
+* ProjectSeaT logo
+* Navigation
+* User profile
+* Notifications
+* Settings
+
+## Main Container
+
+Responsive page wrapper.
+
+## Section Container
+
+Reusable section component containing:
+
+* Title
+* Subtitle
+* Content
+* Optional actions
+
+---
+
+# 9. UI Component Library
+
+Create reusable UI components.
+
+## Buttons
+
+Variants:
+
+* Primary
+* Secondary
+* Outline
+* Ghost
+* Icon
+* Loading
+* Disabled
+
+---
+
+## Cards
+
+Variants:
+
+* Standard
+* Elevated
+* Interactive
+* Compact
+
+---
+
+## Form Components
+
+Create:
+
+* Text Input
+* Search Field
+* Password Input
+* Textarea
+* Dropdown
+* Checkbox
+* Radio Button
+* Toggle Switch
+
+---
+
+## Navigation Components
+
+Create:
+
+* Navbar
+* Sidebar
+* Breadcrumb
+* Tabs
+
+---
+
+## Feedback Components
+
+Create:
+
+* Alert
+* Badge
+* Status Chip
+* Toast
+* Tooltip
+* Modal
+* Progress Bar
+
+---
+
+## Data Components
+
+Create:
+
+* Table
+* Timeline
+* Accordion
+* Empty State
+* Pagination
+* Skeleton Loader
+
+---
+
+# 10. Icons
+
+Use **Lucide Icons** only.
+
+Maintain:
+
+* Consistent stroke width
+* Rounded appearance
+* Uniform sizing
+
+---
+
+# 11. Motion
+
+Do not use Framer Motion or any paid libraries.
+
+Implement animations using:
+
+* CSS transitions
+* Native browser animations
+
+Include:
+
+* Fade
+* Slide
+* Scale
+* Hover
+* Button press
+* Loading transitions
+
+Animations should be subtle and fast (200-300ms).
+
+---
+
+# 12. Responsive Design
+
+Design for:
+
+* Desktop
+* Tablet
+* Mobile
+
+Ensure all components adapt cleanly across breakpoints.
+
+---
+
+# 13. Accessibility
+
+Ensure every component supports:
+
+* Keyboard navigation
+* Focus indicators
+* Proper contrast ratios
+* Semantic HTML
+* ARIA attributes where appropriate
+
+---
+
+# 14. Technology Stack
+
+Use:
+
+* React
+* TypeScript
+* Tailwind CSS
+* Lucide Icons
+* CSS transitions
+
+Do not introduce additional UI libraries unless absolutely necessary.
+
+---
+
+# Deliverables
+
+At the end of Phase 2, the project should include:
+
+* Complete Harbor Sunset design system
+* Centralized design tokens
+* Typography system
+* Color system
+* Spacing system
+* Elevation system
+* Responsive layout components
+* Reusable UI component library
+* Navigation components
+* Form components
+* Feedback components
+* Data display components
+* Accessibility-ready components
+* Motion guidelines
+
+No feature-specific pages or business logic should be developed during this phase. The outcome should be a polished, reusable design foundation that all future phases will build upon.

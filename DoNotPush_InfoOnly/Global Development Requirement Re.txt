@@ -1,0 +1,40 @@
+# Global Development Requirement: Responsive-First Design
+
+This requirement applies to **every phase** of ProjectSeaT and overrides any page-specific implementation.
+
+## Responsive-First Development
+
+The entire application must be designed and developed using a **responsive-first** approach. Every screen, component, layout, animation, and interaction must adapt seamlessly across different screen sizes and orientations.
+
+The interface should provide an optimal user experience on:
+
+* Large Desktop Monitors
+* Standard Desktop Displays
+* Laptops
+* Tablets (Landscape)
+* Tablets (Portrait)
+* Large Mobile Phones
+* Standard Mobile Phones
+* Small Mobile Devices
+
+## Responsive Guidelines
+
+* Never create desktop-only layouts.
+* Avoid fixed widths unless absolutely necessary.
+* Use fluid layouts, flexible containers, and responsive spacing.
+* Components should resize and reposition naturally based on available screen space.
+* Navigation should adapt appropriately across breakpoints (for example, sidebar on desktop, drawer or bottom navigation on mobile).
+* Typography should scale responsively while maintaining readability.
+* Images, illustrations, cards, tables, and charts must adapt gracefully to different screen sizes.
+* Forms should remain easy to use on touch devices.
+* Interactive elements must maintain appropriate touch target sizes on mobile devices.
+* Ensure consistent spacing and alignment regardless of screen dimensions.
+* Test every page and reusable component across all supported device categories before considering it complete.
+
+## Performance Considerations
+
+Responsive behavior should not compromise performance. Optimize layouts, assets, and rendering so the application remains smooth and efficient across both high-end desktops and resource-constrained mobile devices.
+
+## Development Rule
+
+No component, page, or feature should be considered complete until it has been verified to function correctly and maintain visual consistency across all supported device sizes.

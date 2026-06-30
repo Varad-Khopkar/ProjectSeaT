@@ -1,0 +1,603 @@
+"PSC for TOPS Rev 1.0 June 2025" ppt explaination
+---
+The presentation explains how a vessel should prepare for a PSC inspection, what inspectors look for, why ships get detained, and what every crew member is responsible for. Every concept from the PPT must be represented naturally inside the simulator instead of as text-heavy pages.
+
+## Overall Learning Goal
+
+The learner should experience what it is like to prepare a vessel for a real Port State Control inspection.
+
+The simulator should teach:
+
+* What Port State Control is.
+* Why PSC exists.
+* How PSC inspections are conducted.
+* What inspectors verify.
+* What deficiencies lead to detention.
+* How the crew should prepare.
+* How different departments contribute.
+* How international conventions such as SOLAS, MARPOL, Load Line and MLC influence inspections.
+
+The learner should finish the simulator feeling confident enough to understand a real PSC inspection process.
+
+---
+
+# Module 1 - Introduction to PSC
+
+Begin by introducing Port State Control.
+
+Explain that PSC is an inspection conducted by the authorities of a foreign port to ensure visiting ships comply with international maritime regulations.
+
+Clarify that although the Flag State has the primary responsibility for ensuring compliance, PSC acts as the second line of defence to identify unsafe or substandard vessels.
+
+Explain the three major objectives:
+
+* Safety of the crew
+* Safety of the ship
+* Protection of the marine environment
+
+Instead of presenting paragraphs, create an engaging animated introduction showing a vessel arriving at port and being selected for inspection.
+
+---
+
+# Module 2 - PSC Inspection Process
+
+Teach how an actual inspection happens.
+
+The learner should understand the complete workflow:
+
+Ship arrives at port
+
+↓
+
+PSC Officer boards vessel
+
+↓
+
+Documents reviewed
+
+↓
+
+Accommodation inspected
+
+↓
+
+Bridge inspected
+
+↓
+
+Engine room inspected
+
+↓
+
+Safety equipment inspected
+
+↓
+
+Environmental compliance verified
+
+↓
+
+Crew questioned
+
+↓
+
+Deficiencies recorded
+
+↓
+
+Ship cleared or detained
+
+Represent this as an interactive inspection timeline.
+
+---
+
+# Module 3 - What PSC Inspectors Check
+
+The PPT explains five major inspection areas.
+
+Convert each into an interactive activity.
+
+## Document Verification
+
+Teach inspection of:
+
+* Certificates
+* Crew documents
+* Licences
+* Validity dates
+
+The learner should identify expired or missing documents.
+
+---
+
+## Safety Equipment
+
+Teach inspection of:
+
+Life jackets
+
+Fire extinguishers
+
+Emergency equipment
+
+Life-saving appliances
+
+Emergency fire pump
+
+Fire dampers
+
+The learner should inspect equipment and identify defects.
+
+---
+
+## Crew Competency
+
+The simulator should demonstrate that inspectors ask crew members questions.
+
+The learner should verify whether crew understand:
+
+Emergency procedures
+
+Fire drills
+
+Abandon ship procedures
+
+Environmental procedures
+
+Their own responsibilities
+
+---
+
+## Housekeeping
+
+Explain that housekeeping reflects overall vessel management.
+
+Show examples of:
+
+Clean engine room
+
+Dirty engine room
+
+Blocked escape routes
+
+Oil leaks
+
+Poor storage
+
+Improper maintenance
+
+The learner decides whether each area is acceptable.
+
+---
+
+## Internal Inspections
+
+Teach why routine inspections reduce PSC deficiencies.
+
+The learner performs a pre-arrival inspection before the PSC officer arrives.
+
+---
+
+# Module 4 - Critical Areas That Cause Detention
+
+The presentation highlights the most critical areas because failure in these systems threatens:
+
+Crew
+
+Ship
+
+Environment
+
+Create an interactive ship where learners inspect every critical location.
+
+Include:
+
+Charts and publications
+
+Engine room
+
+Oil Record Book
+
+Oily Water Separator
+
+Fire Dampers
+
+Emergency Fire Pump
+
+Life Saving Appliances
+
+Vents
+
+Air Pipes
+
+Hatches
+
+Load Line items
+
+MARPOL Annex I requirements
+
+SOLAS requirements
+
+Each hotspot should explain:
+
+Why it is inspected
+
+Common deficiencies
+
+Potential detention risk
+
+Correct maintenance practices
+
+---
+
+# Module 5 - Cooperation with PSC Inspector
+
+The presentation emphasizes behaviour during inspections.
+
+Build dialogue-based scenarios where the learner interacts with the PSC Officer.
+
+Teach that crew should:
+
+Remain honest
+
+Never hide deficiencies
+
+Never argue
+
+Never mislead inspectors
+
+Always cooperate professionally
+
+Ensure a senior officer accompanies the inspector
+
+Demonstrate that the ship is safe to sail
+
+Different responses should influence inspection outcomes.
+
+---
+
+# Module 6 - PSC Statistics
+
+The PPT presents company statistics.
+
+Instead of showing numbers only, explain what they mean.
+
+Include:
+
+2023
+
+37 vessels with deficiencies
+
+2024
+
+31 vessels with deficiencies in only nine months
+
+Six detentions already recorded
+
+Ask learners to reflect:
+
+Are ships deteriorating?
+
+Or are crews becoming complacent?
+
+---
+
+# Module 7 - Real PSC Detentions
+
+Transform the real detention examples into case studies.
+
+Include:
+
+Shekou detention
+
+Four Code 30 deficiencies
+
+Three Code 17 deficiencies
+
+RO inspection required
+
+Additional China detentions
+
+Explain consequences:
+
+Operational delay
+
+Loss of reputation
+
+Financial loss
+
+Off-hire
+
+Class attendance
+
+Stress that compliance is continuous, not only before inspections.
+
+---
+
+# Module 8 - Common PSC Deficiencies
+
+The PPT lists actual deficiencies.
+
+Turn each into a realistic shipboard scenario.
+
+Include:
+
+Hull corrosion
+
+Hull damage
+
+Deck corrosion
+
+Fire door tied open
+
+Dirty engine room
+
+Fuel injection leakage
+
+Fuel pump leakage
+
+Generator exhaust leak
+
+Modified sewage piping
+
+For every deficiency explain:
+
+What the inspector observes
+
+Why it is dangerous
+
+Applicable convention
+
+Required corrective action
+
+Possible PSC action code
+
+Whether detention is possible
+
+---
+
+# Module 9 - PSC Action Codes
+
+Teach every PSC action code through examples.
+
+Include:
+
+Code 10
+
+Code 15
+
+Code 16
+
+Code 17
+
+Code 18
+
+Code 30
+
+Code 40
+
+Code 45
+
+Code 50
+
+Code 55
+
+Code 70
+
+Code 85
+
+Code 99
+
+Instead of memorization, learners should experience situations that produce these codes.
+
+---
+
+# Module 10 - Housekeeping
+
+Emphasize that housekeeping is one of the easiest ways to avoid deficiencies.
+
+Teach:
+
+Engine room cleanliness
+
+Accommodation cleanliness
+
+Proper storage
+
+Oil cleanup
+
+Escape routes
+
+General appearance
+
+Relate it to SP-185 Engine Room Housekeeping.
+
+---
+
+# Module 11 - Safe Practices
+
+Teach good operational behaviour throughout the vessel.
+
+Include:
+
+Personal protective equipment
+
+Hazard awareness
+
+Fire safety
+
+Maintenance awareness
+
+Emergency readiness
+
+---
+
+# Module 12 - Crew Responsibilities
+
+Separate responsibilities for different departments.
+
+Deck Crew
+
+Teach:
+
+Housekeeping
+
+Mooring equipment
+
+Life-saving appliances
+
+Firefighting equipment
+
+Lighting
+
+Emergency signs
+
+Reporting deficiencies
+
+---
+
+Engine Crew
+
+Teach:
+
+Machinery cleanliness
+
+Bilges
+
+Oil Record Book
+
+Leak prevention
+
+Generators
+
+Compressors
+
+Steering gear
+
+Fire equipment
+
+Emergency escape routes
+
+Emergency lighting
+
+Reporting abnormalities
+
+---
+
+Galley Crew
+
+Teach:
+
+Food hygiene
+
+Deep cleaning
+
+Pest control
+
+Chemical storage
+
+Food expiry
+
+Dishwashing
+
+Garbage handling
+
+---
+
+# Module 13 - Rest Hours
+
+Teach MLC rest hour compliance.
+
+Explain:
+
+Minimum ten hours rest in twenty-four hours
+
+Seventy-seven hours rest every seven days
+
+Maximum two rest periods
+
+Minimum six-hour continuous rest
+
+Maximum fourteen-hour interval
+
+Accurate record keeping
+
+Watchkeeper fatigue
+
+Emergency exceptions
+
+Create scheduling exercises where learners determine whether rest-hour records comply.
+
+---
+
+# Module 14 - MARPOL Compliance
+
+Separate responsibilities by department.
+
+Engine Crew
+
+Deck Crew
+
+Catering Crew
+
+Teach responsibilities including:
+
+Reporting pollution prevention equipment failures
+
+Reporting environmental deficiencies
+
+Reporting MARPOL violations
+
+Following EMS procedures
+
+Garbage Management Plan
+
+Using Open Reporting Hotline SP-231
+
+---
+
+# Final Simulation
+
+The learner should complete a realistic PSC inspection from start to finish.
+
+A PSC Officer arrives unexpectedly.
+
+The learner must:
+
+Inspect the vessel
+
+Identify deficiencies
+
+Correct problems
+
+Answer inspector questions
+
+Present documents
+
+Verify crew readiness
+
+Demonstrate compliance
+
+Receive inspection results.
+
+The outcome should depend entirely on the learner's decisions.
+
+Possible endings include:
+
+Clean inspection
+
+Minor deficiencies
+
+Major deficiencies
+
+Detention
+
+---
+
+## Most Important Requirement
+
+Do **not** recreate the PowerPoint.
+
+Use it as the knowledge base behind the simulator.
+
+The learner should feel like they are walking through a real vessel preparing for a PSC inspection rather than reading slides. Every concept from the PPT should be represented through gameplay, interaction, decision-making, inspections, scenarios, quizzes, and practical shipboard experiences, making the training as close as possible to a real Port State Control Audit.

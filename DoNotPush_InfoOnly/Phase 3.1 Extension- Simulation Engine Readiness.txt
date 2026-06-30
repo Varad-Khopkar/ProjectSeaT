@@ -1,0 +1,293 @@
+# ProjectSeaT - Phase 3.1 Extension: Simulation Engine Readiness
+
+## Objective
+
+Prepare the ProjectSeaT codebase for the upcoming Simulation Engine without implementing any simulation gameplay or business logic.
+
+This phase focuses entirely on creating a scalable architecture that future simulation features will plug into. The outcome should be a clean, reusable foundation that supports the Simulation Engine while remaining independent of any specific mission.
+
+**Do not implement the simulator itself.**
+
+---
+
+# Development Philosophy
+
+The Simulation Engine is the centerpiece of ProjectSeaT.
+
+Every future maritime mission should be powered by this engine rather than being implemented as a standalone page.
+
+The engine must be reusable, modular, scalable, and data-driven.
+
+The current objective is only to establish the architecture required for this engine.
+
+---
+
+# 1. Create the Simulation Engine Module
+
+Create a dedicated module inside the application.
+
+Suggested structure:
+
+```text
+src/
+└── simulation/
+    ├── assets/
+    ├── components/
+    ├── engine/
+    ├── hooks/
+    ├── layouts/
+    ├── mock/
+    ├── routes/
+    ├── services/
+    ├── state/
+    ├── types/
+    ├── utils/
+    └── index.ts
+```
+
+The structure should remain modular and ready for future expansion.
+
+---
+
+# 2. Establish Core Type Definitions
+
+Create reusable TypeScript interfaces only.
+
+Do not implement business logic.
+
+Examples include:
+
+* Mission
+* MissionScene
+* Hotspot
+* Objective
+* Dialogue
+* Event
+* Reward
+* MissionResult
+* PlayerState
+* SimulationState
+* InventoryItem (future-ready)
+* MissionSettings
+* SceneTransition
+
+Design these interfaces with future scalability in mind.
+
+---
+
+# 3. Simulation State Architecture
+
+Create the foundation for simulation state management.
+
+Do not implement functionality.
+
+The state architecture should be capable of supporting:
+
+* Current Mission
+* Current Scene
+* Active Objectives
+* Mission Progress
+* Active Events
+* Player Decisions
+* Rewards
+* Mission Status
+* Future Inventory
+* Future Checkpoints
+
+Only establish the structure.
+
+---
+
+# 4. Simulation Routing
+
+Reserve routing for future simulation pages.
+
+Create placeholder routes:
+
+* /simulation
+* /simulation/:missionId
+* /simulation/debrief
+* /simulation/results
+
+Each page may simply display a placeholder indicating that the feature is under development.
+
+No gameplay should be implemented.
+
+---
+
+# 5. Create Reusable Layout Components
+
+Build reusable layout components that will eventually compose every mission.
+
+Examples:
+
+* SimulationLayout
+* MissionHeader
+* MissionFooter
+* ObjectivePanel
+* DialoguePanel
+* SceneContainer
+* HotspotLayer
+* ProgressPanel
+* TimerPanel
+* MissionSidebar
+* MissionOverlay
+* DebriefLayout
+
+Components should contain placeholder content only.
+
+Focus on structure and responsiveness.
+
+---
+
+# 6. Prepare Mock Data Structure
+
+Create a single mock mission demonstrating the expected data structure.
+
+Do not create actual gameplay.
+
+The mock should illustrate how future missions may be organized.
+
+Suggested hierarchy:
+
+Mission
+
+↓
+
+Scenes
+
+↓
+
+Objectives
+
+↓
+
+Hotspots
+
+↓
+
+Events
+
+↓
+
+Rewards
+
+The content may remain empty or contain placeholder values.
+
+---
+
+# 7. Build Placeholder Services
+
+Create empty service classes or modules for future implementation.
+
+Examples:
+
+* MissionService
+* SceneService
+* EventService
+* DialogueService
+* RewardService
+* ProgressService
+
+These should contain only placeholder methods or TODO comments where appropriate.
+
+No business logic.
+
+---
+
+# 8. Prepare Utility Layer
+
+Create reusable utility files for future simulation development.
+
+Examples:
+
+* MissionHelpers
+* SceneHelpers
+* EventHelpers
+* RewardHelpers
+
+Implementation is not required.
+
+---
+
+# 9. Create Engine Entry Points
+
+Prepare the architectural entry points for the Simulation Engine.
+
+Examples:
+
+* SimulationEngine
+* MissionEngine
+* SceneEngine
+
+These should act only as placeholders with clear documentation explaining their future responsibilities.
+
+Do not implement gameplay systems.
+
+---
+
+# 10. Documentation
+
+Document the intended responsibility of each folder, component, service, and engine entry point.
+
+Future contributors should immediately understand where new simulation functionality belongs.
+
+---
+
+# 11. Coding Standards
+
+Maintain consistency with the existing ProjectSeaT architecture.
+
+Reuse existing:
+
+* Theme system
+* Design tokens
+* Responsive layouts
+* Component conventions
+* Accessibility standards
+* Naming conventions
+
+Do not introduce duplicate patterns.
+
+---
+
+# 12. Important Constraints
+
+During this phase, do NOT implement:
+
+* Mission gameplay
+* Scene logic
+* Decision engine
+* Dynamic events
+* Hotspots
+* Timers
+* XP system
+* Scoring
+* Achievements
+* Badges
+* Leaderboards
+* Inventory
+* Dialogue logic
+* Animations specific to gameplay
+
+Only prepare the architecture that these systems will eventually use.
+
+---
+
+# Deliverables
+
+By the end of this phase, the ProjectSeaT codebase should include:
+
+* Dedicated Simulation Engine module
+* Organized folder structure
+* Core TypeScript interfaces
+* Simulation state architecture
+* Reserved simulation routes
+* Reusable simulation layouts
+* Placeholder engine entry points
+* Placeholder services
+* Utility layer
+* Mock mission data structure
+* Documentation for future development
+
+The resulting codebase should be fully prepared for implementing the Simulation Engine in the next development phase without requiring architectural restructuring.

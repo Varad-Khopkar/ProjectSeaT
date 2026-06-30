@@ -1,0 +1,277 @@
+# Phase 3: Application Foundation & Architecture
+
+## Objective
+
+Build the core foundation of ProjectSeaT by establishing the application's architecture, routing, layouts, navigation, global state, and development standards.
+
+This phase should create a scalable, maintainable application shell that all future features will build upon.
+
+**Do not implement any business logic, feature-specific workflows, or backend integration during this phase.**
+
+Throughout development, prioritize **reuse over duplication**. Before creating any new component, layout, hook, utility, or service, first determine whether an existing one can be extended while maintaining consistency with the established design system.
+
+---
+
+# 1. Project Architecture
+
+Create a scalable and maintainable project structure.
+
+Recommended structure:
+
+```text
+src/
+│
+├── app/
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   ├── fonts/
+│
+├── components/
+│   ├── ui/
+│   ├── layout/
+│   ├── navigation/
+│   └── common/
+│
+├── features/
+├── pages/
+├── routes/
+├── contexts/
+├── hooks/
+├── services/
+├── utils/
+├── constants/
+├── types/
+├── styles/
+├── mock/
+└── config/
+```
+
+The architecture should remain modular and scalable for future development.
+
+---
+
+# 2. Routing
+
+Configure the application's routing system.
+
+Create placeholder pages for:
+
+* Home
+* Modules
+* Leaderboard
+* Profile
+* Settings
+* Help
+* 404 (Not Found)
+
+Each page should automatically use the global application layout.
+
+No feature functionality should be implemented on these pages.
+
+---
+
+# 3. Application Shell
+
+Develop the reusable application shell that will wrap every page.
+
+The shell should include:
+
+* Header
+* Responsive Sidebar
+* Main Content Area
+* Optional Footer
+
+All future pages must inherit this layout automatically.
+
+---
+
+# 4. Navigation System
+
+Create a responsive navigation system.
+
+Include:
+
+* Sidebar navigation
+* Active navigation states
+* Collapsible sidebar
+* Mobile navigation drawer
+* Breadcrumb support
+
+Navigation should remain consistent throughout the application.
+
+---
+
+# 5. Theme Integration
+
+Integrate the complete design system established during Phase 2.
+
+Use the official Harbor Sunset theme.
+
+All components must consume centralized design tokens.
+
+Avoid hardcoded values for:
+
+* Colors
+* Typography
+* Spacing
+* Border radius
+* Shadows
+
+---
+
+# 6. Global State Management
+
+Configure global state management.
+
+Examples of global state include:
+
+* Theme
+* Sidebar state
+* User preferences
+* Notification visibility
+* Global loading state
+
+Do not implement feature-specific application data during this phase.
+
+---
+
+# 7. Mock Data Layer
+
+Create reusable mock data to support UI development before backend integration.
+
+Example datasets:
+
+* Users
+* Modules
+* Badges
+* Progress
+* Leaderboard
+* Notifications
+
+Keep the data modular and easy to replace with real APIs in future phases.
+
+---
+
+# 8. Utility Layer
+
+Develop reusable helper utilities.
+
+Include utilities such as:
+
+* Date formatting
+* Number formatting
+* String helpers
+* Validation helpers
+* Shared constants
+
+These utilities should be reusable across the application.
+
+---
+
+# 9. Error & Empty States
+
+Create reusable pages/components for:
+
+* 404
+* Generic Error
+* Empty State
+* Loading Screen
+
+These should follow the established design system.
+
+---
+
+# 10. Responsive Development
+
+The project follows a **Responsive-First** approach.
+
+Every layout, navigation element, and reusable component must adapt seamlessly across:
+
+* Large Desktop Monitors
+* Desktop
+* Laptop
+* Tablet (Landscape)
+* Tablet (Portrait)
+* Large Mobile Phones
+* Standard Mobile Phones
+* Small Mobile Devices
+
+Do not build desktop-only layouts.
+
+Use flexible containers, responsive spacing, and adaptive navigation.
+
+Every component should be tested across all supported screen sizes before being considered complete.
+
+---
+
+# 11. Development Standards
+
+Establish project-wide development conventions.
+
+Document and follow standards for:
+
+* Folder organization
+* File naming
+* Component naming
+* Import organization
+* Code formatting
+* TypeScript typing
+* Reusable component patterns
+* Commenting guidelines
+
+Maintain consistency throughout the project.
+
+---
+
+# 12. Reusability Rules
+
+Before implementing any new feature, always verify whether an existing:
+
+* Component
+* Layout
+* Hook
+* Utility
+* Context
+* Service
+
+can be reused or extended.
+
+Avoid duplicate implementations.
+
+Favor composition and scalability over one-off solutions.
+
+---
+
+# 13. Technology Stack
+
+Continue using the approved project stack:
+
+* React
+* TypeScript
+* Tailwind CSS
+* Lucide Icons
+* CSS Transitions
+
+Do not introduce additional libraries unless they provide a clear benefit and are compatible with the project's existing architecture.
+
+---
+
+# Deliverables
+
+By the end of Phase 3, ProjectSeaT should include:
+
+* Scalable project architecture
+* Organized folder structure
+* Configured routing
+* Responsive application shell
+* Responsive navigation system
+* Theme integration
+* Global state management
+* Mock data layer
+* Utility layer
+* Error and empty state pages
+* Project-wide development standards
+* Fully responsive layouts across all supported devices
+
+No feature-specific functionality, business logic, backend integration, or API connectivity should be developed during this phase. The outcome should be a robust, scalable, and maintainable application foundation that is ready for feature implementation in subsequent phases.

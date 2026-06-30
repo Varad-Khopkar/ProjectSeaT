@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Confidential / Local Reference Info
-DoNotPush_InfoOnly/
+# DoNotPush_InfoOnly/
