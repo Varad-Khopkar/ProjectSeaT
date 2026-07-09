@@ -38,3 +38,9 @@ Responsive behavior should not compromise performance. Optimize layouts, assets,
 ## Development Rule
 
 No component, page, or feature should be considered complete until it has been verified to function correctly and maintain visual consistency across all supported device sizes.
+
+---
+Create a new file under DoNotPush_InfoOnly folder and name it as "For_Developers" and keep updating this file whenever we make any changes as a document for the developers
+
+instead of using emojies, use icons from: heroicons.com & https://lucide.dev/
+
