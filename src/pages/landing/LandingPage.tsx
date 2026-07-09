@@ -264,8 +264,9 @@ function HeroSection({ onDemo }: { onDemo: () => void }) {
           className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6"
           style={{ animation: 'fadeSlideUp 0.8s ease-out both' }}
         >
-          The Future of{' '}
+          The Future of<br />
           <span
+            className="inline-block whitespace-nowrap"
             style={{
               background: 'linear-gradient(90deg, #F4A261, #E76F51, #F4A261)',
               backgroundSize: '200% auto',
