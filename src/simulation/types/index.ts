@@ -62,6 +62,28 @@ export interface MissionScene {
   hotspots: Hotspot[]
   objectives: Objective[]
   transitions: SceneTransition[]
+  type?: string
+  next?: string
+  guide?: {
+    character: string
+    pose: string
+    text: string
+  }
+  activity?: {
+    question?: string
+    options?: { id: string; text: string }[]
+    correctOption?: string
+    hint?: string
+    requiredTaps?: string[]
+    items?: { id: string; label: string; details: string }[]
+  }
+  success?: {
+    dialogue: string
+    next?: string
+  }
+  failure?: {
+    dialogue: string
+  }
 }
 
 export interface Mission {
@@ -89,6 +111,7 @@ export interface PlayerState {
   decisionsMade: Record<string, string> // maps choiceId to dialogueId
   attempts: Record<string, number> // tracks click attempts per hotspot
   trustScore: number // Captures inspector cooperation rating (0-100)
+  suspicionScore?: number // Captures inspector suspicion rating (0-100)
   documentChecked: boolean // Tracks document audit clipboard completion
   restHoursChecked: boolean // Tracks MLC rest-hours sheet audit completion
 }
@@ -110,6 +133,7 @@ export interface SimulationState {
   activeFeedback: FeedbackDetail | null // active regulations explanation popup
   activeDocumentDesk: boolean // toggles document desk clipboard popups
   activeRestHourLog: boolean // toggles MLC rest hour logs board popup
+  activeMinigame?: 'rest_hours' | 'cert_swipe' | 'gmdss_loop' | 'gangway_netting' | 'fire_door_test' | 'ows_test' | null // track active interactive minigame
 }
 
 export interface MissionResult {

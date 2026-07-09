@@ -25,3 +25,7 @@ dist-ssr
 
 # Confidential / Local Reference Info
 # DoNotPush_InfoOnly/
+
+# Local Agent caches
+graphify-out/
+.gemini/

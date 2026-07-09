@@ -108,7 +108,7 @@ export const Header: React.FC = () => {
   // Calculate live mission progress details
   const isMissionActive = simState.status === 'running' || simState.status === 'paused'
   const totalObjectives = activeMission ? Object.values(activeMission.scenes).reduce(
-    (acc, scene) => acc + scene.objectives.length, 0
+    (acc, scene) => acc + (scene.objectives ? scene.objectives.length : 0), 0
   ) : 0
   const completedObjectivesCount = simState.playerState.completedObjectiveIds.length
   const progressPercent = totalObjectives > 0 ? Math.round((completedObjectivesCount / totalObjectives) * 100) : 0

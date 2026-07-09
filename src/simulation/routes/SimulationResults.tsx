@@ -91,7 +91,7 @@ export const SimulationResults: React.FC = () => {
             {scene.title}
           </h3>
           <ul className="space-y-2">
-            {scene.objectives.map((obj) => {
+            {(scene.objectives || []).map((obj) => {
               const done = state.playerState.completedObjectiveIds.includes(obj.id)
               const actionCode = objectiveActionCodes[obj.id]
               return (
