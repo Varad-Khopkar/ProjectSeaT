@@ -246,15 +246,6 @@ function HeroSection({ onDemo }: { onDemo: () => void }) {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
     >
-      {/* Animated grid */}
-      <div
-        className="absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(47,102,144,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(47,102,144,0.8) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-          animation: 'gridDrift 25s linear infinite',
-        }}
-      />
       {/* Radial glow blobs */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #2F6690 0%, transparent 70%)', animation: 'blobFloat1 12s ease-in-out infinite' }} />
       <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full opacity-15 blur-3xl" style={{ background: 'radial-gradient(circle, #F4A261 0%, transparent 70%)', animation: 'blobFloat2 16s ease-in-out infinite' }} />
@@ -692,8 +683,17 @@ export const LandingPage: React.FC = () => {
   const handleDemo = () => navigate('/init')
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #050e1a 0%, #0a1f35 20%, #0d2540 40%, #12355B 60%, #0a1f35 80%, #050e1a 100%)', fontFamily: 'Manrope, system-ui, sans-serif' }}>
+    <div className="min-h-screen relative" style={{ background: 'linear-gradient(180deg, #050e1a 0%, #0a1f35 20%, #0d2540 40%, #12355B 60%, #0a1f35 80%, #050e1a 100%)', fontFamily: 'Manrope, system-ui, sans-serif' }}>
       <style>{LANDING_CSS}</style>
+      {/* Background Grid Pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.07] pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(rgba(47,102,144,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(47,102,144,0.8) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px',
+          animation: 'gridDrift 25s linear infinite',
+        }}
+      />
       <NavBar onDemo={handleDemo} />
       <HeroSection onDemo={handleDemo} />
       <StatsSection />
