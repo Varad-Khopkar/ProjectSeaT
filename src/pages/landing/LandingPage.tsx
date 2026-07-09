@@ -244,10 +244,7 @@ function HeroSection({ onDemo }: { onDemo: () => void }) {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #050e1a 0%, #0a1f35 40%, #12355B 70%, #0f2a47 100%)',
-      }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
     >
       {/* Animated grid */}
       <div
@@ -365,7 +362,7 @@ function StatsSection() {
   ]
 
   return (
-    <section id="overview" className="py-24 relative" style={{ background: 'linear-gradient(180deg, #0a1f35 0%, #0d2540 100%)' }}>
+    <section id="overview" className="py-24 relative bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section intro */}
         <div className="text-center mb-16">
@@ -401,7 +398,7 @@ function StatsSection() {
 function FeaturesSection() {
   const [ref, inView] = useInView(0.1)
   return (
-    <section id="features" className="py-24 relative" style={{ background: '#0a1f35' }}>
+    <section id="features" className="py-24 relative bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-xs font-mono uppercase tracking-widest text-brand-gold">Platform Capabilities</span>
@@ -446,7 +443,7 @@ function FeaturesSection() {
 function ComparisonSection() {
   const [ref, inView] = useInView(0.1)
   return (
-    <section id="comparison" className="py-24" style={{ background: 'linear-gradient(180deg, #0a1f35 0%, #0d2842 100%)' }}>
+    <section id="comparison" className="py-24 bg-transparent">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-xs font-mono uppercase tracking-widest text-brand-gold">Why Project SeaT</span>
@@ -487,7 +484,7 @@ function ComparisonSection() {
 function TimelineSection({ onDemo }: { onDemo: () => void }) {
   const [ref, inView] = useInView(0.1)
   return (
-    <section id="timeline" className="py-24 relative" style={{ background: '#0a1f35' }}>
+    <section id="timeline" className="py-24 relative bg-transparent">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-xs font-mono uppercase tracking-widest text-brand-gold">Platform Walkthrough</span>
@@ -534,7 +531,7 @@ function TimelineSection({ onDemo }: { onDemo: () => void }) {
 
 function TechStackSection() {
   return (
-    <section className="py-20 border-t border-brand-blue/10" style={{ background: 'linear-gradient(180deg, #0a1f35 0%, #0d2540 100%)' }}>
+    <section className="py-20 border-t border-brand-blue/10 bg-transparent">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-12">
           <span className="text-xs font-mono uppercase tracking-widest text-brand-gold">Engineering</span>
@@ -560,7 +557,7 @@ function TechStackSection() {
 function TeamSection() {
   const [ref, inView] = useInView(0.1)
   return (
-    <section id="team" className="py-24" style={{ background: '#0a1f35' }}>
+    <section id="team" className="py-24 bg-transparent">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-xs font-mono uppercase tracking-widest text-brand-gold">The Team</span>
@@ -591,7 +588,7 @@ function TeamSection() {
 function ContactSection({ onDemo }: { onDemo: () => void }) {
   const navigate = useNavigate()
   return (
-    <section id="contact" className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0d2842 0%, #12355B 50%, #1a3d6e 100%)' }}>
+    <section id="contact" className="py-24 relative overflow-hidden bg-transparent">
       {/* Background glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[600px] h-[300px] rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #2F6690 0%, transparent 70%)' }} />
@@ -632,7 +629,7 @@ function ContactSection({ onDemo }: { onDemo: () => void }) {
 
 function LandingFooter() {
   return (
-    <footer className="border-t border-brand-blue/15 py-10" style={{ background: '#050e1a' }}>
+    <footer className="border-t border-brand-blue/15 py-10 bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand */}
@@ -695,7 +692,7 @@ export const LandingPage: React.FC = () => {
   const handleDemo = () => navigate('/init')
 
   return (
-    <div className="min-h-screen" style={{ background: '#0a1f35', fontFamily: 'Manrope, system-ui, sans-serif' }}>
+    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #050e1a 0%, #0a1f35 20%, #0d2540 40%, #12355B 60%, #0a1f35 80%, #050e1a 100%)', fontFamily: 'Manrope, system-ui, sans-serif' }}>
       <style>{LANDING_CSS}</style>
       <NavBar onDemo={handleDemo} />
       <HeroSection onDemo={handleDemo} />
