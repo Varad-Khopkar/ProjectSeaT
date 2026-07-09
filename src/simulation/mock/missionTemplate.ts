@@ -369,4 +369,204 @@ export const mockDialogues: Record<string, Dialogue> = {
       },
     ],
   },
+  'dlg-m1-kai-intro': {
+    id: 'dlg-m1-kai-intro',
+    speaker: 'Cadet Kai',
+    message: 'Welcome aboard the M/V Sea Guardian, Officer! I am Cadet Kai, and I will be guiding you through your onboarding. Today is a critical day—we are preparing for a Port State Control audit. To start, do you know what Port State Control (PSC) is?',
+    choices: [
+      {
+        id: 'ch-m1-intro-correct',
+        text: 'An inspection system where foreign ships undergo checks to verify compliance with international safety standards.',
+        targetDialogueId: 'dlg-m1-kai-intro-success',
+        triggerEventId: 'evt-trust-increase',
+      },
+      {
+        id: 'ch-m1-intro-wrong-1',
+        text: 'A cargo custom checkpoint managed by port gates.',
+        targetDialogueId: 'dlg-m1-kai-intro-fail',
+        triggerEventId: 'evt-trust-decrease-minor',
+      },
+      {
+        id: 'ch-m1-intro-wrong-2',
+        text: 'A flag registry management protocol for domestic trading.',
+        targetDialogueId: 'dlg-m1-kai-intro-fail',
+        triggerEventId: 'evt-trust-decrease-minor',
+      },
+    ],
+  },
+  'dlg-m1-kai-intro-success': {
+    id: 'dlg-m1-kai-intro-success',
+    speaker: 'Cadet Kai',
+    message: 'Exactly! PSC checks foreign vessels to verify they satisfy safety, security, and environmental codes. Now, check the Gangway Netting safety. Make sure to rig the net to prevent any boarding accidents!',
+    choices: [
+      {
+        id: 'ch-m1-intro-success-ok',
+        text: 'Let\'s check the safety netting.',
+      },
+    ],
+  },
+  'dlg-m1-kai-intro-fail': {
+    id: 'dlg-m1-kai-intro-fail',
+    speaker: 'Cadet Kai',
+    message: 'Not quite. Remember, PSC focuses on international compliance of foreign vessels visiting national ports. Try again!',
+    choices: [
+      {
+        id: 'ch-m1-intro-fail-retry',
+        text: 'Let me reconsider.',
+        targetDialogueId: 'dlg-m1-kai-intro',
+      },
+    ],
+  },
+  'dlg-m1-kai-office': {
+    id: 'dlg-m1-kai-office',
+    speaker: 'Cadet Kai',
+    message: 'This is the Ship Office. The inspector Kowalski will check our certificates binder and watch rest hours here. Make sure to complete both audits at the desks.',
+    choices: [
+      {
+        id: 'ch-m1-office-ok',
+        text: 'I will start the audits.',
+      },
+    ],
+  },
+  'dlg-m1-inspector-intro': {
+    id: 'dlg-m1-inspector-intro',
+    speaker: 'Inspector Kowalski',
+    message: 'Good morning. I am boarding your vessel for standard inspections. Can you state the three main regulatory pillars of Port State Control?',
+    choices: [
+      {
+        id: 'ch-m1-pillars-correct',
+        text: 'Safety (SOLAS), Security (ISPS), and Environment (MARPOL).',
+        targetDialogueId: 'dlg-m1-pillars-success',
+        triggerEventId: 'evt-trust-increase',
+      },
+      {
+        id: 'ch-m1-pillars-wrong',
+        text: 'Cargo manifests, crew wages, and flag taxes.',
+        targetDialogueId: 'dlg-m1-pillars-fail',
+        triggerEventId: 'evt-trust-decrease-minor',
+      },
+    ],
+  },
+  'dlg-m1-pillars-success': {
+    id: 'dlg-m1-pillars-success',
+    speaker: 'Inspector Kowalski',
+    message: 'Excellent. Keep those three pillars in mind as I inspect your certificates and watch rest hours.',
+    choices: [
+      {
+        id: 'ch-m1-pillars-success-ok',
+        text: 'Understood, Inspector.',
+      },
+    ],
+  },
+  'dlg-m1-pillars-fail': {
+    id: 'dlg-m1-pillars-fail',
+    speaker: 'Inspector Kowalski',
+    message: 'No! Those are commercial matters. The three pillars are SOLAS, ISPS, and MARPOL. Please review the ship certificates folder on the desk immediately!',
+    choices: [
+      {
+        id: 'ch-m1-pillars-fail-ok',
+        text: 'Opening certificates...',
+      },
+    ],
+  },
+  'dlg-m1-kai-bridge': {
+    id: 'dlg-m1-kai-bridge',
+    speaker: 'Cadet Kai',
+    message: 'We are on the Bridge! The GMDSS DSC Radio needs a loop test verification, and check the fire door to make sure it closes automatically.',
+    choices: [
+      {
+        id: 'ch-m1-bridge-ok',
+        text: 'Got it. I will test them.',
+      },
+    ],
+  },
+  'dlg-m1-kai-engine': {
+    id: 'dlg-m1-kai-engine',
+    speaker: 'Cadet Kai',
+    message: 'Great job! You\'ve completed all primary audits and onboarding. You are ready to start the active simulator now.',
+    choices: [
+      {
+        id: 'ch-m1-engine-ok',
+        text: 'Conclude Onboarding',
+      },
+    ],
+  },
+  'dlg-m1-netting-success': {
+    id: 'dlg-m1-netting-success',
+    speaker: 'Cadet Kai',
+    message: 'Incredible rigging! The safety net is now properly suspended and tensioned. The harbor pier gap is completely safe. Let\'s head into the Ship Office now to begin documentation audits.',
+    choices: [
+      {
+        id: 'ch-m1-netting-success-ok',
+        text: 'Proceed into Ship Office',
+      },
+    ],
+  },
+  'dlg-m1-certs-success': {
+    id: 'dlg-m1-certs-success',
+    speaker: 'Cadet Kai',
+    message: 'Excellent verification, Officer! All certificates are endorsed and verified. Now, let\'s check the watchkeeping crew Rest Hours timeline clipboard on the wall to balance the shift fatigue metrics.',
+    choices: [
+      {
+        id: 'ch-m1-certs-success-ok',
+        text: 'Audit Rest Hours',
+      },
+    ],
+  },
+  'dlg-m1-rest-success': {
+    id: 'dlg-m1-rest-success',
+    speaker: 'Cadet Kai',
+    message: 'Superb shift calibration! All OOW fatigue warning flags have been successfully resolved under MLC 2006 compliance guidelines. Let\'s proceed up to the Navigation Bridge to inspect radio signals.',
+    choices: [
+      {
+        id: 'ch-m1-rest-success-ok',
+        text: 'Proceed to Bridge',
+      },
+    ],
+  },
+  'dlg-m1-gmdss-success': {
+    id: 'dlg-m1-gmdss-success',
+    speaker: 'Cadet Kai',
+    message: 'Fantastic! The VHF DSC radio loop test transmission returned a 100% signal strength local check. Now, check the A-Class Fire Door magnetic release system on the bulkhead to verify fail-safe shutdown speed.',
+    choices: [
+      {
+        id: 'ch-m1-gmdss-success-ok',
+        text: 'Inspect Fire Door',
+      },
+    ],
+  },
+  'dlg-m1-firedoor-success': {
+    id: 'dlg-m1-firedoor-success',
+    speaker: 'Cadet Kai',
+    message: 'Perfect! The fire door release magnets are functional, and the closing speed is fully compliant with SOLAS standards. We are clear of all bridge deficiencies! Let\'s descend to the Engine Room for the final walkthrough.',
+    choices: [
+      {
+        id: 'ch-m1-firedoor-success-ok',
+        text: 'Descend to Engine Room',
+      },
+    ],
+  },
+  'dlg-m1-ows-intro': {
+    id: 'dlg-m1-ows-intro',
+    speaker: 'Cadet Kai',
+    message: 'This is the Engine Machinery Space! Under MARPOL Annex I, we must verify the Oily Water Separator (OWS) 15ppm alarm system. Click the OWS control panel to execute the bilge alarm sensor compliance test.',
+    choices: [
+      {
+        id: 'ch-m1-ows-intro-ok',
+        text: 'Audit Oily Water Separator',
+      },
+    ],
+  },
+  'dlg-m1-ows-success': {
+    id: 'dlg-m1-ows-success',
+    speaker: 'Cadet Kai',
+    message: 'Incredible test! The OWS bilge alarm sensor triggered correctly, and the 3-way solenoid valve redirected high-ppm water back to the bilge tank. Our overboard line remains clean. Onboarding checklist complete!',
+    choices: [
+      {
+        id: 'ch-m1-ows-success-ok',
+        text: 'Conclude Walkthrough',
+      },
+    ],
+  },
 }
+

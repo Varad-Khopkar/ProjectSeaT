@@ -26,7 +26,46 @@ export const HotspotLayer: React.FC = () => {
 
   return (
     <>
-      {currentScene.hotspots.map((hotspot) => {
+      {(currentScene.hotspots || []).map((hotspot) => {
+        const completed = state.playerState.completedObjectiveIds
+        let isGlow = false
+
+        if (state.currentMissionId === 'module1') {
+          if (state.currentSceneId === 'm1_s1_boarding') {
+            if (!completed.includes('obj-m1-kai-intro')) {
+              isGlow = hotspot.id === 'hs-m1-kai-gangway'
+            } else if (!completed.includes('obj-m1-netting')) {
+              isGlow = hotspot.id === 'hs-m1-netting'
+            } else {
+              isGlow = hotspot.id === 'hs-m1-enter-office'
+            }
+          } else if (state.currentSceneId === 'm1_s2_office') {
+            if (!completed.includes('obj-m1-inspector-intro')) {
+              isGlow = hotspot.id === 'hs-m1-inspector'
+            } else if (!completed.includes('obj-audit-docs')) {
+              isGlow = hotspot.id === 'hs-m1-certificates'
+            } else if (!completed.includes('obj-audit-rest')) {
+              isGlow = hotspot.id === 'hs-m1-rest-hours'
+            } else {
+              isGlow = hotspot.id === 'hs-m1-office-to-bridge'
+            }
+          } else if (state.currentSceneId === 'm1_s3_bridge') {
+            if (!completed.includes('obj-test-radio')) {
+              isGlow = hotspot.id === 'hs-m1-gmdss'
+            } else if (!completed.includes('obj-m1-firedoor')) {
+              isGlow = hotspot.id === 'hs-m1-firedoor'
+            } else {
+              isGlow = hotspot.id === 'hs-m1-bridge-to-engine'
+            }
+          } else if (state.currentSceneId === 'm1_s4_engine') {
+            if (!completed.includes('obj-m1-ows')) {
+              isGlow = hotspot.id === 'hs-m1-ows'
+            } else if (!completed.includes('obj-m1-kai-engine')) {
+              isGlow = hotspot.id === 'hs-m1-kai-engine'
+            }
+          }
+        }
+
         const style = SceneHelpers.calculateHotspotPosition(
           hotspot.x,
           hotspot.y,
@@ -44,12 +83,14 @@ export const HotspotLayer: React.FC = () => {
             onClick={() => triggerHotspot(hotspot.id)}
             style={style}
             className={cn(
-              'absolute border-2 border-dashed rounded-[8px] cursor-pointer',
+              'absolute border-2 rounded-[8px] cursor-pointer',
               'flex flex-col items-center justify-center gap-1',
               'transition-all duration-300 group',
               'backdrop-blur-[1px]',
               colorClasses,
-              'hover:scale-[1.03] hover:shadow-md hover:border-solid'
+              isGlow
+                ? 'animate-[pulse_1.8s_infinite] border-brand-gold border-2 shadow-[0_0_15px_rgba(244,162,97,0.85)] bg-slate-900/40'
+                : 'border-dashed hover:scale-[1.03] hover:shadow-md hover:border-solid'
             )}
             title={hotspot.label}
           >
