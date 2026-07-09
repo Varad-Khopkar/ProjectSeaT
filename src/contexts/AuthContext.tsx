@@ -15,10 +15,10 @@ interface AuthContextType {
 }
 
 export const DEMO_CREDENTIALS = [
-  { username: 'captain',   password: 'demo2025', name: 'Capt. Henderson',      rank: 'Master Mariner'  },
-  { username: 'officer',   password: 'demo2025', name: 'Lt. Cmdr. Sharma',     rank: 'Chief Officer'   },
-  { username: 'inspector', password: 'demo2025', name: 'Insp. Reyes',           rank: 'PSC Inspector'   },
-  { username: 'trainee',   password: 'demo2025', name: 'Cadet Williams',        rank: 'Officer Cadet'   },
+  { username: 'captain',   password: 'demo2026', name: 'Capt. Henderson',      rank: 'Master Mariner'  },
+  { username: 'officer',   password: 'demo2026', name: 'Lt. Cmdr. Sharma',     rank: 'Chief Officer'   },
+  { username: 'inspector', password: 'demo2026', name: 'Insp. Reyes',           rank: 'PSC Inspector'   },
+  { username: 'trainee',   password: 'demo2026', name: 'Cadet Williams',        rank: 'Officer Cadet'   },
 ]
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)

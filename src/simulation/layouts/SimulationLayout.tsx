@@ -90,7 +90,7 @@ export const SimulationLayout: React.FC = () => {
         <MissionFooter />
       </div>
 
-      {/* dialogue panel overlay — anchored absolute to bottom of card */}
+      {/* dialogue panel overlay - anchored absolute to bottom of card */}
       <DialoguePanel />
 
       {/* Full-screen overlays & auditer logs */}

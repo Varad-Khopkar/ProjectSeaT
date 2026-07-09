@@ -16,7 +16,7 @@ import { Compass, Clock, Star, Shield, ArrowRight, Anchor } from 'lucide-react'
 export const SimulationHub: React.FC = () => {
   const navigate = useNavigate()
 
-  // Config-driven mission catalog — currently only the PSC template
+  // Config-driven mission catalog - currently only the PSC template
   const missions = [pscMissionTemplate]
 
   return (

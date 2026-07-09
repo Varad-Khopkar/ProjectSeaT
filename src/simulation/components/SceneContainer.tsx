@@ -43,7 +43,7 @@ export const SceneContainer: React.FC = () => {
           <div className="text-center opacity-45 select-none">
             {renderPlaceholderIcon()}
             <p className="text-xs font-mono text-slate-500 uppercase tracking-widest mt-2">
-              {currentScene.title} — Active Viewport
+              {currentScene.title} - Active Viewport
             </p>
           </div>
         </div>

@@ -184,7 +184,7 @@ export const InitializationScreen: React.FC = () => {
         {/* Done message */}
         {done && (
           <div className="mt-8 text-xs font-mono text-brand-gold uppercase tracking-widest animate-pulse">
-            System Ready — Redirecting…
+            System Ready - Redirecting…
           </div>
         )}
 

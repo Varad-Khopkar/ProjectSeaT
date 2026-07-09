@@ -22,7 +22,7 @@ const objectiveActionCodes: Record<string, string> = {
  *
  * Detailed results audit page showing a full itemized breakdown
  * of each objective across all scenes. This is a secondary view
- * from the debrief — useful for reviewing specific inspection items.
+ * from the debrief - useful for reviewing specific inspection items.
  */
 export const SimulationResults: React.FC = () => {
   const { state, activeMission } = useSimulation()
@@ -64,7 +64,7 @@ export const SimulationResults: React.FC = () => {
           </div>
           <div>
             <h1 className="font-h2 text-brand-navy text-lg">Detailed Results</h1>
-            <p className="text-sm text-slate-500">{activeMission.title} — Itemized Audit</p>
+            <p className="text-sm text-slate-500">{activeMission.title} - Itemized Audit</p>
           </div>
         </div>
 

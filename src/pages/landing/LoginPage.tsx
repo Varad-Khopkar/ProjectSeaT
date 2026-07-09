@@ -142,7 +142,7 @@ export const LoginPage: React.FC = () => {
             </span>
           </h1>
           <p className="text-slate-400 text-sm leading-relaxed mb-8">
-            Immersive Port State Control simulations, MLC compliance training, and real-time performance analytics — built for seafarers, maritime academies, and shipping companies.
+            Immersive Port State Control simulations, MLC compliance training, and real-time performance analytics - built for seafarers, maritime academies, and shipping companies.
           </p>
 
           {/* Security badges */}
@@ -151,7 +151,7 @@ export const LoginPage: React.FC = () => {
               { icon: Shield,  label: 'IMO Regulation Aligned',       sub: 'SOLAS · MARPOL · STCW · MLC 2006' },
               { icon: Lock,    label: 'Secure Workspace',              sub: 'Session-isolated sandbox environment' },
               { icon: Globe,   label: 'Multi-MOU Region Coverage',     sub: 'Paris · Tokyo · Indian Ocean MOU' },
-              { icon: Award,   label: 'Competency-Based Assessment',   sub: 'STCW Table II/1 — VI/6 Mapped' },
+              { icon: Award,   label: 'Competency-Based Assessment',   sub: 'STCW Table II/1 - VI/6 Mapped' },
             ].map(({ icon: Icon, label, sub }) => (
               <div key={label} className="flex items-start gap-3 p-3 rounded-xl bg-white/3 border border-brand-blue/10">
                 <Icon className="h-4 w-4 text-brand-gold mt-0.5 shrink-0" />
@@ -167,7 +167,7 @@ export const LoginPage: React.FC = () => {
         {/* Bottom: version */}
         <div className="relative z-10 p-10 border-t border-brand-blue/10">
           <p className="text-[11px] font-mono text-slate-600 uppercase tracking-widest">
-            Version 1.0 · © {new Date().getFullYear()} Project SeaT. All rights reserved.
+            Version 1.0 · © {new Date().getFullYear()} Project Seat. All rights reserved.
           </p>
         </div>
       </div>
@@ -277,7 +277,7 @@ export const LoginPage: React.FC = () => {
             {success && (
               <div className="flex items-center gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700">
                 <CheckCircle className="h-4 w-4 shrink-0" />
-                <span className="text-xs font-bold">Authentication successful — loading workspace…</span>
+                <span className="text-xs font-bold">Authentication successful - loading workspace…</span>
               </div>
             )}
 
