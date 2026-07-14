@@ -265,7 +265,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Global Autocomplete Search Bar */}
-        <div className="relative flex-1 max-w-sm mx-4" ref={searchRef}>
+        <div className="hidden md:block relative flex-1 max-w-sm mx-4" ref={searchRef}>
           <div className="relative">
             <input
               type="text"

@@ -240,6 +240,7 @@ const GangwayNettingTest: React.FC<{ onComplete: (success: boolean, score: numbe
   }
 
   const handleTighten = () => {
+    playSound('rope')
     setTension(prev => Math.min(100, prev + 15))
   }
 
@@ -686,8 +687,10 @@ export const MinigameDesk: React.FC = () => {
   // If the active minigame is rest hours, return the RestHoursPuzzle component
   if (state.activeMinigame === 'rest_hours') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <RestHoursPuzzle />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <RestHoursPuzzle />
+        </div>
       </div>
     )
   }
@@ -695,8 +698,10 @@ export const MinigameDesk: React.FC = () => {
   // If the active minigame is gangway safety netting tension
   if (state.activeMinigame === 'gangway_netting') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <GangwayNettingTest onComplete={completeMinigame} />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <GangwayNettingTest onComplete={completeMinigame} />
+        </div>
       </div>
     )
   }
@@ -704,8 +709,10 @@ export const MinigameDesk: React.FC = () => {
   // If GMDSS DSC radio loop test minigame
   if (state.activeMinigame === 'gmdss_loop') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <GmdssLoopTest onComplete={completeMinigame} />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <GmdssLoopTest onComplete={completeMinigame} />
+        </div>
       </div>
     )
   }
@@ -713,8 +720,10 @@ export const MinigameDesk: React.FC = () => {
   // If the active minigame is fire door release test
   if (state.activeMinigame === 'fire_door_test') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <FireDoorTest onComplete={completeMinigame} />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <FireDoorTest onComplete={completeMinigame} />
+        </div>
       </div>
     )
   }
@@ -722,8 +731,10 @@ export const MinigameDesk: React.FC = () => {
   // If the active minigame is OWS bilge alarm test
   if (state.activeMinigame === 'ows_test') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <OwsTest onComplete={completeMinigame} />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <OwsTest onComplete={completeMinigame} />
+        </div>
       </div>
     )
   }
@@ -731,8 +742,10 @@ export const MinigameDesk: React.FC = () => {
   // If the active minigame is Detention Sort
   if (state.activeMinigame === 'detention_sort') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <ZenithCaseStudy onComplete={completeMinigame} />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <ZenithCaseStudy onComplete={completeMinigame} />
+        </div>
       </div>
     )
   }
@@ -740,8 +753,10 @@ export const MinigameDesk: React.FC = () => {
   // If the active minigame is Escort Safety Locker Gear-up
   if (state.activeMinigame === 'escort_gear') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <EscortGear onComplete={completeMinigame} />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <EscortGear onComplete={completeMinigame} />
+        </div>
       </div>
     )
   }
@@ -749,8 +764,10 @@ export const MinigameDesk: React.FC = () => {
   // If the active minigame is Escort Cooperation Trust Challenge
   if (state.activeMinigame === 'escort_trust') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <EscortTrust onComplete={completeMinigame} />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <EscortTrust onComplete={completeMinigame} />
+        </div>
       </div>
     )
   }
@@ -758,8 +775,10 @@ export const MinigameDesk: React.FC = () => {
   // If the active minigame is Case Studies
   if (state.activeMinigame === 'case_studies') {
     return (
-      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <CaseStudies onComplete={completeMinigame} />
+      <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4">
+          <CaseStudies onComplete={completeMinigame} />
+        </div>
       </div>
     )
   }
@@ -777,7 +796,7 @@ export const MinigameDesk: React.FC = () => {
     setStampCoords((prev) => ({ ...prev, [cert.id]: { x, y } }))
 
     // Play stamp "clunk" sound
-    playSound('beep')
+    playSound('stamp')
 
     // Auto transition next or completed after a brief animation delay
     setTimeout(() => {
@@ -814,8 +833,9 @@ export const MinigameDesk: React.FC = () => {
   const activeCert = CERTIFICATES[currentIndex]
 
   return (
-    <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-slate-900 border border-white/10 rounded-2xl p-5 shadow-2xl flex flex-col text-left font-sans animate-in zoom-in-95 duration-200">
+    <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+      <div className="flex min-h-full items-center justify-center p-4">
+        <div className="w-full max-w-md bg-slate-900 border border-white/10 rounded-2xl p-5 shadow-2xl flex flex-col text-left font-sans animate-in zoom-in-95 duration-200 shrink-0">
 
         {/* Header */}
         <div className="border-b border-white/5 pb-3 mb-4 flex items-center justify-between">
@@ -956,6 +976,7 @@ export const MinigameDesk: React.FC = () => {
             </div>
           </div>
         )}
+        </div>
       </div>
     </div>
   )
@@ -1611,7 +1632,6 @@ export const EscortTrust: React.FC<{ onComplete: (success: boolean, score: numbe
   const handleStep0Choice = (choice: 'cooperative' | 'uncooperative') => {
     if (choice === 'cooperative') {
       playSound('success')
-      setLogbookHanded(true)
       setTrustScore((prev) => Math.min(100, prev + 15))
       setPoints((prev) => prev + 10)
       setFeedback("SUCCESS: You retrieved the oil logs immediately. Kowalski is pleased with our record organization.")
@@ -1620,12 +1640,17 @@ export const EscortTrust: React.FC<{ onComplete: (success: boolean, score: numbe
       setTrustScore((prev) => Math.max(0, prev - 25))
       setFeedback("WARNING: Delaying logs triggers suspicion. Kowalski starts suspecting record manipulation.")
     }
+    setLogbookHanded(true)
   };
 
   const handleStep1Choice = (choice: 'rectify' | 'defensive' | 'bribe') => {
     if (choice === 'bribe') {
-      playSound('failure')
-      setStage('failed')
+      playSound('alarm')
+      setTrustScore(0)
+      setFeedback("FATAL ERROR: Bribing a PSC officer is a criminal offense.")
+      setTimeout(() => {
+        setStage('failed')
+      }, 2000)
       return
     }
 
@@ -1634,14 +1659,15 @@ export const EscortTrust: React.FC<{ onComplete: (success: boolean, score: numbe
       setTrustScore((prev) => Math.min(100, prev + 15))
       setPoints((prev) => prev + 15)
       setFeedback("SUCCESS: You logged EPIRB replacement immediately. Defect resolved under Code 10 (Rectified).")
-      setTimeout(() => {
-        setStage('success')
-      }, 2000)
     } else {
       playSound('failure')
       setTrustScore((prev) => Math.max(0, prev - 30))
       setFeedback("ERROR: Kowalski takes note of your defensive attitude. Cooperation score collapses.")
     }
+    
+    setTimeout(() => {
+      setStage('success')
+    }, 2000)
   }
 
   const handleProceedStep1 = () => {

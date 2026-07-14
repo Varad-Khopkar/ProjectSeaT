@@ -24,18 +24,19 @@ import { cn } from '@/utils/formatters'
 export const SimulationLayout: React.FC = () => {
   const { currentScene, state } = useSimulation()
   const [isObjectivesOpen, setIsObjectivesOpen] = useState(true)
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(true)
 
   // Listen to Escape key to collapse the Objectives panel
   useEffect(() => {
-    if (!isObjectivesOpen) return
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setIsObjectivesOpen(false)
+        setIsOnboardingOpen(false)
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isObjectivesOpen])
+  }, [])
 
   if (!currentScene) return null
 
@@ -59,20 +60,20 @@ export const SimulationLayout: React.FC = () => {
       {/* OVERLAY LAYERS (z-30) */}
 
       {/* Top Header Controls */}
-      <div className="absolute top-4 left-4 right-4 z-30 pointer-events-auto">
+      <div className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 right-2 sm:right-3 md:right-4 z-30 pointer-events-auto">
         <MissionHeader />
       </div>
 
       {/* Objectives Panel (Full or Retracted) */}
       {!isModule1 && (
         isObjectivesOpen ? (
-          <div className="absolute top-20 right-4 bottom-28 z-30 w-72 sm:w-80 max-h-[58%] overflow-y-auto pointer-events-auto bg-slate-900/90 backdrop-blur-md border border-white/10 rounded-2xl shadow-large p-4 scrollbar-none animate-in fade-in slide-in-from-right-4 duration-200">
+          <div className="absolute top-24 sm:top-20 md:top-20 right-2 sm:right-3 md:right-4 bottom-20 sm:bottom-24 md:bottom-28 z-30 w-52 sm:w-64 md:w-72 lg:w-80 max-h-[58%] overflow-y-auto pointer-events-auto bg-slate-900/90 backdrop-blur-md border border-white/10 rounded-2xl shadow-large p-3 sm:p-4 scrollbar-none animate-in fade-in slide-in-from-right-4 duration-200">
             <ObjectivePanel onClose={() => setIsObjectivesOpen(false)} />
           </div>
         ) : (
           <button
             onClick={() => setIsObjectivesOpen(true)}
-            className="absolute top-20 right-4 z-30 flex items-center gap-2 bg-slate-900/95 hover:bg-slate-800/90 backdrop-blur-md border border-white/10 rounded-xl px-3.5 py-2.5 text-xs font-bold text-white shadow-large hover:shadow-xl hover:border-brand-blue/30 transition-all duration-150 cursor-pointer pointer-events-auto select-none animate-in fade-in slide-in-from-right-2"
+            className="absolute top-24 sm:top-20 md:top-20 right-2 sm:right-3 md:right-4 z-30 flex items-center gap-1.5 sm:gap-2 bg-slate-900/95 hover:bg-slate-800/90 backdrop-blur-md border border-white/10 rounded-xl px-2.5 sm:px-3.5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold text-white shadow-large hover:shadow-xl hover:border-brand-blue/30 transition-all duration-150 cursor-pointer pointer-events-auto select-none animate-in fade-in slide-in-from-right-2"
             title="Show Objectives (ESC to hide)"
           >
             <Target className="h-4 w-4 text-brand-gold shrink-0" />
@@ -83,42 +84,58 @@ export const SimulationLayout: React.FC = () => {
 
       {/* Onboarding steps panel for Module 1 */}
       {isModule1 && (
-        <div className="absolute top-20 right-4 z-30 w-72 sm:w-80 pointer-events-auto bg-slate-900/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-large p-4 text-left animate-in slide-in-from-right-4 duration-300">
-          <div className="flex items-center gap-2 border-b border-white/5 pb-2 mb-2.5">
-            <div className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-            <h3 className="text-xs font-extrabold text-white uppercase tracking-wider">Onboarding Steps</h3>
+        isOnboardingOpen ? (
+          <div className="absolute top-24 sm:top-20 md:top-24 right-2 sm:right-3 md:right-4 z-30 w-56 sm:w-64 md:w-72 lg:w-80 max-h-[calc(100%-7rem)] sm:max-h-[calc(100%-6rem)] overflow-y-auto pointer-events-auto bg-slate-900/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-large p-3 sm:p-4 text-left animate-in slide-in-from-right-4 duration-300">
+            <div className="flex items-center justify-between border-b border-white/5 pb-2 mb-2.5">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+                <h3 className="text-xs font-extrabold text-white uppercase tracking-wider">Onboarding Steps</h3>
+              </div>
+              <button onClick={() => setIsOnboardingOpen(false)} className="text-slate-400 hover:text-white cursor-pointer" title="Hide (ESC)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <ul className="space-y-3 text-[11px] font-sans">
+              <li className={cn("flex items-start gap-2", state.currentSceneId === 'm1_s1_boarding' ? 'text-brand-gold font-bold scale-[1.01]' : 'text-slate-500 opacity-60')}>
+                <span className="font-mono text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 leading-none">1</span>
+                <div>
+                  <span>Rig Gangway Safety Netting</span>
+                  <span className="block text-[9.5px] font-mono text-slate-400 font-normal mt-0.5">Rig net on deck ladder, then walk to Ship Office.</span>
+                </div>
+              </li>
+              <li className={cn("flex items-start gap-2", state.currentSceneId === 'm1_s2_office' ? 'text-brand-gold font-bold scale-[1.01]' : 'text-slate-500 opacity-60')}>
+                <span className="font-mono text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 leading-none">2</span>
+                <div>
+                  <span>Complete Ship Office Audits</span>
+                  <span className="block text-[9.5px] font-mono text-slate-400 font-normal mt-0.5">Swipe valid certificates & align MLC rest hours. Go to Bridge.</span>
+                </div>
+              </li>
+              <li className={cn("flex items-start gap-2", state.currentSceneId === 'm1_s3_bridge' ? 'text-brand-gold font-bold scale-[1.01]' : 'text-slate-500 opacity-60')}>
+                <span className="font-mono text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 leading-none">3</span>
+                <div>
+                  <span>Test Bridge Radio & Fire Door</span>
+                  <span className="block text-[9.5px] font-mono text-slate-400 font-normal mt-0.5">Run GMDSS DSC test loop & check safety fire doors. Go to Engine.</span>
+                </div>
+              </li>
+              <li className={cn("flex items-start gap-2", state.currentSceneId === 'm1_s4_engine' ? 'text-brand-gold font-bold scale-[1.01]' : 'text-slate-500 opacity-60')}>
+                <span className="font-mono text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 leading-none">4</span>
+                <div>
+                  <span>De-brief with Cadet Kai</span>
+                  <span className="block text-[9.5px] font-mono text-slate-400 font-normal mt-0.5">Speak with Cadet Kai in Engine Room to complete onboarding.</span>
+                </div>
+              </li>
+            </ul>
           </div>
-          <ul className="space-y-3 text-[11px] font-sans">
-            <li className={cn("flex items-start gap-2", state.currentSceneId === 'm1_s1_boarding' ? 'text-brand-gold font-bold scale-[1.01]' : 'text-slate-500 opacity-60')}>
-              <span className="font-mono text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 leading-none">1</span>
-              <div>
-                <span>Rig Gangway Safety Netting</span>
-                <span className="block text-[9.5px] font-mono text-slate-400 font-normal mt-0.5">Rig net on deck ladder, then walk to Ship Office.</span>
-              </div>
-            </li>
-            <li className={cn("flex items-start gap-2", state.currentSceneId === 'm1_s2_office' ? 'text-brand-gold font-bold scale-[1.01]' : 'text-slate-500 opacity-60')}>
-              <span className="font-mono text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 leading-none">2</span>
-              <div>
-                <span>Complete Ship Office Audits</span>
-                <span className="block text-[9.5px] font-mono text-slate-400 font-normal mt-0.5">Swipe valid certificates & align MLC rest hours. Go to Bridge.</span>
-              </div>
-            </li>
-            <li className={cn("flex items-start gap-2", state.currentSceneId === 'm1_s3_bridge' ? 'text-brand-gold font-bold scale-[1.01]' : 'text-slate-500 opacity-60')}>
-              <span className="font-mono text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 leading-none">3</span>
-              <div>
-                <span>Test Bridge Radio & Fire Door</span>
-                <span className="block text-[9.5px] font-mono text-slate-400 font-normal mt-0.5">Run GMDSS DSC test loop & check safety fire doors. Go to Engine.</span>
-              </div>
-            </li>
-            <li className={cn("flex items-start gap-2", state.currentSceneId === 'm1_s4_engine' ? 'text-brand-gold font-bold scale-[1.01]' : 'text-slate-500 opacity-60')}>
-              <span className="font-mono text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 leading-none">4</span>
-              <div>
-                <span>De-brief with Cadet Kai</span>
-                <span className="block text-[9.5px] font-mono text-slate-400 font-normal mt-0.5">Speak with Cadet Kai in Engine Room to complete onboarding.</span>
-              </div>
-            </li>
-          </ul>
-        </div>
+        ) : (
+          <button
+            onClick={() => setIsOnboardingOpen(true)}
+            className="absolute top-24 sm:top-20 md:top-24 right-2 sm:right-3 md:right-4 z-30 flex items-center gap-1.5 sm:gap-2 bg-slate-900/95 hover:bg-slate-800/90 backdrop-blur-md border border-white/10 rounded-xl px-2.5 sm:px-3.5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold text-white shadow-large hover:shadow-xl hover:border-brand-blue/30 transition-all duration-150 cursor-pointer pointer-events-auto select-none animate-in fade-in slide-in-from-right-2"
+            title="Show Onboarding (ESC to hide)"
+          >
+            <Target className="h-4 w-4 text-brand-gold shrink-0" />
+            Onboarding Steps
+          </button>
+        )
       )}
 
       {/* Bottom Operational Hub (Scene Description + Location Hints) */}

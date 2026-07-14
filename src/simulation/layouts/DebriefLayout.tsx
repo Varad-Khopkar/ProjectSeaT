@@ -6,6 +6,8 @@ import { ProgressBar } from '@/components/ui/Feedback'
 import { Trophy, Clock, CheckCircle, Target, Award, ArrowLeft, RotateCcw, FileText } from 'lucide-react'
 import { MissionHelpers, RewardHelpers } from '../utils'
 import { useNavigate } from 'react-router-dom'
+import { playSound } from '../utils/audio'
+import confetti from 'canvas-confetti'
 
 /**
  * DebriefLayout
@@ -43,6 +45,21 @@ export const DebriefLayout: React.FC = () => {
   const finalXP = RewardHelpers.xpMultiplier(percentage, activeMission.rewards.xp)
 
   const allObjectives = Object.values(activeMission.scenes).flatMap((s) => s.objectives || [])
+
+  React.useEffect(() => {
+    if (passed) {
+      playSound('mission_complete')
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 },
+        colors: ['#22c55e', '#eab308', '#3b82f6'],
+        disableForReducedMotion: true
+      })
+    } else {
+      playSound('mission_fail')
+    }
+  }, [passed])
 
   const handleRetry = () => {
     const mId = activeMission.id

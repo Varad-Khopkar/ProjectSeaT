@@ -308,7 +308,7 @@
           "explanationTitle": "Fire Hazard deficiency (-10 PTS)",
           "explanationText": "Combustible rags left on hot machine exhaust lines violate fire prevention policies.",
           "actionCode": "Code 10"
-        },
+        }
       ],
       "objectives": [
         {

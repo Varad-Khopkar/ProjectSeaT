@@ -190,19 +190,19 @@ export const LoginPage: React.FC = () => {
         />
 
         {/* Mobile logo (shown on small screens) */}
-        <div className="lg:hidden absolute top-6 left-6 flex items-center gap-2">
-          <div className="bg-brand-blue/20 p-1.5 rounded-lg border border-brand-blue/30 text-brand-gold">
-            <Compass className="h-4 w-4" />
+        <div className="lg:hidden flex items-center gap-2 mb-8 mr-auto">
+          <div className="bg-brand-blue/10 p-1.5 rounded-lg border border-brand-blue/20 text-brand-blue">
+            <Compass className="h-5 w-5" />
           </div>
-          <span className="font-bold text-brand-navy text-sm uppercase tracking-widest">ProjectSeaT</span>
+          <span className="font-extrabold text-brand-navy text-base uppercase tracking-widest">ProjectSeaT</span>
         </div>
 
         <div
-          className="relative z-10 w-full max-w-md px-8 py-12"
+          className="relative z-10 w-full max-w-md px-8 py-6 lg:py-12 flex flex-col min-h-0 justify-center"
           style={{ animation: 'loginFadeIn 0.6s 0.2s ease-out both' }}
         >
           {/* Header */}
-          <div className="mb-8">
+          <div className="mb-6 lg:mb-8">
             <h2 className="text-2xl font-extrabold text-brand-navy mb-1.5 tracking-tight">Welcome back</h2>
             <p className="text-sm text-slate-500">Sign in to access your training workspace.</p>
           </div>

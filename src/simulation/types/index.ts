@@ -132,6 +132,7 @@ export interface SimulationState {
   status: 'idle' | 'running' | 'paused' | 'debrief' | 'success' | 'failed'
   activeFeedback: FeedbackDetail | null // active regulations explanation popup
   activeDocumentDesk: boolean // toggles document desk clipboard popups
+  activeRestHourLog: boolean // toggles rest hour audit overlay
   activeMinigame?: 'rest_hours' | 'cert_swipe' | 'gmdss_loop' | 'gangway_netting' | 'fire_door_test' | 'ows_test' | 'detention_sort' | 'escort_gear' | 'escort_trust' | 'case_studies' | null // track active interactive minigame
 }
 

@@ -20,20 +20,22 @@ export const MissionHeader: React.FC = () => {
   const isPaused = state.status === 'paused'
 
   return (
-    <header className="w-full bg-slate-900 border border-slate-800 rounded-[16px] p-4 flex flex-wrap items-center justify-between gap-4 shadow-medium text-left">
-      <div className="flex items-center gap-3">
+    <header className="w-full bg-slate-900 border border-slate-800 rounded-[12px] sm:rounded-[16px] px-3 py-2.5 sm:p-3 flex flex-col md:flex-row flex-wrap items-start md:items-center justify-between gap-3 sm:gap-4 shadow-medium text-left">
+      {/* Left: Mission identity */}
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
         <div className="p-2 bg-brand-blue/30 text-brand-gold rounded-[8px] border border-brand-blue/20">
           <Shield className="h-5 w-5" />
         </div>
         <div>
-          <span className="font-mono text-[9px] text-brand-gold font-bold uppercase tracking-wider block">
+          <span className="font-mono text-[8px] sm:text-[9px] text-brand-gold font-bold uppercase tracking-wider block">
             {activeMission.code} • Simulating Watch
           </span>
-          <h2 className="font-h3 text-white text-base leading-tight mt-0.5">{activeMission.title}</h2>
+          <h2 className="font-h3 text-white text-sm sm:text-base leading-tight mt-0.5 truncate max-w-[160px] sm:max-w-none">{activeMission.title}</h2>
         </div>
       </div>
 
-      <div className="flex items-center gap-3 sm:gap-5 flex-wrap">
+      {/* Right: Indicators */}
+      <div className="flex items-center gap-2 sm:gap-3 flex-wrap w-full sm:w-auto">
         {/* Trust Rating Meter */}
         <div className="flex items-center gap-2 bg-slate-950/60 border border-slate-800 px-3.5 py-1.5 rounded-[12px] text-xs">
           <span className="text-slate-400 font-sans font-bold">Inspector Trust:</span>

@@ -72,7 +72,15 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     return () => clearInterval(interval)
   }, [state.status, state.timeRemaining])
 
+  // Trigger loss sound when reaching hard failed status
+  useEffect(() => {
+    if (state.status === 'failed') {
+      playSound('mission_fail')
+    }
+  }, [state.status])
+
   const startMission = (missionId: string) => {
+    playSound('launch')
     if (missionId === pscMissionTemplate.id) {
       setActiveMission(pscMissionTemplate)
       setState({
@@ -305,6 +313,12 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         activeDialogueId = 'dlg-m1-certs-success'
       }
 
+      if (pointsDelta > 0) {
+        playSound('success')
+      } else {
+        playSound('failure')
+      }
+
       return {
         ...prev,
         activeDocumentDesk: false,
@@ -346,6 +360,12 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       let activeDialogueId = prev.activeDialogueId
       if (activeMission?.id === 'module1') {
         activeDialogueId = 'dlg-m1-rest-success'
+      }
+
+      if (pointsDelta > 0) {
+        playSound('success')
+      } else {
+        playSound('failure')
       }
 
       return {
@@ -589,7 +609,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       }
 
       let nextSceneId = prev.currentSceneId
-      let activeDialogueId = choice.targetDialogueId
+      let activeDialogueId: string | null = choice.targetDialogueId ?? null
 
       if (choiceId === 'ch-m1-netting-success-ok') {
         nextSceneId = 'm1_s2_office'
