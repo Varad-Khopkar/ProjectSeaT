@@ -20,6 +20,7 @@ import { Settings } from '@/pages/Settings'
 import { Help } from '@/pages/Help'
 import { NotFound } from '@/pages/NotFound'
 import { DesignSystemShowcase } from '@/pages/DesignSystemShowcase'
+import { Pitch } from '@/pages/Pitch'
 import {
   SimulationProvider,
   SimulationHub,
@@ -79,6 +80,7 @@ function App() {
           <Route path="/init"    element={<InitializationScreen />} />
           <Route path="/login"   element={<LoginPage />} />
           <Route path="/offboard" element={<OffboardingScreen />} />
+          <Route path="/pitch"   element={<Pitch />} />
 
           {/* All other paths go through the auth guard + existing layout */}
           <Route path="/*" element={<ProtectedApp />} />
