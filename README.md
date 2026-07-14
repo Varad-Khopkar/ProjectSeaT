@@ -9,10 +9,27 @@ ProjectSeaT is a gamified, interactive training platform designed for seafarers 
 
 ---
 
-## 🧭 1. Project Mission & Objectives
-- **Interactive Audits**: Allow seafarers to walk through ship rooms (Ship Office, Navigation Bridge, Engine Room) to inspect logging logs, certification details, and safety items.
-- **Cooperative Branching Dialogue**: Engage in conversation nodes with PSC Inspectors where decisions directly affect their cooperate trust level and overall compliance score.
-- **Dynamic Checklists**: Track audit requirements on active sideboards, awarding points on success and applying penalty ratings on unmitigated defects.
+## 🧭 1. Project Mission & Core Features
+
+### 1.1 Objectives & Features
+* **Interactive Audits**: Walk through simulated compartments (Ship Office, Navigation Bridge, Engine Room) to inspect certificates, safety logs, and vessel equipment.
+* **Branching Dialogue Trees**: Interact with Port State Control (PSC) inspectors through decision nodes where choices directly alter their cooperation trust rating and the overall audit score.
+* **Dynamic Sidebar Checklists**: Track progress and objectives on retractable panels, awarding performance points and cataloging deficiency findings.
+
+### 1.2 Product Prototype Status
+ProjectSeaT is currently a high-fidelity **Product Prototype** showcasing a cohesive maritime training dashboard and an interactive simulator engine. It demonstrates end-to-end seafarer workflows from training launch, theory-based pre-briefing and MCQ testing, compartmental visual inspections, active dialogue choice outcomes, and final performance debriefing with score reports.
+
+### 1.3 Unique Selling Point (USP)
+* **Visual Immersive Gamification**: Replaces outdated, text-heavy slide-deck maritime training with active, visual-spatial inspection scenarios.
+* **Active Decision Impact**: Simulates real-world high-stakes communication with auditors, testing soft skills alongside technical regulations.
+* **Scalable Engine Architecture**: Designed with a decoupled metadata engine where new maritime training scenarios (e.g. vetting, safety drills) can be generated completely through JSON configurations rather than custom app rebuilds.
+
+### 1.4 Minimum Sellable Product (MSP)
+The first commercialized baseline includes:
+1. **Pre-Launch Briefing & MCQ Grading**: Scanned notes, objective details, and multiple-choice assessment to pre-qualify the user before simulation entry.
+2. **First Interactive Mission (PSC Audit)**: A full 3D-illustrated simulation workspace featuring visual hotspots, dialogue choices, and MLC logbook check systems.
+3. **Core Scoring & Performance Engine**: Evaluating objective checklists, MLC deficiency findings, and inspector trust scores to output a structured Performance Report.
+4. **Platform Learner Dashboard**: Dynamic landing dashboard showing captain status levels, compliance scores, training discovery modules, and global leaderboard rankings.
 
 ---
 
