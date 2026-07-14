@@ -325,7 +325,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-inspector-intro': {
     id: 'dlg-inspector-intro',
     speaker: 'Inspector Kowalski',
-    message: 'Welcome, Captain. I am conducting the quarterly Port State Control audit on behalf of the maritime agency. Are your logbooks and separator systems ready for check?',
+    message: 'Welcome, Captain. I am conducting the quarterly Port State Control audit. Are your logbooks and separator systems ready?',
     choices: [
       {
         id: 'ch-intro-yes',
@@ -372,7 +372,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-kai-intro': {
     id: 'dlg-m1-kai-intro',
     speaker: 'Cadet Kai',
-    message: 'Welcome aboard the M/V Sea Guardian, Officer! I am Cadet Kai, and I will be guiding you through your onboarding. Today is a critical day—we are preparing for a Port State Control audit. To start, do you know what Port State Control (PSC) is?',
+    message: 'Welcome aboard the M/V Sea Guardian, Officer! Today is a critical Port State Control (PSC) audit. Do you know what PSC is?',
     choices: [
       {
         id: 'ch-m1-intro-correct',
@@ -397,11 +397,11 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-kai-intro-success': {
     id: 'dlg-m1-kai-intro-success',
     speaker: 'Cadet Kai',
-    message: 'Exactly! PSC checks foreign vessels to verify they satisfy safety, security, and environmental codes. Now, check the Gangway Netting safety. Make sure to rig the net to prevent any boarding accidents!',
+    message: 'Exactly! PSC checks foreign vessels to verify they satisfy safety, security, and environmental codes. Let\'s check the Gangway Netting safety first!',
     choices: [
       {
         id: 'ch-m1-intro-success-ok',
-        text: 'Let\'s check the safety netting.',
+        text: 'Rig the safety netting',
       },
     ],
   },
@@ -420,7 +420,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-kai-office': {
     id: 'dlg-m1-kai-office',
     speaker: 'Cadet Kai',
-    message: 'This is the Ship Office. The inspector Kowalski will check our certificates binder and watch rest hours here. Make sure to complete both audits at the desks.',
+    message: 'This is the Ship Office. Audit our certificates binder and crew rest logs at the desks.',
     choices: [
       {
         id: 'ch-m1-office-ok',
@@ -431,7 +431,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-inspector-intro': {
     id: 'dlg-m1-inspector-intro',
     speaker: 'Inspector Kowalski',
-    message: 'Good morning. I am boarding your vessel for standard inspections. Can you state the three main regulatory pillars of Port State Control?',
+    message: 'Good morning. I am boarding your vessel for audit. Can you state the three main regulatory pillars of Port State Control?',
     choices: [
       {
         id: 'ch-m1-pillars-correct',
@@ -450,7 +450,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-pillars-success': {
     id: 'dlg-m1-pillars-success',
     speaker: 'Inspector Kowalski',
-    message: 'Excellent. Keep those three pillars in mind as I inspect your certificates and watch rest hours.',
+    message: 'Excellent. Audit our certificates and watch rest hours now.',
     choices: [
       {
         id: 'ch-m1-pillars-success-ok',
@@ -461,7 +461,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-pillars-fail': {
     id: 'dlg-m1-pillars-fail',
     speaker: 'Inspector Kowalski',
-    message: 'No! Those are commercial matters. The three pillars are SOLAS, ISPS, and MARPOL. Please review the ship certificates folder on the desk immediately!',
+    message: 'No! The three pillars are SOLAS, ISPS, and MARPOL. Please review the ship certificates folder on the desk immediately!',
     choices: [
       {
         id: 'ch-m1-pillars-fail-ok',
@@ -472,7 +472,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-kai-bridge': {
     id: 'dlg-m1-kai-bridge',
     speaker: 'Cadet Kai',
-    message: 'We are on the Bridge! The GMDSS DSC Radio needs a loop test verification, and check the fire door to make sure it closes automatically.',
+    message: 'Bridge safety checks. Execute GMDSS DSC Radio loop tests and check fire doors.',
     choices: [
       {
         id: 'ch-m1-bridge-ok',
@@ -483,18 +483,18 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-kai-engine': {
     id: 'dlg-m1-kai-engine',
     speaker: 'Cadet Kai',
-    message: 'Great job! You\'ve completed all primary audits and onboarding. You are ready to start the active simulator now.',
+    message: 'Great job! You\'ve completed the final OWS audit mission. All walkthrough modules are fully complete!',
     choices: [
       {
         id: 'ch-m1-engine-ok',
-        text: 'Conclude Onboarding',
+        text: 'Submit Walkthrough & Debrief',
       },
     ],
   },
   'dlg-m1-netting-success': {
     id: 'dlg-m1-netting-success',
     speaker: 'Cadet Kai',
-    message: 'Incredible rigging! The safety net is now properly suspended and tensioned. The harbor pier gap is completely safe. Let\'s head into the Ship Office now to begin documentation audits.',
+    message: 'Excellent netting setup! Gaps are secure. Let\'s head into the Ship Office now.',
     choices: [
       {
         id: 'ch-m1-netting-success-ok',
@@ -505,7 +505,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-certs-success': {
     id: 'dlg-m1-certs-success',
     speaker: 'Cadet Kai',
-    message: 'Excellent verification, Officer! All certificates are endorsed and verified. Now, let\'s check the watchkeeping crew Rest Hours timeline clipboard on the wall to balance the shift fatigue metrics.',
+    message: 'Certificates verify OK! Now audit the crew rest hours timeline on the clipboard.',
     choices: [
       {
         id: 'ch-m1-certs-success-ok',
@@ -516,7 +516,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-rest-success': {
     id: 'dlg-m1-rest-success',
     speaker: 'Cadet Kai',
-    message: 'Superb shift calibration! All OOW fatigue warning flags have been successfully resolved under MLC 2006 compliance guidelines. Let\'s proceed up to the Navigation Bridge to inspect radio signals.',
+    message: 'MLC rest hour compliance cleared! Let\'s proceed to the Bridge.',
     choices: [
       {
         id: 'ch-m1-rest-success-ok',
@@ -527,7 +527,7 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-gmdss-success': {
     id: 'dlg-m1-gmdss-success',
     speaker: 'Cadet Kai',
-    message: 'Fantastic! The VHF DSC radio loop test transmission returned a 100% signal strength local check. Now, check the A-Class Fire Door magnetic release system on the bulkhead to verify fail-safe shutdown speed.',
+    message: 'VHF DSC check returns 100%! Now verify the automatic closing of fire containment doors.',
     choices: [
       {
         id: 'ch-m1-gmdss-success-ok',
@@ -538,33 +538,110 @@ export const mockDialogues: Record<string, Dialogue> = {
   'dlg-m1-firedoor-success': {
     id: 'dlg-m1-firedoor-success',
     speaker: 'Cadet Kai',
-    message: 'Perfect! The fire door release magnets are functional, and the closing speed is fully compliant with SOLAS standards. We are clear of all bridge deficiencies! Let\'s descend to the Engine Room for the final walkthrough.',
+    message: 'SOLAS fire door test passed! Let\'s descend to the Emergency Generator Room.',
     choices: [
       {
         id: 'ch-m1-firedoor-success-ok',
-        text: 'Descend to Engine Room',
+        text: 'Descend to Emergency Gen',
       },
     ],
   },
   'dlg-m1-ows-intro': {
     id: 'dlg-m1-ows-intro',
     speaker: 'Cadet Kai',
-    message: 'This is the Engine Machinery Space! Under MARPOL Annex I, we must verify the Oily Water Separator (OWS) 15ppm alarm system. Click the OWS control panel to execute the bilge alarm sensor compliance test.',
+    message: 'Engine Room! Under MARPOL, we must verify the OWS alarm. Click the OWS control panel to run the 15ppm compliance test.',
     choices: [
       {
         id: 'ch-m1-ows-intro-ok',
-        text: 'Audit Oily Water Separator',
+        text: 'Audit OWS bilges',
       },
     ],
   },
   'dlg-m1-ows-success': {
     id: 'dlg-m1-ows-success',
     speaker: 'Cadet Kai',
-    message: 'Incredible test! The OWS bilge alarm sensor triggered correctly, and the 3-way solenoid valve redirected high-ppm water back to the bilge tank. Our overboard line remains clean. Onboarding checklist complete!',
+    message: 'Bilge alarm triggered correctly and redirected water. Overboard discharge safe!',
     choices: [
       {
         id: 'ch-m1-ows-success-ok',
-        text: 'Conclude Walkthrough',
+        text: 'Conclude OWS Check',
+      },
+    ],
+  },
+  'dlg-m1-detention-intro': {
+    id: 'dlg-m1-detention-intro',
+    speaker: 'Inspector Kowalski',
+    message: 'To avoid detentions, a crew must prioritize shipboard issues correctly. Let\'s evaluate 6 deficiencies now.',
+    choices: [
+      {
+        id: 'ch-m1-detention-start',
+        text: 'Start Detention Assessment',
+      },
+    ],
+  },
+  'dlg-m1-detention-success': {
+    id: 'dlg-m1-detention-success',
+    speaker: 'Inspector Kowalski',
+    message: 'Remarkable sorting! All risks prioritized. Let\'s head to the Meeting Room.',
+    choices: [
+      {
+        id: 'ch-m1-detention-success-ok',
+        text: 'Go to Meeting Room',
+      },
+    ],
+  },
+  'dlg-m4-kai-welcome': {
+    id: 'dlg-m4-kai-welcome',
+    speaker: 'Cadet Kai',
+    message: 'Let\'s grab our safety gear from the locker (Helmet, Boots, Gas Detector, Flashlight) before Kowalski joins.',
+    choices: [
+      {
+        id: 'ch-m4-kai-welcome-ok',
+        text: 'Inspect Safety Locker',
+      },
+    ],
+  },
+  'dlg-m4-escort-intro': {
+    id: 'dlg-m4-escort-intro',
+    speaker: 'Inspector Kowalski',
+    message: 'Let\'s check bridge logs and the EPIRB beacon. Remember, no lies or bribes.',
+    choices: [
+      {
+        id: 'ch-m4-escort-start',
+        text: 'Begin Escort Challenge',
+      },
+    ],
+  },
+  'dlg-m4-cooperate-success': {
+    id: 'dlg-m4-cooperate-success',
+    speaker: 'Inspector Kowalski',
+    message: 'Excellent cooperation index! Now, let\'s head to the Crew Mess hall to study real-world Paris MOU / USCG detention case studies.',
+    choices: [
+      {
+        id: 'ch-m4-cooperate-success-ok',
+        text: 'Proceed to Crew Mess Hall',
+      },
+    ],
+  },
+  'dlg-m5-kai-welcome': {
+    id: 'dlg-m5-kai-welcome',
+    speaker: 'Cadet Kai',
+    message: 'Welcome to the Crew Mess. Let\'s inspect the study table archives and spot the crew\'s forged log book entries!',
+    choices: [
+      {
+        id: 'ch-m5-case-study-start',
+        text: 'Inspect Case Study Logs',
+      },
+    ],
+  },
+  'dlg-m5-conclude': {
+    id: 'dlg-m5-conclude',
+    speaker: 'Cadet Kai',
+    message: 'Fantastic logs audit! You spotted the rest hour lies and expired EPIRB batteries. Let\'s head to the Engine Room for our final OWS mission!',
+    choices: [
+      {
+        id: 'ch-m5-conclude-ok',
+        text: 'Proceed to Engine Room',
       },
     ],
   },

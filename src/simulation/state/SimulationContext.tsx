@@ -22,7 +22,7 @@ interface SimulationContextType {
   toggleRestHourLog: (open: boolean) => void
   completeDocumentAudit: (trustDelta: number, pointsDelta: number) => void
   completeRestHourAudit: (trustDelta: number, pointsDelta: number) => void
-  startMinigame: (type: 'rest_hours' | 'cert_swipe' | 'gmdss_loop' | 'gangway_netting' | 'fire_door_test' | 'ows_test' | null) => void
+  startMinigame: (type: 'rest_hours' | 'cert_swipe' | 'gmdss_loop' | 'gangway_netting' | 'fire_door_test' | 'ows_test' | 'detention_sort' | 'escort_gear' | 'escort_trust' | 'case_studies' | null) => void
   completeMinigame: (success: boolean, pointsDelta: number, suspicionDelta: number) => void
 }
 
@@ -151,8 +151,16 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
           activeDialogueId = 'dlg-m1-inspector-intro'
         } else if (sceneId === 'm1_s3_bridge' && !completed.includes('obj-test-radio')) {
           activeDialogueId = 'dlg-m1-kai-bridge'
-        } else if (sceneId === 'm1_s4_engine' && !completed.includes('obj-m1-kai-engine')) {
-          activeDialogueId = 'dlg-m1-kai-engine'
+        } else if (sceneId === 'm1_s4_engine' && !completed.includes('obj-m1-ows')) {
+          activeDialogueId = 'dlg-m1-ows-intro'
+        } else if (sceneId === 'm1_s5_meeting_room' && !completed.includes('obj-m4-gear-up')) {
+          activeDialogueId = 'dlg-m4-kai-welcome'
+        } else if (sceneId === 'm1_s6_cooperation' && !completed.includes('obj-m4-escort-trust')) {
+          activeDialogueId = 'dlg-m4-escort-intro'
+        } else if (sceneId === 'm1_s7_mess' && !completed.includes('obj-m5-case-studies')) {
+          activeDialogueId = 'dlg-m5-kai-welcome'
+        } else if (sceneId === 'm1_s8_detention' && !completed.includes('obj-m1-detention-sort')) {
+          activeDialogueId = 'dlg-m1-detention-intro'
         }
       }
       return {
@@ -187,7 +195,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }))
   }
 
-  const startMinigame = (type: 'rest_hours' | 'cert_swipe' | 'gmdss_loop' | 'gangway_netting' | 'fire_door_test' | 'ows_test' | null) => {
+  const startMinigame = (type: 'rest_hours' | 'cert_swipe' | 'gmdss_loop' | 'gangway_netting' | 'fire_door_test' | 'ows_test' | 'detention_sort' | 'escort_gear' | 'escort_trust' | 'case_studies' | null) => {
     setState((prev) => ({
       ...prev,
       activeMinigame: type,
@@ -210,6 +218,14 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         objectiveId = 'obj-m1-firedoor'
       } else if (prev.activeMinigame === 'ows_test') {
         objectiveId = 'obj-m1-ows'
+      } else if (prev.activeMinigame === 'detention_sort') {
+        objectiveId = 'obj-m1-detention-sort'
+      } else if (prev.activeMinigame === 'escort_gear') {
+        objectiveId = 'obj-m4-gear-up'
+      } else if (prev.activeMinigame === 'escort_trust') {
+        objectiveId = 'obj-m4-escort-trust'
+      } else if (prev.activeMinigame === 'case_studies') {
+        objectiveId = 'obj-m5-case-studies'
       }
 
       const docChecked = prev.activeMinigame === 'cert_swipe' ? true : prev.playerState.documentChecked
@@ -233,6 +249,10 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         else if (prev.activeMinigame === 'gmdss_loop') activeDialogueId = 'dlg-m1-gmdss-success'
         else if (prev.activeMinigame === 'fire_door_test') activeDialogueId = 'dlg-m1-firedoor-success'
         else if (prev.activeMinigame === 'ows_test') activeDialogueId = 'dlg-m1-ows-success'
+        else if (prev.activeMinigame === 'detention_sort') activeDialogueId = 'dlg-m1-detention-success'
+        else if (prev.activeMinigame === 'escort_gear') activeDialogueId = null
+        else if (prev.activeMinigame === 'escort_trust') activeDialogueId = 'dlg-m4-cooperate-success'
+        else if (prev.activeMinigame === 'case_studies') activeDialogueId = 'dlg-m5-conclude'
       }
 
       if (success) {
@@ -545,6 +565,13 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       } else if (choiceId === 'ch-m1-ows-success-ok' && !completed.includes('obj-m1-ows')) {
         completed.push('obj-m1-ows')
         additionalScore = 20
+      } else if (choiceId === 'ch-m4-cooperate-success-ok' && !completed.includes('obj-m4-escort-trust')) {
+        // Already completed in minigame, but in case dialogue triggers it
+        if (!completed.includes('obj-m4-escort-trust')) completed.push('obj-m4-escort-trust')
+        additionalScore = 10
+      } else if (choiceId === 'ch-m5-conclude-ok' && !completed.includes('obj-m1-kai-engine')) {
+        completed.push('obj-m1-kai-engine')
+        additionalScore = 30
       }
 
       const nextScore = Math.max(0, prev.playerState.score + additionalScore)
@@ -571,18 +598,45 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         nextSceneId = 'm1_s3_bridge'
         activeDialogueId = 'dlg-m1-kai-bridge'
       } else if (choiceId === 'ch-m1-firedoor-success-ok') {
+        nextSceneId = 'm1_s8_detention'
+        activeDialogueId = 'dlg-m1-detention-intro'
+      } else if (choiceId === 'ch-m1-detention-success-ok') {
+        nextSceneId = 'm1_s5_meeting_room'
+        activeDialogueId = 'dlg-m4-kai-welcome'
+      } else if (choiceId === 'ch-m4-cooperate-success-ok') {
+        nextSceneId = 'm1_s7_mess'
+        activeDialogueId = 'dlg-m5-kai-welcome'
+      } else if (choiceId === 'ch-m5-conclude-ok') {
         nextSceneId = 'm1_s4_engine'
         activeDialogueId = 'dlg-m1-ows-intro'
       } else if (choiceId === 'ch-m1-ows-success-ok') {
         activeDialogueId = 'dlg-m1-kai-engine'
+      } else if (choiceId === 'ch-m1-engine-ok') {
+        // Conclude walkaround
       }
 
-      if (activeDialogueId) {
+      let activeMinigame = prev.activeMinigame
+      if (choiceId === 'ch-m1-detention-start') {
+        activeMinigame = 'detention_sort'
+        activeDialogueId = null
+      } else if (choiceId === 'ch-m4-kai-welcome-ok') {
+        activeMinigame = 'escort_gear'
+        activeDialogueId = null
+      } else if (choiceId === 'ch-m4-escort-start') {
+        activeMinigame = 'escort_trust'
+        activeDialogueId = null
+      } else if (choiceId === 'ch-m5-case-study-start') {
+        activeMinigame = 'case_studies'
+        activeDialogueId = null
+      }
+
+      if (activeDialogueId || activeMinigame !== prev.activeMinigame) {
         return {
           ...prev,
           status,
           currentSceneId: nextSceneId,
           activeDialogueId,
+          activeMinigame,
           playerState: { 
             ...prev.playerState, 
             decisionsMade: updatedDecisions,

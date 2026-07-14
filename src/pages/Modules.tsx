@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ProgressBar, Badge } from '@/components/ui/Feedback'
@@ -8,6 +9,7 @@ import { CATEGORY_COLORS } from '@/constants'
 import { cn } from '@/utils/formatters'
 
 export const Modules: React.FC = () => {
+  const navigate = useNavigate()
   return (
     <div className="space-y-6 text-left">
       <div>
@@ -80,15 +82,40 @@ export const Modules: React.FC = () => {
                       Prerequisites Locked
                     </Button>
                   ) : isCompleted ? (
-                    <Button size="sm" variant="secondary" className="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200">
+                    <Button 
+                      size="sm" 
+                      variant="secondary" 
+                      className="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200"
+                      onClick={() => {
+                        if (module.id === 'mod-1') navigate('/simulation/module1')
+                        else if (module.id === 'mod-4') navigate('/simulation/module4')
+                        else navigate('/simulation')
+                      }}
+                    >
                       Completed / Review
                     </Button>
                   ) : module.progress > 0 ? (
-                    <Button size="sm" variant="primary">
+                    <Button 
+                      size="sm" 
+                      variant="primary"
+                      onClick={() => {
+                        if (module.id === 'mod-1') navigate('/simulation/module1')
+                        else if (module.id === 'mod-4') navigate('/simulation/module4')
+                        else navigate('/simulation')
+                      }}
+                    >
                       Resume Checklist
                     </Button>
                   ) : (
-                    <Button size="sm" variant="outline">
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      onClick={() => {
+                        if (module.id === 'mod-1') navigate('/simulation/module1')
+                        else if (module.id === 'mod-4') navigate('/simulation/module4')
+                        else navigate('/simulation')
+                      }}
+                    >
                       Start Training
                     </Button>
                   )}
