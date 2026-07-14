@@ -18,7 +18,21 @@ export const SimulationHub: React.FC = () => {
   const { modules, theoryProgressMap } = useApp()
 
   // Config-driven mission catalog
-  const missions = [pscMissionTemplate]
+  const missions = [
+    {
+      id: 'module1',
+      code: 'MOD-01',
+      title: 'Introduction to Port State Control (PSC)',
+      description: 'Meet Cadet Kai on the gangway of M/V Sea Guardian for an introductory onboarding walkthrough of PSC audits, MOL, and SOLAS boundaries.',
+      settings: {
+        timerLimitSeconds: undefined as number | undefined,
+        passingScore: 80,
+        allowRetries: true,
+      },
+      scenes: { m1_s1: {}, m1_s2: {}, m1_s3: {}, m1_s4: {}, m1_s5: {}, m1_s6: {}, m1_s7: {} },
+    },
+    pscMissionTemplate,
+  ]
 
   return (
     <div className="space-y-6">
@@ -39,8 +53,8 @@ export const SimulationHub: React.FC = () => {
           const matchingModule = modules.find((m) => m.code === mission.code)
           const isLocked = matchingModule ? matchingModule.status === 'locked' : false
           const progress = theoryProgressMap[mission.id]
-          const isBriefingPassed = progress ? progress.assessmentPassed : false
-          const isBriefingStarted = progress ? progress.status === 'in_progress' : false
+          const isBriefingPassed = mission.id === 'module1' ? true : progress ? progress.assessmentPassed : false
+          const isBriefingStarted = mission.id === 'module1' ? false : progress ? progress.status === 'in_progress' : false
 
           return (
             <Card 

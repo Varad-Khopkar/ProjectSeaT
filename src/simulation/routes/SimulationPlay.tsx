@@ -28,9 +28,9 @@ export const SimulationPlay: React.FC = () => {
     }
   }, [missionId, theoryProgressMap, navigate])
 
-  // Redirect to debrief when mission completes
+  // Redirect to debrief when mission completes or fails
   useEffect(() => {
-    if (state.status === 'debrief') {
+    if (state.status === 'debrief' || state.status === 'failed') {
       // Exit fullscreen if active
       if (document.fullscreenElement) {
         document.exitFullscreen().catch(() => {})
@@ -57,7 +57,7 @@ export const SimulationPlay: React.FC = () => {
     }
 
     // Initialize the simulation run and close the briefing screen
-    if (missionId === pscMissionTemplate.id) {
+    if (missionId === pscMissionTemplate.id || missionId === 'module1') {
       startMission(missionId)
       setShowBriefing(false)
     } else {
@@ -101,12 +101,16 @@ export const SimulationPlay: React.FC = () => {
               </div>
 
               <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight">
-                Port State Control Audit Briefing
+                {missionId === 'module1'
+                  ? 'Introduction to Port State Control (PSC) Onboarding'
+                  : 'Port State Control Audit Briefing'}
               </h1>
 
               {/* Captain's Scenario Quote */}
               <div className="bg-slate-950/60 border-l-4 border-brand-gold rounded-r-xl p-4 text-xs md:text-sm text-slate-300 italic leading-relaxed font-sans shadow-inner">
-                "Welcome to the Bridge, Officer. I am Captain Henderson. A Port State Control (PSC) boarding inspector has just boarded the M/V Sea Guardian at Rotterdam Anchorage. This is a critical audit. Any minor deficiency can lead to operational delays, and a Code 30 detention will halt our charter completely. Your duty is to conduct a thorough pre-inspection audit. Inspect our ship certificates, check the watchkeeping rest logs, and verify the engine oily water separator. Fix any deficiencies before the inspector flags them. Protect our trust score, keep our compliance rating high, and complete the checklist before the inspector's timer runs out. The eyes of the company are on you. Let's make this ship compliant."
+                {missionId === 'module1'
+                  ? '"Welcome aboard the M/V Sea Guardian, Officer. I am Captain Henderson, commanding. Before you begin active pre-inspection watches, you must clear your onboarding walkthrough with Cadet Kai. He will guide you sequentially from the gangway to the deck office, bridge, and engine room. Pay close attention to international safety netting rules, certificate validity dates, OOW watchrest hours, GMDSS radio loop tests, and fire door release triggers. A competent officer is the first shield against vessel detentions. Complete your walkaround to unlock the active simulation. Good luck."'
+                  : '"Welcome to the Bridge, Officer. I am Captain Henderson. A Port State Control (PSC) boarding inspector has just boarded the M/V Sea Guardian at Rotterdam Anchorage. This is a critical audit. Any minor deficiency can lead to operational delays, and a Code 30 detention will halt our charter completely. Your duty is to conduct a thorough pre-inspection audit. Inspect our ship certificates, check the watchkeeping rest logs, and verify the engine oily water separator. Fix any deficiencies before the inspector flags them. Protect our trust score, keep our compliance rating high, and complete the checklist before the inspector\'s timer runs out. The eyes of the company are on you. Let\'s make this ship compliant."'}
               </div>
 
               {/* Objective stats details */}
@@ -114,17 +118,23 @@ export const SimulationPlay: React.FC = () => {
                 <div className="bg-white/5 border border-slate-800 rounded-xl p-3 text-center">
                   <Clock className="h-4 w-4 text-brand-gold mx-auto mb-1.5" />
                   <span className="text-[10px] text-slate-400 block font-mono">TIME LIMIT</span>
-                  <span className="text-xs font-bold text-white block mt-0.5">10 Minutes</span>
+                  <span className="text-xs font-bold text-white block mt-0.5">
+                    {missionId === 'module1' ? 'Untimed' : '10 Minutes'}
+                  </span>
                 </div>
                 <div className="bg-white/5 border border-slate-800 rounded-xl p-3 text-center">
                   <Star className="h-4 w-4 text-brand-gold mx-auto mb-1.5" />
                   <span className="text-[10px] text-slate-400 block font-mono">PASSING SCORE</span>
-                  <span className="text-xs font-bold text-white block mt-0.5">80% Accuracy</span>
+                  <span className="text-xs font-bold text-white block mt-0.5">
+                    {missionId === 'module1' ? 'Onboarding Pass' : '80% Accuracy'}
+                  </span>
                 </div>
                 <div className="bg-white/5 border border-slate-800 rounded-xl p-3 text-center">
                   <Compass className="h-4 w-4 text-brand-gold mx-auto mb-1.5" />
                   <span className="text-[10px] text-slate-400 block font-mono">COMPARTMENTS</span>
-                  <span className="text-xs font-bold text-white block mt-0.5">3 Audit Scenes</span>
+                  <span className="text-xs font-bold text-white block mt-0.5">
+                    {missionId === 'module1' ? '7 Walkthrough Scenes' : '3 Audit Scenes'}
+                  </span>
                 </div>
               </div>
             </div>

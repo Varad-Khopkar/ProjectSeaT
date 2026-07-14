@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import type { Mission, MissionScene, Dialogue, SimulationState, PlayerState } from '../types'
 import { pscMissionTemplate, mockDialogues } from '../mock/missionTemplate'
+import sceneFlowData from '../mock/sceneFlow.json'
+import { playSound } from '../utils/audio'
 
 interface SimulationContextType {
   state: SimulationState
@@ -20,6 +22,8 @@ interface SimulationContextType {
   toggleRestHourLog: (open: boolean) => void
   completeDocumentAudit: (trustDelta: number, pointsDelta: number) => void
   completeRestHourAudit: (trustDelta: number, pointsDelta: number) => void
+  startMinigame: (type: 'rest_hours' | 'cert_swipe' | 'gmdss_loop' | 'gangway_netting' | 'fire_door_test' | 'ows_test' | 'detention_sort' | 'escort_gear' | 'escort_trust' | 'case_studies' | null) => void
+  completeMinigame: (success: boolean, pointsDelta: number, suspicionDelta: number) => void
 }
 
 const SimulationContext = createContext<SimulationContextType | undefined>(undefined)
@@ -45,6 +49,7 @@ const initialSimulationState: SimulationState = {
   activeFeedback: null,
   activeDocumentDesk: false,
   activeRestHourLog: false,
+  activeMinigame: null,
 }
 
 export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -89,20 +94,84 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         activeFeedback: null,
         activeDocumentDesk: false,
         activeRestHourLog: false,
+        activeMinigame: null,
+      })
+    } else if (missionId === 'module1') {
+      const m1Mission: Mission = {
+        id: 'module1',
+        code: 'MOD-01',
+        title: sceneFlowData.title,
+        description: 'Introduction to Port State Control (PSC)',
+        settings: {
+          timerLimitSeconds: 600,
+          passingScore: 80,
+          allowRetries: true,
+        },
+        initialSceneId: sceneFlowData.entryScene,
+        scenes: sceneFlowData.scenes as any,
+        rewards: {
+          xp: 150,
+          badges: ['first_watch'],
+        },
+      }
+      setActiveMission(m1Mission)
+      setState({
+        currentMissionId: 'module1',
+        currentSceneId: m1Mission.initialSceneId,
+        playerState: {
+          score: 0,
+          completedObjectiveIds: [],
+          inventory: [],
+          decisionsMade: {},
+          attempts: {},
+          trustScore: 100,
+          documentChecked: false,
+          restHoursChecked: false,
+        },
+        activeDialogueId: 'dlg-m1-kai-intro',
+        timeRemaining: 600,
+        status: 'running',
+        activeFeedback: null,
+        activeDocumentDesk: false,
+        activeRestHourLog: false,
+        activeMinigame: null,
       })
     }
   }
 
   const transitionToScene = (sceneId: string) => {
     if (!activeMission || !activeMission.scenes[sceneId]) return
-    setState((prev) => ({
-      ...prev,
-      currentSceneId: sceneId,
-      activeDialogueId: null,
-      activeFeedback: null,
-      activeDocumentDesk: false,
-      activeRestHourLog: false,
-    }))
+    setState((prev) => {
+      let activeDialogueId: string | null = null
+      if (activeMission.id === 'module1') {
+        const completed = prev.playerState.completedObjectiveIds
+        if (sceneId === 'm1_s1_boarding' && !completed.includes('obj-m1-kai-intro')) {
+          activeDialogueId = 'dlg-m1-kai-intro'
+        } else if (sceneId === 'm1_s2_office' && !completed.includes('obj-m1-inspector-intro')) {
+          activeDialogueId = 'dlg-m1-inspector-intro'
+        } else if (sceneId === 'm1_s3_bridge' && !completed.includes('obj-test-radio')) {
+          activeDialogueId = 'dlg-m1-kai-bridge'
+        } else if (sceneId === 'm1_s4_engine' && !completed.includes('obj-m1-ows')) {
+          activeDialogueId = 'dlg-m1-ows-intro'
+        } else if (sceneId === 'm1_s5_meeting_room' && !completed.includes('obj-m4-gear-up')) {
+          activeDialogueId = 'dlg-m4-kai-welcome'
+        } else if (sceneId === 'm1_s6_cooperation' && !completed.includes('obj-m4-escort-trust')) {
+          activeDialogueId = 'dlg-m4-escort-intro'
+        } else if (sceneId === 'm1_s7_mess' && !completed.includes('obj-m5-case-studies')) {
+          activeDialogueId = 'dlg-m5-kai-welcome'
+        } else if (sceneId === 'm1_s8_detention' && !completed.includes('obj-m1-detention-sort')) {
+          activeDialogueId = 'dlg-m1-detention-intro'
+        }
+      }
+      return {
+        ...prev,
+        currentSceneId: sceneId,
+        activeDialogueId,
+        activeFeedback: null,
+        activeDocumentDesk: false,
+        activeRestHourLog: false,
+      }
+    })
   }
 
   const closeFeedback = () => {
@@ -126,6 +195,97 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }))
   }
 
+  const startMinigame = (type: 'rest_hours' | 'cert_swipe' | 'gmdss_loop' | 'gangway_netting' | 'fire_door_test' | 'ows_test' | 'detention_sort' | 'escort_gear' | 'escort_trust' | 'case_studies' | null) => {
+    setState((prev) => ({
+      ...prev,
+      activeMinigame: type,
+    }))
+  }
+
+  const completeMinigame = (success: boolean, pointsDelta: number, _suspicionDelta: number) => {
+    setState((prev) => {
+      const nextScore = Math.max(0, prev.playerState.score + pointsDelta)
+      
+      const trustDelta = success ? 10 : -25
+      const nextTrust = Math.max(0, Math.min(100, prev.playerState.trustScore + trustDelta))
+      
+      let objectiveId = prev.activeMinigame === 'rest_hours' ? 'obj-audit-rest' : 'obj-audit-docs'
+      if (prev.activeMinigame === 'gmdss_loop') {
+        objectiveId = activeMission?.id === 'module1' ? 'obj-test-radio' : 'obj-test-dsc-radio'
+      } else if (prev.activeMinigame === 'gangway_netting') {
+        objectiveId = 'obj-m1-netting'
+      } else if (prev.activeMinigame === 'fire_door_test') {
+        objectiveId = 'obj-m1-firedoor'
+      } else if (prev.activeMinigame === 'ows_test') {
+        objectiveId = 'obj-m1-ows'
+      } else if (prev.activeMinigame === 'detention_sort') {
+        objectiveId = 'obj-m1-detention-sort'
+      } else if (prev.activeMinigame === 'escort_gear') {
+        objectiveId = 'obj-m4-gear-up'
+      } else if (prev.activeMinigame === 'escort_trust') {
+        objectiveId = 'obj-m4-escort-trust'
+      } else if (prev.activeMinigame === 'case_studies') {
+        objectiveId = 'obj-m5-case-studies'
+      }
+
+      const docChecked = prev.activeMinigame === 'cert_swipe' ? true : prev.playerState.documentChecked
+      const restChecked = prev.activeMinigame === 'rest_hours' ? true : prev.playerState.restHoursChecked
+
+      const completed = prev.playerState.completedObjectiveIds.includes(objectiveId)
+        ? prev.playerState.completedObjectiveIds
+        : [...prev.playerState.completedObjectiveIds, objectiveId]
+
+      const allRequiredIds = Object.values(activeMission ? activeMission.scenes : {}).flatMap(
+        (scene) => (scene.objectives || []).map((o) => o.id)
+      )
+      const isAllDone = allRequiredIds.every((id) => completed.includes(id))
+      const nextStatus = isAllDone ? 'debrief' : prev.status
+
+      let activeDialogueId = prev.activeDialogueId
+      if (activeMission?.id === 'module1') {
+        if (prev.activeMinigame === 'gangway_netting') activeDialogueId = 'dlg-m1-netting-success'
+        else if (prev.activeMinigame === 'cert_swipe') activeDialogueId = 'dlg-m1-certs-success'
+        else if (prev.activeMinigame === 'rest_hours') activeDialogueId = 'dlg-m1-rest-success'
+        else if (prev.activeMinigame === 'gmdss_loop') activeDialogueId = 'dlg-m1-gmdss-success'
+        else if (prev.activeMinigame === 'fire_door_test') activeDialogueId = 'dlg-m1-firedoor-success'
+        else if (prev.activeMinigame === 'ows_test') activeDialogueId = 'dlg-m1-ows-success'
+        else if (prev.activeMinigame === 'detention_sort') activeDialogueId = 'dlg-m1-detention-success'
+        else if (prev.activeMinigame === 'escort_gear') activeDialogueId = null
+        else if (prev.activeMinigame === 'escort_trust') activeDialogueId = 'dlg-m4-cooperate-success'
+        else if (prev.activeMinigame === 'case_studies') activeDialogueId = 'dlg-m5-conclude'
+      }
+
+      if (success) {
+        playSound('success')
+      } else {
+        playSound('failure')
+      }
+
+      return {
+        ...prev,
+        status: nextStatus,
+        activeMinigame: null,
+        activeDialogueId,
+        playerState: {
+          ...prev.playerState,
+          score: nextScore,
+          trustScore: nextTrust,
+          documentChecked: docChecked,
+          restHoursChecked: restChecked,
+          completedObjectiveIds: completed,
+        },
+        activeFeedback: {
+          title: success ? 'Audit Minigame Cleared' : 'Deficiencies Found in Minigame',
+          text: success
+            ? 'Your audit actions complied with international regulations.'
+            : 'You failed to identify key deficiencies. Inspector trust decreased.',
+          delta: pointsDelta,
+          isSuccess: success,
+        }
+      }
+    })
+  }
+
   const completeDocumentAudit = (trustDelta: number, pointsDelta: number) => {
     setState((prev) => {
       const nextTrust = Math.max(0, Math.min(100, prev.playerState.trustScore + trustDelta))
@@ -134,15 +294,22 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         ? prev.playerState.completedObjectiveIds
         : [...prev.playerState.completedObjectiveIds, 'obj-audit-docs']
 
-      const isAllDone = completed.length === (activeMission ? Object.values(activeMission.scenes).reduce(
-        (acc, scene) => acc + scene.objectives.length, 0
-      ) : 0)
+      const allRequiredIds = Object.values(activeMission ? activeMission.scenes : {}).flatMap(
+        (scene) => (scene.objectives || []).map((o) => o.id)
+      )
+      const isAllDone = allRequiredIds.every((id) => completed.includes(id))
       const status = isAllDone ? 'debrief' : prev.status
+
+      let activeDialogueId = prev.activeDialogueId
+      if (activeMission?.id === 'module1') {
+        activeDialogueId = 'dlg-m1-certs-success'
+      }
 
       return {
         ...prev,
         activeDocumentDesk: false,
         status,
+        activeDialogueId,
         playerState: {
           ...prev.playerState,
           documentChecked: true,
@@ -170,15 +337,22 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         ? prev.playerState.completedObjectiveIds
         : [...prev.playerState.completedObjectiveIds, 'obj-audit-rest']
 
-      const isAllDone = completed.length === (activeMission ? Object.values(activeMission.scenes).reduce(
-        (acc, scene) => acc + scene.objectives.length, 0
-      ) : 0)
+      const allRequiredIds = Object.values(activeMission ? activeMission.scenes : {}).flatMap(
+        (scene) => (scene.objectives || []).map((o) => o.id)
+      )
+      const isAllDone = allRequiredIds.every((id) => completed.includes(id))
       const status = isAllDone ? 'debrief' : prev.status
+
+      let activeDialogueId = prev.activeDialogueId
+      if (activeMission?.id === 'module1') {
+        activeDialogueId = 'dlg-m1-rest-success'
+      }
 
       return {
         ...prev,
         activeRestHourLog: false,
         status,
+        activeDialogueId,
         playerState: {
           ...prev.playerState,
           restHoursChecked: true,
@@ -204,6 +378,8 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const hotspot = scene.hotspots.find((h) => h.id === hotspotId)
     if (!hotspot) return
 
+    playSound('click')
+
     if (hotspot.type === 'transition' && hotspot.targetSceneId) {
       transitionToScene(hotspot.targetSceneId)
       return
@@ -211,11 +387,40 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
     // Toggle popups for special document desk and rest hour hotspots
     if (hotspot.actionId === 'evt-audit-docs') {
-      toggleDocumentDesk(true)
+      if (activeMission?.id === 'module1') {
+        startMinigame('cert_swipe')
+      } else {
+        toggleDocumentDesk(true)
+      }
       return
     }
     if (hotspot.actionId === 'evt-audit-rest') {
-      toggleRestHourLog(true)
+      if (activeMission?.id === 'module1') {
+        startMinigame('rest_hours')
+      } else {
+        toggleRestHourLog(true)
+      }
+      return
+    }
+    
+    // Launch interactive minigames for non-document audits
+    if (hotspot.actionId === 'evt-m1-netting') {
+      startMinigame('gangway_netting')
+      return
+    }
+    if (hotspot.actionId === 'evt-m1-firedoor') {
+      startMinigame('fire_door_test')
+      return
+    }
+    if (hotspot.actionId === 'evt-test-radio') {
+      if (activeMission?.id === 'module1') {
+        startMinigame('gmdss_loop')
+        return
+      }
+      // If not module1, fall through to static inspect checking below
+    }
+    if (hotspot.actionId === 'evt-m1-ows') {
+      startMinigame('ows_test')
       return
     }
 
@@ -279,11 +484,15 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       } else if (hotspot.actionId === 'evt-inspect-logbook') {
         targetObjectiveId = 'obj-verify-bridge-log'
       } else if (hotspot.actionId === 'evt-test-radio') {
-        targetObjectiveId = 'obj-test-dsc-radio'
+        targetObjectiveId = activeMission.id === 'module1' ? 'obj-test-radio' : 'obj-test-dsc-radio'
       } else if (hotspot.actionId === 'evt-check-separator') {
         targetObjectiveId = 'obj-check-separator'
       } else if (hotspot.actionId === 'evt-fire-door') {
         targetObjectiveId = 'obj-fix-fire-door'
+      } else if (hotspot.actionId === 'evt-m1-netting') {
+        targetObjectiveId = 'obj-m1-netting'
+      } else if (hotspot.actionId === 'evt-m1-firedoor') {
+        targetObjectiveId = 'obj-m1-firedoor'
       }
 
       if (targetObjectiveId) {
@@ -319,40 +528,136 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const choice = dialogue.choices.find((c) => c.id === choiceId)
     if (!choice) return
 
+    if (choice.triggerEventId === 'evt-trust-increase') {
+      playSound('success')
+    } else if (choice.triggerEventId === 'evt-trust-decrease-minor' || choice.triggerEventId === 'evt-trust-decrease-major') {
+      playSound('failure')
+    } else {
+      playSound('click')
+    }
+
     setState((prev) => {
       const updatedDecisions = { ...prev.playerState.decisionsMade, [dialogue.id]: choiceId }
       
       // Calculate trust updates from conversation choices
       let trustDelta = 0
       if (choice.triggerEventId === 'evt-trust-increase') {
-        trustDelta = 10
+        trustDelta = 15
       } else if (choice.triggerEventId === 'evt-trust-decrease-minor') {
-        trustDelta = -15
+        trustDelta = -20
       } else if (choice.triggerEventId === 'evt-trust-decrease-major') {
-        trustDelta = -30
+        trustDelta = -40
       }
 
+      // Check for dialogue objective completion
+      let completed = [...prev.playerState.completedObjectiveIds]
+      let additionalScore = 0
+      
+      if (choiceId === 'ch-m1-engine-ok' && !completed.includes('obj-m1-kai-engine')) {
+        completed.push('obj-m1-kai-engine')
+        additionalScore = 20
+      } else if (choiceId === 'ch-m1-intro-success-ok' && !completed.includes('obj-m1-kai-intro')) {
+        completed.push('obj-m1-kai-intro')
+        additionalScore = 10
+      } else if ((choiceId === 'ch-m1-pillars-success-ok' || choiceId === 'ch-m1-pillars-fail-ok') && !completed.includes('obj-m1-inspector-intro')) {
+        completed.push('obj-m1-inspector-intro')
+        additionalScore = 10
+      } else if (choiceId === 'ch-m1-ows-success-ok' && !completed.includes('obj-m1-ows')) {
+        completed.push('obj-m1-ows')
+        additionalScore = 20
+      } else if (choiceId === 'ch-m4-cooperate-success-ok' && !completed.includes('obj-m4-escort-trust')) {
+        // Already completed in minigame, but in case dialogue triggers it
+        if (!completed.includes('obj-m4-escort-trust')) completed.push('obj-m4-escort-trust')
+        additionalScore = 10
+      } else if (choiceId === 'ch-m5-conclude-ok' && !completed.includes('obj-m1-kai-engine')) {
+        completed.push('obj-m1-kai-engine')
+        additionalScore = 30
+      }
+
+      const nextScore = Math.max(0, prev.playerState.score + additionalScore)
       const nextTrust = Math.max(0, Math.min(100, prev.playerState.trustScore + trustDelta))
 
-      if (choice.targetDialogueId) {
+      // Check if all objectives are completed
+      const allRequiredIds = Object.values(activeMission ? activeMission.scenes : {}).flatMap(
+        (scene) => (scene.objectives || []).map((o) => o.id)
+      )
+      const isAllDone = allRequiredIds.every((id) => completed.includes(id))
+      
+      let status = nextTrust <= 0 ? 'failed' : prev.status
+      if (isAllDone && status !== 'failed') {
+        status = 'debrief'
+      }
+
+      let nextSceneId = prev.currentSceneId
+      let activeDialogueId = choice.targetDialogueId
+
+      if (choiceId === 'ch-m1-netting-success-ok') {
+        nextSceneId = 'm1_s2_office'
+        activeDialogueId = 'dlg-m1-inspector-intro'
+      } else if (choiceId === 'ch-m1-rest-success-ok') {
+        nextSceneId = 'm1_s3_bridge'
+        activeDialogueId = 'dlg-m1-kai-bridge'
+      } else if (choiceId === 'ch-m1-firedoor-success-ok') {
+        nextSceneId = 'm1_s8_detention'
+        activeDialogueId = 'dlg-m1-detention-intro'
+      } else if (choiceId === 'ch-m1-detention-success-ok') {
+        nextSceneId = 'm1_s5_meeting_room'
+        activeDialogueId = 'dlg-m4-kai-welcome'
+      } else if (choiceId === 'ch-m4-cooperate-success-ok') {
+        nextSceneId = 'm1_s7_mess'
+        activeDialogueId = 'dlg-m5-kai-welcome'
+      } else if (choiceId === 'ch-m5-conclude-ok') {
+        nextSceneId = 'm1_s4_engine'
+        activeDialogueId = 'dlg-m1-ows-intro'
+      } else if (choiceId === 'ch-m1-ows-success-ok') {
+        activeDialogueId = 'dlg-m1-kai-engine'
+      } else if (choiceId === 'ch-m1-engine-ok') {
+        // Conclude walkaround
+      }
+
+      let activeMinigame = prev.activeMinigame
+      if (choiceId === 'ch-m1-detention-start') {
+        activeMinigame = 'detention_sort'
+        activeDialogueId = null
+      } else if (choiceId === 'ch-m4-kai-welcome-ok') {
+        activeMinigame = 'escort_gear'
+        activeDialogueId = null
+      } else if (choiceId === 'ch-m4-escort-start') {
+        activeMinigame = 'escort_trust'
+        activeDialogueId = null
+      } else if (choiceId === 'ch-m5-case-study-start') {
+        activeMinigame = 'case_studies'
+        activeDialogueId = null
+      }
+
+      if (activeDialogueId || activeMinigame !== prev.activeMinigame) {
         return {
           ...prev,
-          activeDialogueId: choice.targetDialogueId,
+          status,
+          currentSceneId: nextSceneId,
+          activeDialogueId,
+          activeMinigame,
           playerState: { 
             ...prev.playerState, 
             decisionsMade: updatedDecisions,
-            trustScore: nextTrust 
+            score: nextScore,
+            trustScore: nextTrust,
+            completedObjectiveIds: completed,
           },
         }
       }
 
       return {
         ...prev,
+        status,
+        currentSceneId: nextSceneId,
         activeDialogueId: null,
         playerState: { 
           ...prev.playerState, 
           decisionsMade: updatedDecisions,
-          trustScore: nextTrust 
+          score: nextScore,
+          trustScore: nextTrust,
+          completedObjectiveIds: completed,
         },
       }
     })
@@ -369,7 +674,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         pointsToAdd = customPoints
       } else {
         Object.values(activeMission.scenes).forEach((scene) => {
-          const obj = scene.objectives.find((o) => o.id === objectiveId)
+          const obj = scene.objectives?.find((o) => o.id === objectiveId)
           if (obj) pointsToAdd = obj.points
         })
       }
@@ -377,12 +682,10 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       const completed = [...prev.playerState.completedObjectiveIds, objectiveId]
       const nextScore = prev.playerState.score + pointsToAdd
 
-      const totalObjectivesCount = Object.values(activeMission.scenes).reduce(
-        (acc, scene) => acc + scene.objectives.length,
-        0
+      const allRequiredIds = Object.values(activeMission.scenes).flatMap(
+        (scene) => (scene.objectives || []).map((o) => o.id)
       )
-
-      const isAllDone = completed.length === totalObjectivesCount
+      const isAllDone = allRequiredIds.every((id) => completed.includes(id))
       const status = isAllDone ? 'debrief' : prev.status
 
       return {
@@ -410,7 +713,75 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setActiveMission(null)
   }
 
-  const currentScene = activeMission && state.currentSceneId ? activeMission.scenes[state.currentSceneId] : null
+  let currentScene = activeMission && state.currentSceneId ? activeMission.scenes[state.currentSceneId] : null
+
+  if (currentScene && activeMission?.id === 'module1') {
+    const completed = state.playerState.completedObjectiveIds
+    let filteredHotspots = [...currentScene.hotspots]
+
+    if (state.currentSceneId === 'm1_s1_boarding') {
+      // Step 1: Kai intro
+      if (!completed.includes('obj-m1-kai-intro')) {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-kai-gangway')
+      } 
+      // Step 2: Safety Net
+      else if (!completed.includes('obj-m1-netting')) {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-netting')
+      }
+      // Step 3: Transition to Office
+      else {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-enter-office' || h.id === 'hs-m1-kai-gangway')
+      }
+    } 
+    else if (state.currentSceneId === 'm1_s2_office') {
+      // Step 1: Inspector intro
+      if (!completed.includes('obj-m1-inspector-intro')) {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-inspector' || h.id === 'hs-m1-kai-office')
+      }
+      // Step 2: Certificates Swipe (mapped to obj-audit-docs now)
+      else if (!completed.includes('obj-audit-docs')) {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-certificates' || h.id === 'hs-m1-kai-office')
+      }
+      // Step 3: Rest Hours (mapped to obj-audit-rest now)
+      else if (!completed.includes('obj-audit-rest')) {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-rest-hours' || h.id === 'hs-m1-kai-office')
+      }
+      // Step 4: Go to Bridge
+      else {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-office-to-bridge' || h.id === 'hs-m1-kai-office')
+      }
+    }
+    else if (state.currentSceneId === 'm1_s3_bridge') {
+      // Step 1: Radio test
+      if (!completed.includes('obj-test-radio')) {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-gmdss' || h.id === 'hs-m1-kai-bridge')
+      }
+      // Step 2: Fire Door
+      else if (!completed.includes('obj-m1-firedoor')) {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-firedoor' || h.id === 'hs-m1-kai-bridge')
+      }
+      // Step 3: Go to Engine Room
+      else {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-bridge-to-engine' || h.id === 'hs-m1-kai-bridge')
+      }
+    }
+    else if (state.currentSceneId === 'm1_s4_engine') {
+      // Step 1: OWS Separator
+      if (!completed.includes('obj-m1-ows')) {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-ows')
+      }
+      // Step 2: Final Brief
+      else {
+        filteredHotspots = currentScene.hotspots.filter(h => h.id === 'hs-m1-kai-engine')
+      }
+    }
+
+    currentScene = {
+      ...currentScene,
+      hotspots: filteredHotspots
+    }
+  }
+
   const activeDialogue = state.activeDialogueId ? mockDialogues[state.activeDialogueId] || null : null
 
   return (
@@ -433,6 +804,8 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         toggleRestHourLog,
         completeDocumentAudit,
         completeRestHourAudit,
+        startMinigame,
+        completeMinigame,
       }}
     >
       {children}

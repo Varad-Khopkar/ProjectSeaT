@@ -36,7 +36,7 @@ export const DebriefLayout: React.FC = () => {
   }
 
   const totalPossible = Object.values(activeMission.scenes).reduce(
-    (acc, scene) => acc + scene.objectives.reduce((s, o) => s + o.points, 0),
+    (acc, scene) => acc + (scene.objectives || []).reduce((s, o) => s + o.points, 0),
     0
   )
   const percentage = MissionHelpers.calculateScorePercentage(state.playerState.score, totalPossible)
@@ -45,7 +45,13 @@ export const DebriefLayout: React.FC = () => {
   const passed = percentage >= activeMission.settings.passingScore && trustPassed
   const finalXP = RewardHelpers.xpMultiplier(percentage, activeMission.rewards.xp)
 
-  const allObjectives = Object.values(activeMission.scenes).flatMap((s) => s.objectives)
+  const allObjectives = Object.values(activeMission.scenes).flatMap((s) => s.objectives || [])
+
+  const handleRetry = () => {
+    const mId = activeMission.id
+    resetSimulation()
+    navigate(`/simulation/${mId}`)
+  }
 
   const handleReturnToHub = () => {
     if (passed) {
@@ -152,7 +158,7 @@ export const DebriefLayout: React.FC = () => {
       {/* Action buttons */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pb-8">
         {activeMission.settings.allowRetries && (
-          <Button variant="outline" leftIcon={<RotateCcw className="h-4 w-4" />} onClick={resetSimulation}>
+          <Button variant="outline" leftIcon={<RotateCcw className="h-4 w-4" />} onClick={handleRetry}>
             Retry Mission
           </Button>
         )}

@@ -1,0 +1,559 @@
+{
+  "moduleId": "module1",
+  "title": "Introduction to Port State Control (PSC)",
+  "entryScene": "m1_s1_boarding",
+  "scenes": {
+    "m1_s1_boarding": {
+      "id": "m1_s1_boarding",
+      "title": "Vessel Gangway",
+      "description": "Boarding access deck. Rigging safety and watch security details must be inspected immediately.",
+      "imageUrl": "/assets/images/gangway.png",
+      "hotspots": [
+        {
+          "id": "hs-m1-kai-gangway",
+          "x": 30,
+          "y": 35,
+          "width": 14,
+          "height": 38,
+          "label": "Brief with Cadet Kai",
+          "type": "dialogue",
+          "actionId": "dlg-m1-kai-intro",
+          "explanationTitle": "Cadet Kai Boarding Briefing",
+          "explanationText": "Meet Cadet Kai to receive the vessel deck safety checks overview.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m1-netting",
+          "x": 52,
+          "y": 62,
+          "width": 22,
+          "height": 18,
+          "label": "Rig Safety Netting",
+          "type": "inspect",
+          "actionId": "evt-m1-netting",
+          "explanationTitle": "Safety Net Rigging Checked",
+          "explanationText": "The accommodation ladder safety netting is correctly tensioned and secured. Compliant with SOLAS Chapter II-1 regulations.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m1-enter-office",
+          "x": 82,
+          "y": 20,
+          "width": 11,
+          "height": 55,
+          "label": "Proceed to Ship Office",
+          "type": "transition",
+          "targetSceneId": "m1_s2_office"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "obj-m1-netting",
+          "title": "Inspect Safety Netting",
+          "description": "Ensure the gangway safety netting is rigged correctly to prevent falls.",
+          "points": 20,
+          "status": "pending"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "tr-m1-gangway-to-office",
+          "sourceSceneId": "m1_s1_boarding",
+          "targetSceneId": "m1_s2_office"
+        }
+      ]
+    },
+    "m1_s2_office": {
+      "id": "m1_s2_office",
+      "title": "Ship Office",
+      "description": "Administration logs verification center. The PSC inspector Kowalski is waiting.",
+      "imageUrl": "/assets/images/ship_office.png",
+      "hotspots": [
+        {
+          "id": "hs-m1-kai-office",
+          "x": 28,
+          "y": 30,
+          "width": 12,
+          "height": 35,
+          "label": "Talk to Cadet Kai",
+          "type": "dialogue",
+          "actionId": "dlg-m1-kai-office",
+          "explanationTitle": "Cadet Kai Guidance",
+          "explanationText": "Kai reminds you to complete the document desk reviews and OOW logs checks.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m1-inspector",
+          "x": 48,
+          "y": 32,
+          "width": 14,
+          "height": 33,
+          "label": "Speak with PSC Inspector",
+          "type": "dialogue",
+          "actionId": "dlg-m1-inspector-intro",
+          "explanationTitle": "PSC Inspector Interview",
+          "explanationText": "Kowalski initiates the onboarding audit interview.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m1-certificates",
+          "x": 10,
+          "y": 42,
+          "width": 10,
+          "height": 13,
+          "label": "Audit Ship Certificates",
+          "type": "inspect",
+          "actionId": "evt-audit-docs",
+          "explanationTitle": "Ship Certificates Folder",
+          "explanationText": "Swipe to approve valid certificates, and reject invalid certificates to identify compliance issues.",
+          "actionCode": "Code 30"
+        },
+        {
+          "id": "hs-m1-rest-hours",
+          "x": 5,
+          "y": 62,
+          "width": 9,
+          "height": 13,
+          "label": "Audit Rest Hours Logbook",
+          "type": "inspect",
+          "actionId": "evt-audit-rest",
+          "explanationTitle": "Seafarers Watchkeeping logs",
+          "explanationText": "Re-align watchkeeper shift schedules to satisfy the MLC rest hour constraints.",
+          "actionCode": "Code 17"
+        },
+        {
+          "id": "hs-m1-decoy-coffee",
+          "x": 36,
+          "y": 68,
+          "width": 7,
+          "height": 7,
+          "label": "Discarded Coffee Mug",
+          "type": "inspect",
+          "isDecoy": true,
+          "explanationTitle": "Spillage alert (-10 PTS)",
+          "explanationText": "Leaving open liquids on logs risks staining official record registries.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m1-office-to-bridge",
+          "x": 84,
+          "y": 20,
+          "width": 10,
+          "height": 50,
+          "label": "Proceed to Navigation Bridge",
+          "type": "transition",
+          "targetSceneId": "m1_s3_bridge"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "obj-audit-docs",
+          "title": "Verify Ship Certificates",
+          "description": "Swipe to approve Safe Manning and SOLAS certificates on the desk.",
+          "points": 20,
+          "status": "pending"
+        },
+        {
+          "id": "obj-audit-rest",
+          "title": "Audit Watchkeeper Rest Hours",
+          "description": "Align shift timelines to prevent crew fatigue under MLC limits.",
+          "points": 20,
+          "status": "pending"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "tr-m1-office-to-bridge",
+          "sourceSceneId": "m1_s2_office",
+          "targetSceneId": "m1_s3_bridge"
+        }
+      ]
+    },
+    "m1_s3_bridge": {
+      "id": "m1_s3_bridge",
+      "title": "Navigation Bridge",
+      "description": "Command and communications center. Test bridge alarm panels and safety boundaries.",
+      "imageUrl": "/assets/images/modern_bridge.png",
+      "hotspots": [
+        {
+          "id": "hs-m1-kai-bridge",
+          "x": 30,
+          "y": 35,
+          "width": 11,
+          "height": 34,
+          "label": "Talk to Cadet Kai",
+          "type": "dialogue",
+          "actionId": "dlg-m1-kai-bridge",
+          "explanationTitle": "Cadet Kai Guidance",
+          "explanationText": "Kai outlines GMDSS Loop Test protocols and fire door verification.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m1-gmdss",
+          "x": 62,
+          "y": 38,
+          "width": 13,
+          "height": 11,
+          "label": "GMDSS DSC Loop Test",
+          "type": "inspect",
+          "actionId": "evt-test-radio",
+          "explanationTitle": "GMDSS DSC Radio Console",
+          "explanationText": "Initiate a Digital Selective Calling self-test transmission sequence to verify loopback signals.",
+          "actionCode": "Code 30"
+        },
+        {
+          "id": "hs-m1-firedoor",
+          "x": 8,
+          "y": 25,
+          "width": 12,
+          "height": 48,
+          "label": "Check Fire Doors",
+          "type": "inspect",
+          "actionId": "evt-m1-firedoor",
+          "explanationTitle": "A-Class Fire Door Free",
+          "explanationText": "Fire containment doors release automatically from their electromagnetic holdbacks. Complies with SOLAS Chapter II-2 safety boundaries.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m1-bridge-to-office",
+          "x": 48,
+          "y": 62,
+          "width": 10,
+          "height": 12,
+          "label": "Return to Ship Office",
+          "type": "transition",
+          "targetSceneId": "m1_s2_office"
+        },
+        {
+          "id": "hs-m1-bridge-to-detention",
+          "x": 86,
+          "y": 25,
+          "width": 9,
+          "height": 45,
+          "label": "Descend to Emergency Gen Room",
+          "type": "transition",
+          "targetSceneId": "m1_s8_detention"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "obj-test-radio",
+          "title": "Test GMDSS Radio Loop",
+          "description": "Test the DSC transceiver to guarantee safety loopback signal receipt.",
+          "points": 20,
+          "status": "pending"
+        },
+        {
+          "id": "obj-m1-firedoor",
+          "title": "Verify Automatic Fire Doors",
+          "description": "Check if fire containment doors release correctly to block smoke spread.",
+          "points": 20,
+          "status": "pending"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "tr-m1-bridge-to-office",
+          "sourceSceneId": "m1_s3_bridge",
+          "targetSceneId": "m1_s2_office"
+        },
+        {
+          "id": "tr-m1-bridge-to-detention",
+          "sourceSceneId": "m1_s3_bridge",
+          "targetSceneId": "m1_s8_detention"
+        }
+      ]
+    },
+    "m1_s4_engine": {
+      "id": "m1_s4_engine",
+      "title": "Engine Machinery Space",
+      "description": "Machinery control compartment. Verify separators and exhaust insulation.",
+      "imageUrl": "/assets/images/engine_room.png",
+      "hotspots": [
+        {
+          "id": "hs-m1-kai-engine",
+          "x": 35,
+          "y": 38,
+          "width": 12,
+          "height": 36,
+          "label": "Final Brief with Cadet Kai",
+          "type": "dialogue",
+          "actionId": "dlg-m1-kai-engine",
+          "explanationTitle": "Cadet Kai Final Briefing",
+          "explanationText": "Kai reviews your walkaround audits and flags Module 1 as successfully completed.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m1-ows",
+          "x": 72,
+          "y": 44,
+          "width": 12,
+          "height": 22,
+          "label": "Audit Oily Water Separator",
+          "type": "inspect",
+          "actionId": "evt-m1-ows",
+          "explanationTitle": "Oily Water Separator",
+          "explanationText": "Perform the failsafe 3-way valve bilge alarm test loop for MARPOL compliance.",
+          "actionCode": "Code 30"
+        },
+        {
+          "id": "hs-m1-rag-decoy",
+          "x": 58,
+          "y": 55,
+          "width": 8,
+          "height": 8,
+          "label": "Oily Rag on Exhaust Pipe",
+          "type": "inspect",
+          "isDecoy": true,
+          "explanationTitle": "Fire Hazard deficiency (-10 PTS)",
+          "explanationText": "Combustible rags left on hot machine exhaust lines violate fire prevention policies.",
+          "actionCode": "Code 10"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "obj-m1-ows",
+          "title": "Audit Oily Water Separator",
+          "description": "Trigger the 15ppm sensor alarm and confirm failsafe bilge water recirculation.",
+          "points": 20,
+          "status": "pending"
+        },
+        {
+          "id": "obj-m1-kai-engine",
+          "title": "Final Onboarding Brief",
+          "description": "Conclude the walkthrough checks with Cadet Kai in the Engine Room.",
+          "points": 20,
+          "status": "pending"
+        }
+      ],
+      "transitions": []
+    },
+    "m1_s5_meeting_room": {
+      "id": "m1_s5_meeting_room",
+      "title": "Ship Meeting Room",
+      "description": "Equip safety gear from the locker before commencing the walkthrough review.",
+      "imageUrl": "/assets/images/meeting_room.png",
+      "hotspots": [
+        {
+          "id": "hs-m4-kai-welcome",
+          "x": 30,
+          "y": 35,
+          "width": 14,
+          "height": 38,
+          "label": "Talk to Cadet Kai",
+          "type": "dialogue",
+          "actionId": "dlg-m4-kai-welcome",
+          "explanationTitle": "Cadet Kai Escort Briefing",
+          "explanationText": "Meet Cadet Kai to prepare safety gear for escorting the inspector.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m4-locker",
+          "x": 65,
+          "y": 40,
+          "width": 18,
+          "height": 45,
+          "label": "Escort Safety Locker",
+          "type": "inspect",
+          "actionId": "evt-m4-gear-up",
+          "explanationTitle": "Mandatory PPE Equipped",
+          "explanationText": "Wear helmet, boots, and carry active gas monitors during inspection.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m4-enter-bridge",
+          "x": 85,
+          "y": 20,
+          "width": 10,
+          "height": 55,
+          "label": "Proceed to Navigation Bridge",
+          "type": "transition",
+          "targetSceneId": "m1_s6_cooperation"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "obj-m4-gear-up",
+          "title": "Equip Safety Gear",
+          "description": "Choose mandatory PPE and check anti-corruption codes.",
+          "points": 20,
+          "status": "pending"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "tr-m4-welcome-to-escort",
+          "sourceSceneId": "m1_s5_meeting_room",
+          "targetSceneId": "m1_s6_cooperation"
+        }
+      ]
+    },
+    "m1_s6_cooperation": {
+      "id": "m1_s6_cooperation",
+      "title": "Bridge Cooperation Review",
+      "description": "Escort Inspector Kowalski during his inspection and resolve deficiencies honestly.",
+      "imageUrl": "/assets/images/modern_bridge.png",
+      "hotspots": [
+        {
+          "id": "hs-m4-kowalski",
+          "x": 48,
+          "y": 32,
+          "width": 14,
+          "height": 33,
+          "label": "Speak with Inspector Kowalski",
+          "type": "dialogue",
+          "actionId": "dlg-m4-escort-intro",
+          "explanationTitle": "Cooperation Interview",
+          "explanationText": "Retain Kowalski's trust and avoid bribe codes.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m4-to-mess",
+          "x": 85,
+          "y": 20,
+          "width": 10,
+          "height": 55,
+          "label": "Proceed to Crew Mess",
+          "type": "transition",
+          "targetSceneId": "m1_s7_mess"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "obj-m4-escort-trust",
+          "title": "Cooperation Audit Challenge",
+          "description": "Retain trust meter above 60% and get clean Port Clearance.",
+          "points": 40,
+          "status": "pending"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "tr-m4-escort-to-mess",
+          "sourceSceneId": "m1_s6_cooperation",
+          "targetSceneId": "m1_s7_mess"
+        }
+      ]
+    },
+    "m1_s7_mess": {
+      "id": "m1_s7_mess",
+      "title": "Ship Crew Mess",
+      "description": "Review historical Paris MOU and USCG boarding detention case studies at the study table.",
+      "imageUrl": "/assets/images/crew_mess.png",
+      "hotspots": [
+        {
+          "id": "hs-m5-kai",
+          "x": 30,
+          "y": 42,
+          "width": 14,
+          "height": 38,
+          "label": "Talk to Cadet Kai",
+          "type": "dialogue",
+          "actionId": "dlg-m5-kai-welcome",
+          "explanationTitle": "Real Case Studies Study",
+          "explanationText": "Speak to Cadet Kai to receive the case study archives.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m5-table",
+          "x": 58,
+          "y": 48,
+          "width": 18,
+          "height": 28,
+          "label": "Study Table Archive",
+          "type": "inspect",
+          "actionId": "evt-m5-case-study",
+          "explanationTitle": "Inspect Detention Logs",
+          "explanationText": "Open the comparison folders to find the crew's mistakes.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m5-to-engine",
+          "x": 85,
+          "y": 20,
+          "width": 10,
+          "height": 55,
+          "label": "Proceed to Engine Room",
+          "type": "transition",
+          "targetSceneId": "m1_s4_engine"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "obj-m5-case-studies",
+          "title": "Paris MOU / USCG Case Studies",
+          "description": "Examine deck logbooks and find the 3 data manipulation discrepancies.",
+          "points": 40,
+          "status": "pending"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "tr-m5-mess-to-engine",
+          "sourceSceneId": "m1_s7_mess",
+          "targetSceneId": "m1_s4_engine"
+        }
+      ]
+    },
+    "m1_s8_detention": {
+      "id": "m1_s8_detention",
+      "title": "Emergency Generator Room",
+      "description": "Inspect the emergency generator unit and solve the S.S. Zenith safety compliance hazards.",
+      "imageUrl": "/assets/images/emergency_gen.png",
+      "hotspots": [
+        {
+          "id": "hs-m3-kowalski",
+          "x": 30,
+          "y": 42,
+          "width": 14,
+          "height": 38,
+          "label": "Speak with Inspector Kowalski",
+          "type": "dialogue",
+          "actionId": "dlg-m1-detention-intro",
+          "explanationTitle": "Detention Risks Review",
+          "explanationText": "Kowalski outlines safety deficiency categories.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m3-workspace",
+          "x": 60,
+          "y": 45,
+          "width": 18,
+          "height": 30,
+          "label": "Audit Workspace",
+          "type": "inspect",
+          "actionId": "evt-m3-detention-sort",
+          "explanationTitle": "Inspect Emergency Gen",
+          "explanationText": "Click to resolve emergency quick-closing valves, battery terminals, pipe lagging, and fuel leaks.",
+          "actionCode": "Code 10"
+        },
+        {
+          "id": "hs-m3-to-meeting",
+          "x": 85,
+          "y": 20,
+          "width": 10,
+          "height": 55,
+          "label": "Proceed to Meeting Room",
+          "type": "transition",
+          "targetSceneId": "m1_s5_meeting_room"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "obj-m1-detention-sort",
+          "title": "Avoid Detentions Audit",
+          "description": "Accurately sort and prioritize minor, major, and critical ship deficiencies.",
+          "points": 20,
+          "status": "pending"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "tr-m3-detention-to-meeting",
+          "sourceSceneId": "m1_s8_detention",
+          "targetSceneId": "m1_s5_meeting_room"
+        }
+      ]
+    }
+  }
+}
