@@ -21,6 +21,7 @@ export interface TrainingModule {
   progress: number // percentage 0-100
   itemsCount: number
   completedItemsCount: number
+  theoryCompleted?: boolean
 }
 
 export interface LeaderboardEntry {
@@ -65,6 +66,7 @@ export const mockModules: TrainingModule[] = [
     progress: 35,
     itemsCount: 12,
     completedItemsCount: 4,
+    theoryCompleted: false,
   },
   {
     id: 'mod-2',
@@ -78,6 +80,7 @@ export const mockModules: TrainingModule[] = [
     progress: 0,
     itemsCount: 8,
     completedItemsCount: 0,
+    theoryCompleted: false,
   },
   {
     id: 'mod-3',
@@ -91,6 +94,7 @@ export const mockModules: TrainingModule[] = [
     progress: 0,
     itemsCount: 10,
     completedItemsCount: 0,
+    theoryCompleted: false,
   },
   {
     id: 'mod-4',
@@ -104,6 +108,7 @@ export const mockModules: TrainingModule[] = [
     progress: 100,
     itemsCount: 6,
     completedItemsCount: 6,
+    theoryCompleted: true,
   },
   {
     id: 'mod-5',
@@ -117,6 +122,7 @@ export const mockModules: TrainingModule[] = [
     progress: 0,
     itemsCount: 15,
     completedItemsCount: 0,
+    theoryCompleted: false,
   },
 ]
 

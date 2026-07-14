@@ -5,14 +5,28 @@ import { SimulationLayout } from '../layouts/SimulationLayout'
 import { pscMissionTemplate } from '../mock/missionTemplate'
 import { Play, Clock, Compass, Star, ChevronRight, UserCheck } from 'lucide-react'
 import welcomeCaptain from '@/Images/SeaT Captain/Captain_welcome.png'
+import { useApp } from '@/contexts/AppContext'
+import { briefingConfigs } from '../config/briefingConfig'
 
 export const SimulationPlay: React.FC = () => {
   const { missionId } = useParams<{ missionId: string }>()
   const navigate = useNavigate()
   const { state, startMission } = useSimulation()
+  const { theoryProgressMap } = useApp()
 
   const [showBriefing, setShowBriefing] = useState(true)
   const simContainerRef = useRef<HTMLDivElement>(null)
+
+  // Guard: Redirect to theory/briefing if it is required but not completed/passed yet
+  useEffect(() => {
+    if (!missionId) return
+    const config = briefingConfigs[missionId]
+    const progress = theoryProgressMap[missionId]
+
+    if (config?.unlockRules?.requiresBriefing && (!progress || !progress.assessmentPassed)) {
+      navigate(`/simulation/${missionId}/theory`, { replace: true })
+    }
+  }, [missionId, theoryProgressMap, navigate])
 
   // Redirect to debrief when mission completes
   useEffect(() => {

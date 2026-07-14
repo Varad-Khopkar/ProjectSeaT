@@ -120,3 +120,85 @@ export interface MissionResult {
   badgesUnlocked: string[]
   durationSeconds: number
 }
+
+// --- Mission Briefing Engine Types ---
+
+export interface AssetRef {
+  type: 'image' | 'video' | 'vector_diagram' | '3d_model' | 'pdf_ref'
+  url: string
+  caption?: string
+  metadata?: Record<string, any>
+}
+
+export interface BriefingBlock {
+  id: string
+  type: string // Resolved dynamically against the Plugin Block Registry
+  title?: string
+  content?: string
+  assets?: AssetRef[]
+  objectives?: string[] // Bullet list of goals for learning_objectives blocks
+  metadata?: Record<string, any> // Extensible configuration for custom block types
+}
+
+export interface BriefingSection {
+  id: string;
+  title: string;
+  description?: string;
+  blocks: BriefingBlock[];
+}
+
+export interface AssessmentQuestion {
+  id: string
+  question: string
+  options: string[]
+  correctIndex: number
+  explanation: string
+}
+
+export interface MissionAssessmentConfig {
+  id: string
+  title: string
+  passingScore: number // e.g. 80 for 80% passing threshold
+  timeLimitSeconds?: number
+  questions: AssessmentQuestion[]
+}
+
+export interface MissionUnlockRules {
+  prerequisites: string[] // List of required module/mission codes (e.g. ['SLS-04'])
+  requiresBriefing: boolean // True if briefing is a hard gate for the simulator
+  requiredScorePercent: number // Minimum quiz grade required to unlock simulator
+}
+
+export interface MissionBriefingConfig {
+  schemaVersion: string // Version of the config schema (e.g., "1.0.0")
+  version: string // Version of the course content (e.g., "1.4.2")
+  missionId: string
+  missionCode: string
+  metadata: {
+    title: string
+    description: string
+    difficulty: 'Beginner' | 'Intermediate' | 'Advanced'
+    category: 'Safety' | 'Operations' | 'Technical' | 'Compliance'
+    tags: string[]
+    estimatedDuration: string
+  }
+  unlockRules: MissionUnlockRules
+  sections: BriefingSection[]
+  assessment: MissionAssessmentConfig
+}
+
+export interface TheoryProgress {
+  missionId: string
+  status: 'locked' | 'not_started' | 'in_progress' | 'completed'
+  progressPercentage: number // Percentage of sections read
+  currentSectionId: string | null // For resume capability
+  currentBlockId: string | null // For resume capability
+  assessmentAttempts: number
+  assessmentHighScore: number
+  assessmentPassed: boolean
+  completionTimestamp: string | null
+  durationSeconds: number // Total seconds spent in briefing
+  answers: Record<string, number> // Saves seafarer's selected choices: { [questionId]: optionIndex }
+  readSectionIds?: string[] // Track list of read section IDs
+}
+

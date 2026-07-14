@@ -2,12 +2,30 @@ import React from 'react'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ProgressBar, Badge } from '@/components/ui/Feedback'
-import { mockModules } from '@/mock/db'
 import { Lock, Clock } from 'lucide-react'
 import { CATEGORY_COLORS } from '@/constants'
 import { cn } from '@/utils/formatters'
+import { useApp, getMissionIdFromModuleId } from '@/contexts/AppContext'
+import { useNavigate } from 'react-router-dom'
+import type { TrainingModule } from '@/mock/db'
 
 export const Modules: React.FC = () => {
+  const { modules, theoryProgressMap } = useApp()
+  const navigate = useNavigate()
+
+  const handleModuleAction = (module: TrainingModule) => {
+    const missionId = getMissionIdFromModuleId(module.id)
+    if (!missionId) return
+    const progress = theoryProgressMap[missionId]
+    const isTheoryPassed = progress ? progress.assessmentPassed : false
+
+    if (!isTheoryPassed) {
+      navigate(`/simulation/${missionId}/theory`)
+    } else {
+      navigate(`/simulation/${missionId}`)
+    }
+  }
+
   return (
     <div className="space-y-6 text-left">
       <div>
@@ -19,10 +37,13 @@ export const Modules: React.FC = () => {
 
       {/* Modules Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {mockModules.map((module) => {
+        {modules.map((module) => {
           const colorStyles = CATEGORY_COLORS[module.category] || 'bg-slate-100 text-slate-700'
           const isLocked = module.status === 'locked'
           const isCompleted = module.status === 'completed'
+          const missionId = getMissionIdFromModuleId(module.id)
+          const progress = theoryProgressMap[missionId]
+          const isTheoryPassed = progress ? progress.assessmentPassed : false
 
           return (
             <Card
@@ -80,16 +101,25 @@ export const Modules: React.FC = () => {
                       Prerequisites Locked
                     </Button>
                   ) : isCompleted ? (
-                    <Button size="sm" variant="secondary" className="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200">
+                    <Button 
+                      size="sm" 
+                      variant="secondary" 
+                      className="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200"
+                      onClick={() => handleModuleAction(module)}
+                    >
                       Completed / Review
                     </Button>
+                  ) : !isTheoryPassed ? (
+                    <Button size="sm" variant="outline" onClick={() => handleModuleAction(module)}>
+                      Start Theory Briefing
+                    </Button>
                   ) : module.progress > 0 ? (
-                    <Button size="sm" variant="primary">
+                    <Button size="sm" variant="primary" onClick={() => handleModuleAction(module)}>
                       Resume Checklist
                     </Button>
                   ) : (
-                    <Button size="sm" variant="outline">
-                      Start Training
+                    <Button size="sm" variant="primary" onClick={() => handleModuleAction(module)}>
+                      Launch Simulator
                     </Button>
                   )}
                 </div>

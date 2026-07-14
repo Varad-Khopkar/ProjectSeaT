@@ -32,6 +32,7 @@ export {
   SimulationPlay,
   SimulationDebrief,
   SimulationResults,
+  MissionBriefingEngine,
 } from './routes'
 
 // Engine entry points

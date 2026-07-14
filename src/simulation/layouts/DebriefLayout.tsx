@@ -7,6 +7,8 @@ import { Trophy, Clock, CheckCircle, Target, Award, ArrowLeft, RotateCcw, FileTe
 import { MissionHelpers, RewardHelpers } from '../utils'
 import { useNavigate } from 'react-router-dom'
 
+import { useApp } from '@/contexts/AppContext'
+
 /**
  * DebriefLayout
  *
@@ -20,6 +22,7 @@ import { useNavigate } from 'react-router-dom'
 export const DebriefLayout: React.FC = () => {
   const { state, activeMission, resetSimulation } = useSimulation()
   const navigate = useNavigate()
+  const { completeSimulation } = useApp()
 
   if (!activeMission) {
     return (
@@ -45,6 +48,9 @@ export const DebriefLayout: React.FC = () => {
   const allObjectives = Object.values(activeMission.scenes).flatMap((s) => s.objectives)
 
   const handleReturnToHub = () => {
+    if (passed) {
+      completeSimulation(activeMission.code, state.playerState.score)
+    }
     resetSimulation()
     navigate('/simulation')
   }

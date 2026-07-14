@@ -26,6 +26,7 @@ import {
   SimulationPlay,
   SimulationDebrief,
   SimulationResults,
+  MissionBriefingEngine,
 } from '@/simulation'
 
 /* ─── AuthGuard: redirects unauthenticated users to /landing ──────────────── */
@@ -53,6 +54,7 @@ function ProtectedApp() {
 
               {/* Simulation Engine Routes */}
               <Route path="/simulation"           element={<SimulationHub />} />
+              <Route path="/simulation/:missionId/theory" element={<MissionBriefingEngine />} />
               <Route path="/simulation/:missionId" element={<SimulationPlay />} />
               <Route path="/simulation/debrief"   element={<SimulationDebrief />} />
               <Route path="/simulation/results"   element={<SimulationResults />} />

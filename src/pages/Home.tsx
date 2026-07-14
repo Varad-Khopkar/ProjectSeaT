@@ -3,17 +3,17 @@ import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ProgressBar, Badge } from '@/components/ui/Feedback'
 import { useApp } from '@/contexts/AppContext'
-import { mockModules, mockUser } from '@/mock/db'
+import { mockUser } from '@/mock/db'
 import { Trophy, Anchor, CheckCircle, Bell, ArrowRight, ShieldAlert } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { formatScore } from '@/utils/formatters'
 
 export const Home: React.FC = () => {
-  const { notifications } = useApp()
+  const { notifications, modules } = useApp()
 
   // Find PSC module for active resume block
-  const activeModule = mockModules.find((m) => m.id === 'mod-1') || mockModules[0]
-  const completedCount = mockModules.filter((m) => m.status === 'completed').length
+  const activeModule = modules.find((m) => m.id === 'mod-1') || modules[0]
+  const completedCount = modules.filter((m) => m.status === 'completed').length
 
   return (
     <div className="space-y-6 text-left">
@@ -61,7 +61,7 @@ export const Home: React.FC = () => {
           </div>
           <div>
             <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold">MISSIONS COMPLETED</span>
-            <h3 className="font-h3 text-brand-navy mt-0.5">{completedCount} / {mockModules.length}</h3>
+            <h3 className="font-h3 text-brand-navy mt-0.5">{completedCount} / {modules.length}</h3>
           </div>
         </Card>
 
