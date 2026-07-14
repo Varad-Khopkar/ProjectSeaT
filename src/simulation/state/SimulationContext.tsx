@@ -589,7 +589,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       }
 
       let nextSceneId = prev.currentSceneId
-      let activeDialogueId = choice.targetDialogueId
+      let activeDialogueId: string | null = choice.targetDialogueId ?? null
 
       if (choiceId === 'ch-m1-netting-success-ok') {
         nextSceneId = 'm1_s2_office'
