@@ -202,7 +202,10 @@ export const Pitch: React.FC = () => {
             </h1>
             
             <p className="text-slate-300 font-body-lg mt-6 max-w-2xl mx-auto leading-relaxed">
-              We convert static slides and completion-only quizzes into fully playable, decision-driven simulation workflows built for the modern seafarer.
+              Maritime training is practical. The way it is delivered should be too.
+            </p>
+            <p className="text-slate-400 font-body mt-4 max-w-2xl mx-auto leading-relaxed">
+              ProjectSeaT transforms existing training content into interactive, decision-based learning experiences.
             </p>
             
             <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -245,9 +248,9 @@ export const Pitch: React.FC = () => {
               <div className="p-4 bg-brand-coral/10 border border-brand-coral/30 rounded-2xl flex items-start gap-3">
                 <Shield className="h-5 w-5 text-brand-coral shrink-0 mt-0.5" />
                 <div>
-                  <h5 className="text-sm font-semibold text-white">The Compliance Trap</h5>
+                  <h5 className="text-sm font-semibold text-white">The Completion Gap</h5>
                   <p className="text-xs text-slate-400 mt-1 leading-normal">
-                    Standard training prioritizes ticking check boxes. When crew focus on "completing the slides" instead of mastering the situation, real-world operational risk increases.
+                    Traditional training is effective at delivering information, but static formats provide limited opportunities for learners to actively apply that knowledge.
                   </p>
                 </div>
               </div>
@@ -257,26 +260,26 @@ export const Pitch: React.FC = () => {
               <span className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-6">The Traditional Lifecycle</span>
               
               <div className="w-full space-y-4">
-                <div className="flex items-center gap-3 p-3 bg-red-950/20 border border-brand-coral/20 rounded-xl">
-                  <div className="h-8 w-8 rounded-lg bg-brand-coral/10 border border-brand-coral/30 flex items-center justify-center text-xs font-mono text-brand-coral font-bold">1</div>
+                <div className="flex items-center gap-3 p-3 bg-[#12355B]/50 border border-brand-blue/30 rounded-xl">
+                  <div className="h-8 w-8 rounded-lg bg-brand-blue/20 border border-brand-blue/30 flex items-center justify-center text-xs font-mono text-brand-blue font-bold">1</div>
                   <span className="text-sm text-slate-200">Open Training Module</span>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-red-950/20 border border-brand-coral/20 rounded-xl">
-                  <div className="h-8 w-8 rounded-lg bg-brand-coral/10 border border-brand-coral/30 flex items-center justify-center text-xs font-mono text-brand-coral font-bold">2</div>
+                <div className="flex items-center gap-3 p-3 bg-[#12355B]/50 border border-brand-blue/30 rounded-xl">
+                  <div className="h-8 w-8 rounded-lg bg-brand-blue/20 border border-brand-blue/30 flex items-center justify-center text-xs font-mono text-brand-blue font-bold">2</div>
                   <span className="text-sm text-slate-200">Click Through 40+ Static Slides</span>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-red-950/20 border border-brand-coral/20 rounded-xl">
-                  <div className="h-8 w-8 rounded-lg bg-brand-coral/10 border border-brand-coral/30 flex items-center justify-center text-xs font-mono text-brand-coral font-bold">3</div>
+                <div className="flex items-center gap-3 p-3 bg-[#12355B]/50 border border-brand-blue/30 rounded-xl">
+                  <div className="h-8 w-8 rounded-lg bg-brand-blue/20 border border-brand-blue/30 flex items-center justify-center text-xs font-mono text-brand-blue font-bold">3</div>
                   <span className="text-sm text-slate-200">Complete Basic Quiz (A/B/C/D)</span>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-red-950/20 border border-brand-coral/20 rounded-xl">
-                  <div className="h-8 w-8 rounded-lg bg-brand-coral/10 border border-brand-coral/30 flex items-center justify-center text-xs font-mono text-brand-coral font-bold">4</div>
+                <div className="flex items-center gap-3 p-3 bg-[#12355B]/50 border border-brand-blue/30 rounded-xl">
+                  <div className="h-8 w-8 rounded-lg bg-brand-blue/20 border border-brand-blue/30 flex items-center justify-center text-xs font-mono text-brand-blue font-bold">4</div>
                   <span className="text-sm text-slate-200">Mark as Completed & File Certificate</span>
                 </div>
               </div>
               
-              <div className="w-full mt-6 pt-4 border-t border-brand-blue/20 text-center text-xs font-mono text-brand-coral font-semibold">
-                Result: Zero Context. Low Engagement. Unprepared Crew.
+              <div className="w-full mt-6 pt-4 border-t border-brand-blue/20 text-center text-xs font-mono text-brand-gold font-semibold">
+                Result: Limited Interaction. Passive Learning. Completion-Focused Training.
               </div>
             </div>
           </div>
@@ -298,7 +301,7 @@ export const Pitch: React.FC = () => {
               Existing Training Knowledge, <span className="text-brand-gold">Reimagined</span>
             </h2>
             <p className="text-slate-300 font-body max-w-2xl mx-auto leading-relaxed mb-12">
-              You do not need to rebuild your corporate training documents from scratch. ProjectSeaT provides a framework to convert existing material into immersive learning pipelines.
+              You do not need to rebuild your corporate training documents from scratch. ProjectSeaT provides a framework to convert existing material into structured, interactive learning experiences.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -328,9 +331,9 @@ export const Pitch: React.FC = () => {
 
               <div className="bg-[#12355B]/40 hover:bg-brand-navy/60 border border-brand-blue/20 p-6 rounded-2xl text-left shadow-medium transition-all duration-300 hover:scale-[1.03]">
                 <div className="h-10 w-10 rounded-xl bg-brand-blue/20 border border-brand-blue/40 flex items-center justify-center mb-4 text-brand-gold font-bold font-mono">IV</div>
-                <h4 className="text-white font-semibold mb-2">Measurable Performance</h4>
+                <h4 className="text-white font-semibold mb-2">Performance Visibility</h4>
                 <p className="text-xs text-slate-400 leading-normal">
-                  Metrics mapping how crew make decisions, identify deficiencies, and handle conversations.
+                  Training interactions can provide greater visibility into learner decisions, repeated mistakes, and activity performance.
                 </p>
               </div>
             </div>
@@ -352,8 +355,11 @@ export const Pitch: React.FC = () => {
             <h2 className="font-h1 text-white font-bold mb-6">
               The ProjectSeaT Training Journey
             </h2>
-            <p className="text-slate-300 font-body max-w-2xl mx-auto leading-relaxed mb-12">
+            <p className="text-slate-300 font-body max-w-2xl mx-auto leading-relaxed mb-4">
               ProjectSeaT structures the learner's journey into three clear phases that build operational competence.
+            </p>
+            <p className="text-brand-gold font-mono text-xs uppercase tracking-widest mb-12">
+              Learn the mission. Prepare for it. Experience it.
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
@@ -365,7 +371,7 @@ export const Pitch: React.FC = () => {
                 </div>
                 <h4 className="text-white font-semibold mb-2">Mission Briefing</h4>
                 <p className="text-xs text-slate-400 max-w-xs leading-normal">
-                  Trainees understand the situation, review mandatory regulations, and validate theory checks before starting the activity.
+                  Understand the situation, training objectives, and operational context before entering the activity.
                 </p>
               </div>
 
@@ -375,7 +381,7 @@ export const Pitch: React.FC = () => {
                 </div>
                 <h4 className="text-white font-semibold mb-2">Preparation Stage</h4>
                 <p className="text-xs text-slate-400 max-w-xs leading-normal">
-                  Trainees review required logs, verify procedures, study certificates, and prepare mental models for operational checks.
+                  Review procedures, equipment, and critical information required for the scenario.
                 </p>
               </div>
 
@@ -383,9 +389,9 @@ export const Pitch: React.FC = () => {
                 <div className="h-14 w-14 rounded-full bg-brand-coral/20 border-2 border-brand-coral flex items-center justify-center font-bold text-white z-10 shadow-medium mb-6">
                   03
                 </div>
-                <h4 className="text-white font-semibold mb-2">Simulation Run</h4>
+                <h4 className="text-white font-semibold mb-2">Simulation Stage</h4>
                 <p className="text-xs text-slate-400 max-w-xs leading-normal">
-                  Trainees enter the scenario, explore areas, handle dialogues, audit logs, and complete checklist objects.
+                  Enter an interactive environment, evaluate the situation, and make operational decisions.
                 </p>
               </div>
             </div>
@@ -411,16 +417,16 @@ export const Pitch: React.FC = () => {
               <div className="absolute inset-0 border border-brand-coral/10 rounded-[32px] pointer-events-none" />
               
               <h2 className="font-display text-white text-3xl md:text-5xl font-extrabold leading-tight">
-                "We Don't Gamify Slides.<br />
+                We Don't Gamify Slides.<br />
                 <span className="bg-gradient-to-r from-brand-gold to-brand-coral bg-clip-text text-transparent">
-                  We Gamify Decisions."
+                  We Gamify Decisions.
                 </span>
               </h2>
               
               <div className="h-0.5 bg-gradient-to-r from-transparent via-brand-blue/50 to-transparent my-8" />
               
               <p className="text-slate-300 font-body max-w-2xl mx-auto leading-relaxed">
-                Adding simple quizzes, badge rewards, and completion points to standard text blocks is not gamification. ProjectSeaT focuses on **decisions with consequences**.
+                ProjectSeaT focuses on meaningful learner interaction. The learner observes, understands, evaluates, decides, experiences the outcome, and learns from it.
               </p>
 
               <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
@@ -429,10 +435,18 @@ export const Pitch: React.FC = () => {
                   { step: '02', title: 'Understand', desc: 'Analyse status' },
                   { step: '03', title: 'Evaluate', desc: 'Review choices' },
                   { step: '04', title: 'Decide', desc: 'Take action' },
-                  { step: '05', title: 'Experience', desc: 'Accept impact' },
-                  { step: '06', title: 'Learn', desc: 'Debrief scores' }
+                  { step: '05', title: 'Experience', desc: 'Accept outcome' },
+                  { step: '06', title: 'Learn', desc: 'Review performance' }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-brand-navy/60 border border-brand-blue/20 p-3 rounded-xl flex flex-col items-center">
+                  <div 
+                    key={idx} 
+                    style={{
+                      transitionDelay: activeSlide === 4 ? `${100 + idx * 150}ms` : '0ms',
+                    }}
+                    className={`bg-brand-navy/60 border border-brand-blue/20 p-3 rounded-xl flex flex-col items-center transition-all duration-700 transform ${
+                      activeSlide === 4 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'
+                    }`}
+                  >
                     <span className="text-[10px] font-mono text-brand-gold font-bold">{item.step}</span>
                     <span className="text-xs text-white font-semibold mt-1">{item.title}</span>
                     <span className="text-[9px] text-slate-400 mt-0.5 text-center leading-tight">{item.desc}</span>
@@ -468,12 +482,12 @@ export const Pitch: React.FC = () => {
                 
                 <div className="divide-y divide-brand-blue/15 text-left text-xs md:text-sm">
                   {[
-                    { old: 'PPT Training Slide', new: 'Mission Briefing Section' },
-                    { old: 'Standard Procedure List', new: 'Interactive Preparation Notes' },
-                    { old: 'Static Diagram Illustration', new: 'Explorable Compartment Area' },
-                    { old: 'Multiple Choice Quiz Item', new: 'Branching Dialogue Decision' },
-                    { old: 'Right or Wrong Answer Tag', new: 'Dialogue Outcome & Consequence' },
-                    { old: 'Module Mark as Completed', new: 'Trainee Performance Recorded' }
+                    { old: 'PPT Slide', new: 'Mission Briefing' },
+                    { old: 'Procedure List', new: 'Interactive Preparation' },
+                    { old: 'Static Diagram', new: 'Explorable Environment' },
+                    { old: 'Multiple Choice Question', new: 'Operational Decision' },
+                    { old: 'Correct / Incorrect', new: 'Decision Consequence' },
+                    { old: 'Module Completed', new: 'Performance Recorded' }
                   ].map((row, idx) => (
                     <div key={idx} className="grid grid-cols-2 p-3">
                       <span className="text-slate-400">{row.old}</span>
@@ -486,15 +500,15 @@ export const Pitch: React.FC = () => {
               </div>
 
               <div className="flex flex-col justify-between bg-brand-navy/30 border border-brand-blue/20 rounded-2xl p-6 shadow-medium text-left">
-                <h4 className="text-white font-semibold mb-6">The Transformation Workflow</h4>
+                <h4 className="text-white font-semibold mb-6">The Transformation Process</h4>
                 
                 <div className="space-y-4">
                   {[
-                    { title: 'Training Content Input', desc: 'Existing documents, checklists, regulations, and procedure sheets.' },
-                    { title: 'Scenario Design mapping', desc: 'Mapping text guidelines into interactive locations, dialogues, and objects.' },
-                    { title: 'Interactive Activity builds', desc: 'Designing checklists, logs audit desk overlays, and hotspot coordinates.' },
-                    { title: 'Decision Simulation tests', desc: 'Running active decision nodes and checking for inspector feedback outcomes.' },
-                    { title: 'Performance Insights dashboards', desc: 'Translating activity choices into scoring reports for dashboard visibility.' }
+                    { title: 'Existing Training Content', desc: 'Training modules, procedures, and learning material.' },
+                    { title: 'Scenario Design', desc: 'Identify situations where learners can actively apply knowledge.' },
+                    { title: 'Interactive Experience', desc: 'Transform learning objectives into activities and decisions.' },
+                    { title: 'Decision Simulation', desc: 'Allow learners to evaluate situations and experience outcomes.' },
+                    { title: 'Performance Insights', desc: 'Capture meaningful interaction and training performance.' }
                   ].map((step, idx) => (
                     <div key={idx} className="flex gap-4">
                       <div className="h-8 w-8 rounded-lg bg-brand-blue/20 border border-brand-blue/40 flex items-center justify-center text-xs font-bold text-white shrink-0">
@@ -529,8 +543,11 @@ export const Pitch: React.FC = () => {
                 Built to Scale Across<br />
                 <span className="text-brand-gold">Your Training Ecosystem</span>
               </h2>
-              <p className="text-slate-300 font-body leading-relaxed mb-6">
-                ProjectSeaT is not built around a single PSC simulation. The platform employs a completely configuration-driven model that makes scaling quick and cost-effective.
+              <p className="text-slate-300 font-body leading-relaxed mb-4">
+                ProjectSeaT is not designed around a single simulation.
+              </p>
+              <p className="text-slate-400 font-small leading-relaxed mb-6">
+                It is designed as a repeatable training framework capable of supporting multiple courses, modules, lessons, and interactive activities.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -551,15 +568,16 @@ export const Pitch: React.FC = () => {
             </div>
 
             <div className="bg-[#12355B]/40 border border-brand-blue/20 rounded-3xl p-6 md:p-8 flex flex-col justify-center relative shadow-large text-left">
-              <span className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-6 block text-center">Structure Hierarchy</span>
+              <span className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-4 block text-center">Structure Hierarchy</span>
+              <span className="text-xs text-brand-gold font-mono font-semibold block text-center mb-6">One structured framework. Multiple training experiences.</span>
               
               <div className="space-y-4">
                 {[
-                  { level: 'Learning Path', item: 'Deck Department Compliance paths' },
-                  { level: 'Course', item: 'PSC Inspection Preparation course' },
-                  { level: 'Module', item: 'PSC Port State Control Inspection' },
-                  { level: 'Lesson', item: 'Vessel Compartments Audits' },
-                  { level: 'Activity', item: 'MLC Rest Hours Logs validation' }
+                  { level: 'Learning Path', item: 'Deck Operations' },
+                  { level: 'Course', item: 'Operational Compliance' },
+                  { level: 'Module', item: 'Inspection Preparation' },
+                  { level: 'Lesson', item: 'Vessel Compartment Review' },
+                  { level: 'Activity', item: 'Interactive Inspection Scenario' }
                 ].map((row, idx) => (
                   <div key={idx} className="flex items-center gap-3">
                     <div className="w-24 shrink-0 text-xs font-mono text-brand-gold uppercase tracking-wider">{row.level}</div>
@@ -572,7 +590,7 @@ export const Pitch: React.FC = () => {
               </div>
 
               <div className="text-[10px] text-slate-400 text-center font-mono mt-6">
-                Reusable engines + structured data configs = immediate content expansion.
+                Repeatable training framework for enterprise scale.
               </div>
             </div>
           </div>
@@ -591,51 +609,24 @@ export const Pitch: React.FC = () => {
           >
             <div className="bg-[#12355B]/30 border border-brand-blue/20 rounded-3xl p-6 relative shadow-large flex flex-col justify-between text-left">
               <div className="flex justify-between items-center mb-6">
-                <span className="text-xs font-mono text-slate-400 uppercase tracking-widest">Active Performance Insights</span>
-                <span className="text-xs font-mono text-brand-gold font-semibold bg-brand-gold/10 px-2 py-0.5 border border-brand-gold/20 rounded">PSC-01</span>
+                <span className="text-xs font-mono text-slate-400 uppercase tracking-widest">ILLUSTRATIVE TRAINING INSIGHTS</span>
+                <span className="text-xs font-mono text-brand-gold font-semibold bg-brand-gold/10 px-2 py-0.5 border border-brand-gold/20 rounded">DEMO</span>
               </div>
 
               <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300">Inspector Trust Rating</span>
-                    <span className="text-brand-gold font-bold">85%</span>
+                {[
+                  { name: 'Decisions Made', val: '85%' },
+                  { name: 'Incorrect Actions', val: '2' },
+                  { name: 'Repeated Mistakes', val: '0' },
+                  { name: 'Scenario Attempts', val: '1' },
+                  { name: 'Activity Completion Time', val: '12m 45s' },
+                  { name: 'Learning Progression', val: '92%' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between text-xs py-1 border-b border-brand-blue/10">
+                    <span className="text-slate-300">{item.name}</span>
+                    <span className="text-brand-gold font-bold font-mono">{item.val}</span>
                   </div>
-                  <div className="w-full bg-brand-navy border border-brand-blue/20 h-2 rounded-full overflow-hidden">
-                    <div className="bg-brand-gold h-full w-[85%] rounded-full" />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300">Inspection Deficiencies Found</span>
-                    <span className="text-brand-coral font-bold">4 / 5</span>
-                  </div>
-                  <div className="w-full bg-brand-navy border border-brand-blue/20 h-2 rounded-full overflow-hidden">
-                    <div className="bg-brand-coral h-full w-[80%] rounded-full" />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300">Decision Compliance Score</span>
-                    <span className="text-brand-blue font-bold">92%</span>
-                  </div>
-                  <div className="w-full bg-brand-navy border border-brand-blue/20 h-2 rounded-full overflow-hidden">
-                    <div className="bg-brand-blue h-full w-[92%] rounded-full" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-brand-blue/20">
-                <div>
-                  <span className="text-[10px] text-slate-400 block uppercase">Completion Time</span>
-                  <span className="text-sm font-semibold text-white">12 min 45s</span>
-                </div>
-                <div>
-                  <span className="text-[10px] text-slate-400 block uppercase">Status Result</span>
-                  <span className="text-sm font-semibold text-green-400">Passed</span>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -646,24 +637,24 @@ export const Pitch: React.FC = () => {
                 <span className="text-brand-blue">To Performance Visibility</span>
               </h2>
               <p className="text-slate-300 font-body leading-relaxed mb-6 font-medium">
-                "Because completing training and understanding training are not the same thing."
+                Traditional learning platforms primarily provide visibility into completion and assessment results.
               </p>
               <p className="text-slate-400 font-small leading-relaxed mb-6">
-                Traditional LMS platforms tell you if someone scrolled to the end of a presentation. ProjectSeaT logs how crew evaluate situations under pressure, how they verify logbook records, and whether they understand the operational impact of their dialogue choices.
+                ProjectSeaT is designed to provide deeper visibility into how learners interact with scenarios, evaluate situations, and make decisions.
               </p>
 
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-brand-gold" />
-                  <span className="text-xs text-slate-300">Track decisions made during operational scenarios</span>
+                  <span className="text-xs text-slate-300">Decisions Made</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-brand-gold" />
-                  <span className="text-xs text-slate-300">Identify incorrect actions and repeated crew mistakes</span>
+                  <span className="text-xs text-slate-300">Incorrect Actions & Repeated Mistakes</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-brand-gold" />
-                  <span className="text-xs text-slate-300">Monitor learning progression and compliance scores</span>
+                  <span className="text-xs text-slate-300">Scenario Attempts & Activity Completion Time</span>
                 </div>
               </div>
             </div>
@@ -689,6 +680,11 @@ export const Pitch: React.FC = () => {
               Start focused. Prove the experience. Scale the platform. The ProjectSeaT MSP delivers the complete operational training lifecycle.
             </p>
 
+            <div className="p-4 bg-brand-blue/10 border border-brand-blue/30 rounded-2xl max-w-2xl mx-auto mb-8 text-center text-xs">
+              <span className="text-brand-gold font-semibold uppercase block mb-1">MSP Objective</span>
+              <span className="text-slate-300">Prove that existing maritime training content can be transformed into an engaging, repeatable, and interactive learning experience.</span>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
               <div className="bg-[#12355B]/40 border border-brand-blue/20 p-6 rounded-2xl shadow-medium flex flex-col justify-between">
                 <div>
@@ -699,10 +695,11 @@ export const Pitch: React.FC = () => {
                     <h4 className="text-white font-semibold">Platform Experience</h4>
                   </div>
                   <ul className="space-y-2 text-xs text-slate-400">
-                    <li className="flex gap-2">➔ <span>Learner login and profile roles</span></li>
-                    <li className="flex gap-2">➔ <span>Structured learning compliance paths</span></li>
-                    <li className="flex gap-2">➔ <span>Course and training module navigation</span></li>
-                    <li className="flex gap-2">➔ <span>General progress and scoring visibility</span></li>
+                    <li className="flex gap-2">➔ <span>Learner authentication</span></li>
+                    <li className="flex gap-2">➔ <span>Structured learning paths</span></li>
+                    <li className="flex gap-2">➔ <span>Course and module navigation</span></li>
+                    <li className="flex gap-2">➔ <span>Training progress visibility</span></li>
+                    <li className="flex gap-2">➔ <span>Role-based platform experience</span></li>
                   </ul>
                 </div>
               </div>
@@ -716,10 +713,11 @@ export const Pitch: React.FC = () => {
                     <h4 className="text-white font-semibold">Interactive Training</h4>
                   </div>
                   <ul className="space-y-2 text-xs text-slate-400">
-                    <li className="flex gap-2">➔ <span>Mandatory pre-briefing MCQ assessments</span></li>
-                    <li className="flex gap-2">➔ <span>Interactive vessel audit inspection rooms</span></li>
-                    <li className="flex gap-2">➔ <span>Branching dialogues with trust scores</span></li>
-                    <li className="flex gap-2">➔ <span>MLC Watchkeeper rest-hour audit tools</span></li>
+                    <li className="flex gap-2">➔ <span>Mission Briefing</span></li>
+                    <li className="flex gap-2">➔ <span>Preparation Stage</span></li>
+                    <li className="flex gap-2">➔ <span>Interactive Simulation</span></li>
+                    <li className="flex gap-2">➔ <span>Decision-based activities</span></li>
+                    <li className="flex gap-2">➔ <span>Scenario outcomes</span></li>
                   </ul>
                 </div>
               </div>
@@ -733,10 +731,9 @@ export const Pitch: React.FC = () => {
                     <h4 className="text-white font-semibold">Training Management</h4>
                   </div>
                   <ul className="space-y-2 text-xs text-slate-400">
-                    <li className="flex gap-2">➔ <span>Admin-based training assignment checks</span></li>
-                    <li className="flex gap-2">➔ <span>Automatic learner progression tracking</span></li>
-                    <li className="flex gap-2">➔ <span>Detailed metrics on deficiencies and decisions</span></li>
-                    <li className="flex gap-2">➔ <span>Structured completion performance reports</span></li>
+                    <li className="flex gap-2">➔ <span>Training assignment</span></li>
+                    <li className="flex gap-2">➔ <span>Learner progress tracking</span></li>
+                    <li className="flex gap-2">➔ <span>Basic performance visibility</span></li>
                   </ul>
                 </div>
               </div>
@@ -756,23 +753,30 @@ export const Pitch: React.FC = () => {
             }`}
           >
             <span className="text-brand-blue text-xs font-mono uppercase tracking-widest mb-3 inline-block">09. The Vision</span>
-            <h2 className="font-h1 text-white font-bold mb-6">
+            <h2 className="font-h1 text-white font-bold mb-8">
               A Training Ecosystem Built Around Maritime Experience
             </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10 text-left">
+              <div className="p-6 bg-brand-navy/60 border border-brand-blue/20 rounded-2xl">
+                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest block mb-2">Today</span>
+                <span className="text-sm font-semibold text-white">One Training Module ➔ One Interactive Experience</span>
+              </div>
+              <div className="p-6 bg-[#12355B]/60 border border-brand-gold/30 rounded-2xl shadow-[0_0_12px_rgba(244,162,97,0.1)]">
+                <span className="text-[10px] font-mono text-brand-gold uppercase tracking-widest block mb-2">The Opportunity</span>
+                <span className="text-sm font-semibold text-white">Hundreds of Training Modules ➔ A Maritime Training Ecosystem</span>
+              </div>
+            </div>
             
-            <div className="p-8 md:p-10 bg-[#12355B]/30 border border-brand-blue/20 rounded-3xl shadow-large max-w-3xl mx-auto text-left relative overflow-hidden">
+            <div className="p-6 md:p-8 bg-[#12355B]/30 border border-brand-blue/20 rounded-3xl shadow-large max-w-3xl mx-auto text-left relative overflow-hidden">
               <span className="text-6xl text-brand-blue/20 font-serif absolute -top-2 left-4 pointer-events-none">“</span>
-              <p className="text-slate-200 font-body-lg italic leading-relaxed relative z-10">
+              <p className="text-slate-200 font-body italic leading-relaxed relative z-10">
                 Training should not end when the learner clicks 'Complete'. Training should create an experience the learner understands, remembers, and applies.
               </p>
-              <div className="mt-6 pt-4 border-t border-brand-blue/20 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-brand-blue/20 flex items-center justify-between">
                 <span className="text-xs font-mono text-brand-gold uppercase tracking-widest">ProjectSeaT Core Philosophy</span>
               </div>
             </div>
-
-            <p className="text-slate-400 font-small max-w-2xl mx-auto mt-8 leading-relaxed">
-              Our vision is to build a digital training environment where maritime professionals do not simply study operational situations. They experience them.
-            </p>
           </div>
         </section>
 
@@ -803,7 +807,7 @@ export const Pitch: React.FC = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
               <Link to="/landing" className="w-full">
                 <button className="w-full px-6 py-4 bg-brand-gold hover:bg-brand-gold/80 text-brand-navy font-bold rounded-xl flex items-center justify-center gap-2 shadow-medium hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-                  Explore Platform Demo <Play className="h-4 w-4 fill-brand-navy text-brand-navy" />
+                  Experience ProjectSeaT <Play className="h-4 w-4 fill-brand-navy text-brand-navy" />
                 </button>
               </Link>
               
