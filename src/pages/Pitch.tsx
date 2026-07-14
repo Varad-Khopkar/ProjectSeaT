@@ -4,6 +4,7 @@ import {
   ChevronDown,
   ChevronUp,
   ArrowRight,
+  ArrowDown,
   Play,
   CheckCircle,
   Shield,
@@ -888,43 +889,37 @@ export const Pitch: React.FC = () => {
                 One structured framework. Multiple training experiences.
               </span>
               
-              <div className="space-y-4 relative">
-                {/* Connecting vertical line */}
-                <div className="absolute top-2 bottom-2 left-[28px] w-0.5 bg-brand-gold/20 hidden md:block">
-                  <div 
-                    className="w-full bg-brand-gold transition-all ease-out"
-                    style={{ 
-                      height: activeSlide === 6 ? '100%' : '0%',
-                      transitionDuration: '1200ms',
-                      transitionDelay: '400ms'
-                    }}
-                  />
-                </div>
-
+              <div className="space-y-2 relative flex flex-col items-center w-full">
                 {[
                   { level: 'Learning Path', item: 'Deck Operations', delay: 400 },
                   { level: 'Course', item: 'Operational Compliance', delay: 650 },
                   { level: 'Module', item: 'Inspection Preparation', delay: 900 },
                   { level: 'Lesson', item: 'Vessel Compartment Review', delay: 1150 },
                   { level: 'Activity', item: 'Interactive Inspection Scenario', delay: 1400 }
-                ].map((row, idx) => (
-                  <div 
-                    key={idx} 
-                    className={`flex items-center gap-3 relative z-10 transition-all duration-500 transform ${
-                      activeSlide === 6 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-                    }`}
-                    style={{ transitionDelay: activeSlide === 6 ? `${row.delay}ms` : '0ms' }}
-                  >
-                    <div className="w-24 shrink-0 text-xs font-mono text-brand-gold uppercase tracking-wider">{row.level}</div>
-                    <div className="h-5 w-5 flex items-center justify-center text-slate-500">➔</div>
-                    <div className={`w-full bg-[#12355B]/60 border p-2 rounded-lg text-xs font-semibold text-white transition-all duration-500 ${
-                      activeSlide === 6 ? 'border-brand-blue/40 shadow-medium' : 'border-brand-blue/10 shadow-none'
-                    }`}
-                    style={{ transitionDelay: activeSlide === 6 ? `${row.delay + 150}ms` : '0ms' }}
+                ].map((row, idx, arr) => (
+                  <React.Fragment key={idx}>
+                    <div 
+                      className={`w-full max-w-md bg-[#12355B]/60 border p-3 rounded-xl flex items-center justify-between transition-all duration-500 transform ${
+                        activeSlide === 6 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+                      } ${
+                        activeSlide === 6 ? 'border-brand-gold/40 shadow-[0_0_15px_rgba(244,162,97,0.1)]' : 'border-brand-blue/10 shadow-none'
+                      }`}
+                      style={{ transitionDelay: activeSlide === 6 ? `${row.delay}ms` : '0ms' }}
                     >
-                      {row.item}
+                      <div className="text-xs font-mono text-brand-gold uppercase tracking-widest font-bold">{row.level}</div>
+                      <div className="text-xs font-semibold text-white font-body">{row.item}</div>
                     </div>
-                  </div>
+                    {idx < arr.length - 1 && (
+                      <div 
+                        className={`transition-all duration-500 transform ${
+                          activeSlide === 6 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                        }`}
+                        style={{ transitionDelay: activeSlide === 6 ? `${row.delay + 150}ms` : '0ms' }}
+                      >
+                        <ArrowDown className="h-4 w-4 text-brand-gold my-1 animate-pulse" />
+                      </div>
+                    )}
+                  </React.Fragment>
                 ))}
               </div>
 
