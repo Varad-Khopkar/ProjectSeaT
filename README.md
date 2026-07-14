@@ -5,216 +5,234 @@
 [![Tailwind CSS](https://img.shields.io/badge/CSS-Tailwind%20v4-blue?style=flat\&logo=tailwindcss\&color=38B2AC)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat)](https://opensource.org/licenses/MIT)
 
-**ProjectSeaT** is a gamified and interactive maritime training platform designed to transform conventional slide-based seafarer training into scenario-driven learning experiences.
+**ProjectSeaT** is an interactive maritime training platform that transforms conventional slide-based training into scenario-driven learning experiences.
 
-Instead of passively reading presentations and completing standard assessments, trainees prepare for a mission, understand the required theory, enter an interactive maritime scenario, make operational decisions, inspect simulated environments, communicate with virtual stakeholders, and receive a structured performance debrief.
+Instead of only reading procedures and completing quizzes, trainees prepare for a mission, apply their knowledge inside an interactive maritime scenario, make operational decisions, and receive a structured performance debrief.
 
-The current product prototype demonstrates this approach through a **Port State Control (PSC) inspection simulation**.
+The current prototype demonstrates this training model through a **Port State Control (PSC) inspection simulation**.
+
+> **Don't just learn the procedure. Experience the situation.**
 
 ---
 
-## 🌊 The Problem
+## 🌊 The Training Gap
 
-Maritime training often relies heavily on presentations, documents, videos, and conventional multiple-choice assessments.
+Maritime training is built on strong regulations, procedures, and operational knowledge. However, much of this knowledge is delivered through presentations, documents, videos, and conventional assessments.
 
-These formats can explain regulations and procedures, but they provide limited opportunities for trainees to **apply knowledge in realistic operational situations**.
+These formats explain **what a trainee should know**.
 
-A trainee may know the correct answer in an MCQ while still struggling to:
+The challenge begins when the trainee must decide **what to do**.
 
-* Identify a deficiency during an inspection.
-* Review operational documents correctly.
-* Prioritize tasks under pressure.
-* Communicate professionally with an inspector.
-* Understand how individual decisions affect an inspection outcome.
+A seafarer may understand an inspection procedure in theory but still struggle to identify a deficiency, analyse operational records, communicate with an inspector, or prioritize tasks during a real situation.
 
-**ProjectSeaT bridges the gap between knowing the procedure and applying it.**
+ProjectSeaT addresses the gap between:
+
+> **Knowing the procedure and applying it in context.**
 
 ---
 
 ## 🎯 Unique Selling Point (USP)
 
-### Train Through Decisions, Not Slides
+### The Interactive Practice Layer for Maritime Training
 
-ProjectSeaT converts maritime training modules into **interactive, scenario-driven missions where trainee decisions directly influence the outcome**.
+**ProjectSeaT gives seafarers a controlled environment to practice maritime decisions before they must make them in real operational situations.**
 
-The platform combines theoretical learning, visual inspection, document verification, decision-making, communication, and performance analysis inside a single training workflow.
+The platform transforms maritime training modules into interactive scenarios built around a complete training loop:
+
+> **Learn → Prepare → Simulate → Decide → Evaluate**
 
 ### What Makes ProjectSeaT Different?
 
-#### 🎮 Scenario-Based Gamified Training
+#### 🎮 Scenario-Based Training
 
-Training modules become playable maritime missions instead of linear presentations.
+Training modules become interactive maritime missions instead of linear presentations.
 
-#### 🧠 Knowledge-to-Application Workflow
+Trainees actively explore situations, complete objectives, inspect information, and respond to operational events.
 
-Trainees first understand the mission and required theory before applying that knowledge inside the simulation.
+#### 🧠 Knowledge Must Be Applied
 
-#### ⚓ Maritime-Specific Simulation
+Knowing the correct MCQ answer is not enough.
 
-Interactions are designed around real maritime procedures, documentation, inspections, deficiencies, and operational environments.
+Trainees must interpret information, identify problems, investigate the environment, and determine the correct action.
 
-#### 💬 Decision-Driven Interactions
+#### ⚓ Maritime-Focused Experiences
 
-Dialogue choices and operational decisions can influence inspector cooperation, trust, mission progress, and final performance.
+Training scenarios are designed around maritime workflows, including vessel inspections, documentation, crew records, operational procedures, deficiencies, and stakeholder interactions.
 
-#### 📊 Multi-Factor Performance Evaluation
+#### 🔀 Decisions Influence Outcomes
 
-Performance is evaluated using more than quiz scores. The platform can measure inspection accuracy, objective completion, deficiencies identified, decision quality, and stakeholder interaction.
+Trainee choices can affect mission progress, stakeholder cooperation, identified findings, and final performance.
 
-#### 🧩 Scalable Training Engine
+Different decisions can produce different training outcomes.
 
-Training scenarios are designed around reusable, configuration-driven structures. New modules can reuse the same briefing, assessment, interaction, and scoring systems without rebuilding the entire platform.
+#### 📊 Performance Beyond Pass or Fail
+
+ProjectSeaT evaluates how the trainee performed during the mission.
+
+Performance can be measured through:
+
+* Knowledge readiness.
+* Objective completion.
+* Inspection accuracy.
+* Deficiencies identified.
+* Missed findings.
+* Decision quality.
+* Communication choices.
+* Overall mission performance.
+
+#### 🔁 Existing Training Can Become Interactive
+
+Existing maritime training content can be reorganized into reusable mission briefings, assessments, interactive scenarios, decision points, and performance evaluations.
+
+This allows organizations to progressively convert conventional training material into interactive learning experiences.
+
+---
+
+## 💡 Core Value Proposition
+
+| Traditional Training    | ProjectSeaT                         |
+| :---------------------- | :---------------------------------- |
+| Read the procedure      | Apply the procedure                 |
+| Watch the scenario      | Enter the scenario                  |
+| Answer an MCQ           | Make an operational decision        |
+| Receive a quiz score    | Receive a performance debrief       |
+| Follow a fixed path     | Experience decision-based outcomes  |
+| Learn what can go wrong | Experience the impact of a decision |
+
+ProjectSeaT does not replace instructors, regulated certifications, or onboard training.
+
+It adds a **practice layer between maritime theory and real vessel experience**.
 
 ---
 
 ## 🚢 Minimum Sellable Product (MSP)
 
-The **Minimum Sellable Product** represents the smallest commercially usable version of ProjectSeaT that delivers the platform's core training value.
+The ProjectSeaT **Minimum Sellable Product** proves one core commercial promise:
 
-The MSP focuses on one complete training lifecycle:
+> **A maritime training module can be transformed into a complete interactive learning and simulation experience.**
 
-**Learn → Prepare → Simulate → Decide → Evaluate**
+The MSP is built around the full ProjectSeaT training lifecycle:
 
-### 1. Mission Briefing Engine
+> **Learn → Prepare → Simulate → Decide → Evaluate**
 
-A reusable pre-simulation training framework containing:
+### 1. Learn | Mission Briefing
 
-* Mission introduction.
-* Learning objectives.
-* Theory and information cards.
-* Operational notes.
+A reusable Mission Briefing Engine prepares trainees before simulation entry.
+
+It provides:
+
+* Mission context and objectives.
+* Theory and operational notes.
+* Information cards.
 * Knowledge assessments.
-* MCQ grading and validation.
-* Completion state tracking.
+* MCQ grading.
+* Completion tracking.
 
-The trainee must understand the mission requirements before entering the simulation.
+The trainee must understand the mission requirements before progressing.
 
-### 2. Interactive PSC Inspection Mission
+### 2. Prepare | Mission Readiness
 
-The first complete playable training scenario simulates a **Port State Control inspection**.
+The trainee is introduced to the operational situation and understands:
 
-The trainee can:
+* Their role.
+* Mission objectives.
+* Relevant procedures.
+* Expected responsibilities.
+* Mission conditions.
+
+This connects theoretical knowledge with the upcoming scenario.
+
+### 3. Simulate | PSC Inspection Mission
+
+The first playable ProjectSeaT mission simulates a **Port State Control inspection**.
+
+Trainees can:
 
 * Navigate simulated vessel compartments.
-* Inspect interactive visual hotspots.
-* Review certificates and operational documents.
-* Analyse crew and vessel records.
+* Inspect visual hotspots.
+* Review maritime certificates and documents.
+* Analyse crew and operational records.
 * Inspect MLC rest-hour logs.
 * Identify potential deficiencies.
 * Interact with a PSC inspector.
-* Make decisions that affect the inspection.
+* Complete mission objectives.
 
-### 3. Decision and Interaction Engine
+### 4. Decide | Decision & Interaction System
 
-The simulation supports branching interactions where trainee choices can influence:
+During the mission, trainees must make decisions using the information available.
+
+Choices may influence:
 
 * Inspector cooperation.
 * Trust levels.
 * Mission progression.
-* Training outcomes.
+* Identified findings.
 * Performance scores.
 
-This enables ProjectSeaT to evaluate both **technical knowledge and operational communication**.
+The objective is to evaluate whether trainees can apply their knowledge within an operational context.
 
-### 4. Objective and Progress Tracking
+### 5. Evaluate | Performance Debrief
 
-Mission objectives are dynamically tracked throughout the simulation.
+At mission completion, trainee activity is converted into a structured performance report.
 
-The trainee can monitor:
+The debrief can evaluate:
 
-* Completed objectives.
-* Pending inspection tasks.
-* Identified deficiencies.
-* Mission progress.
-* Performance indicators.
-
-### 5. Scoring and Performance Debrief
-
-At the end of a mission, ProjectSeaT evaluates trainee performance using multiple factors.
-
-The performance report can include:
-
-* Objective completion.
+* Objectives completed.
 * Inspection accuracy.
-* Deficiencies identified.
+* Correct deficiencies identified.
 * Missed findings.
-* Inspector trust.
 * Decision quality.
+* Inspector trust.
+* Communication performance.
 * Overall mission score.
 
-The goal is not simply to mark a trainee as **Pass or Fail**, but to explain **how they performed and where they need improvement**.
+The trainee should leave the mission understanding:
 
-### 6. Learner Training Dashboard
-
-The learner dashboard provides a central workspace for:
-
-* Training discovery.
-* Mission access.
-* Compliance progress.
-* Training scores.
-* Learner status.
-* Performance history.
-* Leaderboard visibility.
+> **What I did well. What I missed. What I should improve.**
 
 ---
 
-## 🧭 Core Product Features
+## 🧭 Core Features
 
-### Mission Briefing
+### Mission Briefing Engine
 
-Every simulation begins with structured preparation.
-
-The briefing engine introduces the scenario, explains objectives, presents required theory, and validates trainee understanding before simulation access.
+Reusable theory delivery, mission objectives, information cards, assessments, MCQ grading, and completion tracking.
 
 ### Interactive Vessel Environments
 
-Training missions use visual maritime environments containing interactive inspection points.
-
-The current PSC mission includes simulated areas such as:
-
-* Ship Office.
-* Navigation Bridge.
-* Engine Room.
-
-Interactive hotspots allow trainees to investigate equipment, documents, and operational conditions.
+Visual maritime environments containing interactive inspection points across simulated vessel compartments.
 
 ### Document Inspection
 
-The Document Desk allows trainees to inspect maritime certificates, safety records, and vessel documentation.
-
-Documents can contain compliant or deficient information that must be correctly identified during the inspection.
+Review maritime certificates, vessel records, and safety documentation to identify compliant and deficient information.
 
 ### MLC Rest-Hour Analysis
 
-Trainees review simulated watchkeeper and rest-hour records against Maritime Labour Convention requirements.
-
-The activity tests the trainee's ability to identify potential fatigue and compliance issues from operational records.
+Analyse simulated watchkeeper records against Maritime Labour Convention rest-hour requirements.
 
 ### Branching Dialogue System
 
-Conversations with the PSC inspector use decision-based dialogue trees.
-
-Different responses can affect the inspector's cooperation and trust, reinforcing the importance of professional communication during real inspections.
+Interact with the PSC inspector through decision-based conversations that influence cooperation and trust.
 
 ### Dynamic Mission Objectives
 
-A mission objective panel tracks active inspection tasks and trainee progress without interrupting the simulation experience.
+Track completed tasks, pending inspections, identified deficiencies, and mission progress.
 
 ### Interactive Feedback
 
-Inspection actions generate contextual feedback to help trainees understand whether their observations and decisions were correct.
+Receive contextual feedback based on inspection actions and trainee decisions.
 
-### Performance Scoring
+### Multi-Factor Performance Scoring
 
-ProjectSeaT combines mission activity data into a structured performance evaluation instead of relying exclusively on MCQ scores.
+Evaluate mission performance using inspection activity, findings, objectives, decisions, and interactions.
 
 ### Responsive Training Experience
 
-The platform is designed to adapt across supported screen dimensions while maintaining the usability of dashboards, training content, and simulation interfaces.
+Platform and simulation interfaces adapt to supported screen dimensions while maintaining functional layout and interaction accessibility.
 
 ### Keyboard Accessibility
 
-Core overlays and interactive panels support keyboard-based closure and navigation patterns, including `Escape` key handling for major simulation interfaces.
+Major overlays and interactive panels support keyboard-based navigation and `Escape` key closure patterns.
 
 ---
 
@@ -224,50 +242,35 @@ ProjectSeaT structures training into three primary stages.
 
 ### Stage 1 | Mission Briefing
 
-The trainee understands:
+The trainee learns the scenario, objectives, regulations, and operational concepts.
 
-* The scenario.
-* Mission objectives.
-* Required regulations.
-* Operational concepts.
-* Expected outcomes.
-
-Knowledge is validated through assessments before progression.
+Knowledge is validated before progression.
 
 ### Stage 2 | Preparation
 
-The trainee reviews mission context and prepares to enter the operational scenario.
-
-This stage connects theoretical knowledge with the upcoming simulation.
+The trainee reviews the mission context and prepares to enter the operational scenario.
 
 ### Stage 3 | Simulation
 
-The trainee enters the interactive environment and must:
+The trainee enters the interactive environment to:
 
 * Explore.
 * Inspect.
 * Analyse.
 * Communicate.
-* Make decisions.
+* Decide.
 * Complete objectives.
 
 The mission concludes with a structured performance debrief.
 
 ---
 
-## 🏗️ Product Scalability
+## 📈 Commercial Scalability
 
-ProjectSeaT is being designed as a **reusable maritime training platform rather than a single PSC simulation**.
+The current prototype proves the ProjectSeaT training model through a complete **Port State Control inspection mission**.
 
-The underlying training structure follows:
+The same training lifecycle can be applied to future maritime scenarios such as:
 
-**Learning Path → Course → Module → Lesson → Activity**
-
-Reusable briefing, assessment, objective, interaction, and scoring systems allow future maritime training scenarios to follow a common platform architecture.
-
-Potential training scenarios include:
-
-* Port State Control inspections.
 * Vessel vetting preparation.
 * Safety drills.
 * Emergency response.
@@ -277,7 +280,13 @@ Potential training scenarios include:
 * Crew familiarisation.
 * Documentation audits.
 
-The long-term goal is to convert existing maritime training content into structured, interactive training experiences at scale.
+The scenario changes.
+
+> **The training model remains consistent.**
+
+New training experiences follow the same reusable structure:
+
+> **Brief the trainee. Prepare the trainee. Place them in the situation. Force a decision. Evaluate the outcome.**
 
 ---
 
@@ -287,27 +296,25 @@ ProjectSeaT uses a maritime-inspired visual system influenced by naval operation
 
 ### Harbor Sunset Palette
 
-| Color | Name             | Hex       | Application                                             |
-| :---- | :--------------- | :-------- | :------------------------------------------------------ |
-| 🔵    | **Harbor Navy**  | `#12355B` | Primary surfaces, navigation, and structural containers |
-| 🌊    | **Sea Blue**     | `#2F6690` | Interactive controls, progress indicators, and borders  |
-| 🟠    | **Harbor Gold**  | `#F4A261` | Objectives, achievements, and positive indicators       |
-| 🔴    | **Sunset Coral** | `#E76F51` | Warnings, deficiencies, and critical states             |
-| ⚪     | **Pearl**        | `#FAF7F2` | Primary text and light surface contrast                 |
+| Color | Name             | Hex       | Application                       |
+| :---- | :--------------- | :-------- | :-------------------------------- |
+| 🔵    | **Harbor Navy**  | `#12355B` | Primary surfaces and navigation   |
+| 🌊    | **Sea Blue**     | `#2F6690` | Interactive controls and progress |
+| 🟠    | **Harbor Gold**  | `#F4A261` | Objectives and achievements       |
+| 🔴    | **Sunset Coral** | `#E76F51` | Warnings and deficiencies         |
+| ⚪     | **Pearl**        | `#FAF7F2` | Text and surface contrast         |
 
-### Typography
+**Typeface:** `Manrope`
 
-ProjectSeaT uses **Manrope** as its primary typeface to maintain strong readability across dashboards, training interfaces, and simulation overlays.
-
-The interface follows a consistent component system for cards, controls, dialogs, and interactive states.
+The interface follows a consistent component system for cards, controls, dialogs, interactive states, and responsive layouts.
 
 ---
 
 ## 🛠️ Technology Stack
 
-ProjectSeaT is built using **React 19, TypeScript, and Vite**, with **Tailwind CSS v4** powering the responsive design system. React Router manages application navigation, while Lucide React provides the platform's iconography.
+ProjectSeaT is built with **React 19, TypeScript, and Vite**, with **Tailwind CSS v4** powering the responsive design system. React Router handles application navigation, while Lucide React provides platform iconography.
 
-The architecture prioritizes reusable components, configuration-driven training content, responsive interfaces, and separation between platform workflows and simulation systems. This allows individual training engines and scenarios to evolve without requiring complete application rebuilds.
+The architecture prioritizes reusable components, configuration-driven training content, responsive interfaces, and separation between platform workflows and simulation systems, allowing training scenarios to evolve without rebuilding the entire application.
 
 ---
 
@@ -335,10 +342,10 @@ npm run build
 
 ## 📖 Development Documentation
 
-Project architecture, development conventions, and internal technical references are maintained within the repository.
+Development rules and technical architecture are maintained within the repository:
 
 * **[AGENTS.md](./AGENTS.md)**
-  Primary development standards, coding conventions, responsiveness requirements, and implementation rules.
+  Development standards, coding conventions, responsiveness requirements, and implementation rules.
 
 * **[STRUCTURE.md](./STRUCTURE.md)**
   Application structure, design tokens, component organization, and platform architecture.
@@ -353,9 +360,9 @@ Project architecture, development conventions, and internal technical references
 
 ## ☁️ Deployment
 
-The ProjectSeaT frontend prototype is deployed using Vercel.
+The ProjectSeaT frontend prototype is deployed on **Vercel**.
 
-The application uses SPA rewrite configuration to ensure nested React routes correctly resolve through `index.html`.
+SPA routing is handled through `vercel.json` to ensure nested application routes resolve through the React entry point.
 
 ```json
 {
@@ -368,17 +375,24 @@ The application uses SPA rewrite configuration to ensure nested React routes cor
 }
 ```
 
-Production deployments and repository pushes are internally tracked through deployment audit records.
-
 ---
 
 ## 🔭 Product Vision
 
-ProjectSeaT aims to create a new training layer between **maritime theory and real vessel experience**.
+ProjectSeaT aims to become the **interactive practice layer for maritime training**.
 
-The platform does not attempt to replace instructors, regulated certifications, or onboard training.
+Maritime professionals already have procedures, regulations, instructors, certifications, and onboard experience.
 
-Instead, it gives seafarers a controlled environment to **practice decisions, make mistakes, understand consequences, and improve before facing similar situations onboard a vessel**.
+What is often missing is a controlled environment where knowledge can be repeatedly applied before a similar situation occurs onboard.
+
+ProjectSeaT provides a place to:
+
+* Practice decisions.
+* Investigate situations.
+* Make mistakes safely.
+* Experience consequences.
+* Review performance.
+* Improve before the real situation.
 
 > **Don't just learn the procedure. Experience the situation.**
 
@@ -386,7 +400,7 @@ Instead, it gives seafarers a controlled environment to **practice decisions, ma
 
 ## 📌 Prototype Status
 
-ProjectSeaT is currently a **high-fidelity product prototype and active development project**.
+ProjectSeaT is currently a **high-fidelity product prototype under active development**.
 
 The current implementation demonstrates:
 
@@ -398,7 +412,7 @@ The current implementation demonstrates:
 * Document auditing.
 * MLC rest-hour analysis.
 * Branching inspector interactions.
-* Dynamic objectives.
+* Dynamic mission objectives.
 * Performance scoring and debriefing.
 
-The PSC inspection mission serves as the first demonstration of ProjectSeaT's broader gamified maritime training model.
+The PSC inspection mission serves as the first demonstration of ProjectSeaT's broader interactive maritime training model.
