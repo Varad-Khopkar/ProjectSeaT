@@ -24,11 +24,11 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   }, [sidebarMobileOpen, setSidebarMobileOpen])
 
   return (
-    <div className="flex flex-col min-h-screen bg-brand-pearl relative">
+    <div className="flex flex-col h-screen bg-brand-pearl relative overflow-hidden">
       {/* Top Header Navigation */}
       <Header />
 
-      <div className="flex-1 flex max-w-[1600px] w-full mx-auto relative items-start">
+      <div className="flex-1 flex w-full relative items-start overflow-hidden">
         {/* Desktop Sidebar (hidden under 'lg') */}
         <Sidebar />
 
@@ -48,25 +48,25 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         )}
 
         {/* Main Content Area */}
-        <div className="flex-1 min-w-0 flex flex-col min-h-[calc(100vh-7.5rem)]">
+        <div className="flex-1 min-w-0 flex flex-col h-[calc(100vh-124px)] overflow-y-auto">
           <MainContainer>
             {children || <Outlet />}
           </MainContainer>
+
+          {/* Footer bar */}
+          <footer className="w-full bg-slate-900 border-t border-slate-800 text-slate-500 py-6 mt-auto">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
+                &copy; {new Date().getFullYear()} ProjectSeaT Maritime Training Platform. All rights reserved.
+              </p>
+              <div className="flex gap-4 text-[11px] font-mono text-slate-500">
+                <span className="hover:text-slate-300 transition-colors cursor-pointer">Security Protocol</span>
+                <span className="hover:text-slate-300 transition-colors cursor-pointer">PSC Regulations</span>
+              </div>
+            </div>
+          </footer>
         </div>
       </div>
-
-      {/* Footer bar */}
-      <footer className="w-full bg-slate-900 border-t border-slate-800 text-slate-500 py-6 mt-auto">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
-            &copy; {new Date().getFullYear()} ProjectSeaT Maritime Training Platform. All rights reserved.
-          </p>
-          <div className="flex gap-4 text-[11px] font-mono text-slate-500">
-            <span className="hover:text-slate-300 transition-colors cursor-pointer">Security Protocol</span>
-            <span className="hover:text-slate-300 transition-colors cursor-pointer">PSC Regulations</span>
-          </div>
-        </div>
-      </footer>
 
       {/* Global Loading screen spinner overlay */}
       {globalLoading && (

@@ -1,59 +1,87 @@
-# Maritime Training Platform (Demo) | Project Structure
+# Maritime Training Platform | Project Structure
 
-This document outlines the codebase organization, configuration decisions, and development guidelines for the Maritime Training Platform Frontend Demo.
+This document outlines the codebase organization, directory structure, and high-level architecture rules for the Maritime Training Platform Frontend.
 
-## Tech Stack Overview
+## 1. High-Level Domain Architecture
 
-- **Core Framework**: React 19 + Vite 8
-- **Language**: TypeScript 6
-- **Styling**: Tailwind CSS v4 (native `@tailwindcss/vite` configuration)
-- **Routing**: React Router v7 (`react-router-dom`)
-- **Iconography**: Lucide React
+ProjectSeaT is divided into two major application domains which must remain logically separated:
 
-## Folder Architecture
+1. **Platform**: The application orchestrator. It owns the broader application experience including public landing pages, learner dashboard, settings, profiles, leaderboard, and training/module discovery.
+2. **Simulator**: The interactive training runtime. It owns mission runtime behavior, stage progressions, objective evaluations, hotspots, inspection logic, dialogues, and result generation.
 
-The codebase utilizes a clean and scalable modular directory structure located in the `src/` folder:
+### Conceptual Integration Flow
+```mermaid
+graph LR
+    Platform -- "Launch Context" --> Simulator
+    Simulator -- "Interactive Runtime" --> Result[Result Generation]
+    Result -- "Simulation Result" --> Platform
+```
+The integration boundary is defined by explicit TypeScript contracts (e.g. `SimulatorLaunchContext` and `SimulatorResult` inside the shared type directories) to prevent domain coupling.
+
+## 2. Directory Architecture
+
+The modular directory structure under the `src/` folder is organized as follows:
 
 ```text
 src/
-├── assets/             # Images, logos, static illustrations, and ship schematics
-├── components/         # Reusable React components
-│   ├── common/         # Atomic UI building blocks (Button, Card, Badge, Modal, etc.)
-│   └── layout/         # Shell containers (AppLayout, Header, Navigation)
-├── pages/              # Screen components corresponding to the demo flow stages
-├── hooks/              # Custom reusable React hooks
-├── types/              # TypeScript types, interfaces, and domain definitions
-├── utils/              # Pure utility functions and formatters
-├── data/               # Local mock database and static configuration data
-├── App.tsx             # Main routing configurations and global state boundary
-├── index.css           # Tailwind CSS directives and primary styles entry point
-└── main.tsx            # Application bootstrapping and React DOM mounting
+├── assets/                 # Global static assets (logos, illustrations)
+├── Images/                 # App-specific images and ship graphics
+├── components/             # Reusable Platform UI components
+│   ├── common/             # Legacy/generic UI building blocks (reusable)
+│   ├── ui/                 # Atomic design primitive elements (Button, Card, Badge, etc.)
+│   ├── navigation/         # Header, Sidebar, Breadcrumbs, etc.
+│   └── layout/             # Platform-wide shell layouts (e.g., AppLayout)
+├── constants/              # Platform constant files and lookup maps
+├── contexts/               # Platform-wide global React context state providers (Auth, App)
+├── data/                   # Structured, static Platform-level local datasets
+├── hooks/                  # Custom reusable React hooks for the Platform
+├── mock/                   # Platform-level mock data representing unavailable API/backend services
+├── pages/                  # Platform page-level screen components (Home, Modules, Profile, etc.)
+│   └── landing/            # Authentication & Onboarding pages (LoginPage, InitializationScreen, etc.)
+├── simulation/             # Bounded subsystem folder containing the entire Simulator runtime
+│   ├── components/         # Simulator-specific UI elements (DialoguePanel, RestHourLog, etc.)
+│   ├── config/             # Intentional Simulator & mission config defining runtime behavior
+│   ├── engine/             # Reusable, non-visual simulation progression logic & scoring engines
+│   ├── layouts/            # Simulator-specific viewport & HUD wrappers (SimulationLayout, DebriefLayout)
+│   ├── mock/               # Simulator-specific mocked inputs, mocked services, or temp data
+│   ├── routes/             # Simulator page-level screens (SimulationPlay, SimulationHub, etc.)
+│   ├── services/           # Simulator persistence abstractions and synchronization services
+│   ├── state/              # Simulator-internal runtime context and state management
+│   ├── types/              # Simulator-internal TypeScript declarations and contracts
+│   ├── utils/              # Reusable simulator-specific pure utility helpers
+│   └── index.ts            # Public integration/export boundary for the Simulator subsystem
+├── types/                  # Domain types genuinely shared across Platform and Simulator
+├── utils/                  # Reusable Platform pure helper functions and formatters
+├── App.css                 # Root application styling overrides
+├── App.tsx                 # Main routing configurations and global state boundary
+├── index.css               # Tailwind CSS directive imports and design token themes
+└── main.tsx                # Application bootstrapping and React DOM mounting
 ```
 
-## Key Configuration Decisions
+## 3. Technology Stack
 
-### 1. Tailwind CSS v4 Integration
-Tailwind CSS v4 is configured natively in [vite.config.ts](file:///c:/Users/admin/Documents/ProjectSeaT/vite.config.ts) using the new `@tailwindcss/vite` plugin. The styles are imported inside [src/index.css](file:///c:/Users/admin/Documents/ProjectSeaT/src/index.css) using the directive:
-```css
-@import "tailwindcss";
-```
+ProjectSeaT uses the following verified modern frontend technology stack:
 
-### 2. Path Aliases
-To avoid messy relative path traversals (e.g., `../../components/common/Button`), we have configured a path alias `@` mapping to `src/`.
-- **TypeScript Configuration**: Set up in [tsconfig.app.json](file:///c:/Users/admin/Documents/ProjectSeaT/tsconfig.app.json) under `compilerOptions.paths`.
-- **Vite Configuration**: Resolved in [vite.config.ts](file:///c:/Users/admin/Documents/ProjectSeaT/vite.config.ts) under `resolve.alias`.
+- **Core Framework**: React 19.2 (`react` & `react-dom`)
+- **Build Tool / Bundler**: Vite 8.1
+- **Language**: TypeScript 6.0
+- **Styling**: Tailwind CSS v4 using the native `@tailwindcss/vite` plugin.
+- **Routing**: React Router v7 (`react-router-dom`)
+- **Iconography**: Lucide React
+- **Linter**: Oxlint 1.69 (ultra-fast linter configuration)
+- **Module System**: ES Modules ("type": "module" in [package.json](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/package.json))
+- **Node.js Runtime Requirements**: Target runtime is `node >= 20.0.0` (specifically requiring `^20.19.0 || >=22.12.0` due to Rolldown/Vite engine requirements)
 
-Example import:
-```typescript
-import { Button } from '@/components/common/Button'
-```
+## 4. Key Configuration Files
 
-### 3. Application Flow Stages
-Components under `src/pages/` should correspond directly to the sequential learning stages:
-1. **Splash Screen**: Initial loading and intro logo.
-2. **Mission Selection**: Overview of available training missions (focusing on Port State Control).
-3. **Mission Brief**: Mission goals, context, and checklists.
-4. **Ship Overview**: Interactive overview map of the ship compartments.
-5. **Interactive Challenges**: Interactive mini-games and scenario simulations.
-6. **Inspector Interaction**: Interactive dialogues.
-7. **Mission Summary / Complete**: Final score, checklist confirmation, and feedback.
+- **Vite Configurations**: [vite.config.ts](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/vite.config.ts) handles local bundling, port routing, path aliases, and the Tailwind CSS plugin.
+- **TypeScript Configurations**: App-level configuration is managed in [tsconfig.app.json](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/tsconfig.app.json), node utilities configuration in [tsconfig.node.json](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/tsconfig.node.json), and the overall inheritance tree in [tsconfig.json](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/tsconfig.json).
+- **Deployment Configurations**: [vercel.json](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/vercel.json) controls hosting configurations, redirects, and custom headers.
+- **Dependency Map**: [package.json](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/package.json) maps versions and scripts.
+
+## 5. Main Application Routing
+
+All application routing is declared inside [src/App.tsx](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/src/App.tsx).
+- **Public Routes**: Includes landing page flow (`/landing`, `/init`, `/login`, `/offboard`).
+- **Platform Routes**: Includes core dashboard pages wrapper (`/`, `/modules`, `/leaderboard`, `/profile`, `/settings`, `/help`, `/design-system`).
+- **Simulator Subsystem Routes**: Maintained under `/simulation` endpoints (`/simulation` for the Hub, `/simulation/:missionId/theory` for the Briefing Engine, `/simulation/:missionId` for runtime gameplay, `/simulation/debrief`, `/simulation/results`). All Simulator views are imported directly from the public integration boundary [src/simulation/index.ts](file:///c:/Users/Vkhopkar/OneDrive%20-%20Magicsoftware/Documents/Project/ProjectSeaT/src/simulation/index.ts).
