@@ -16,7 +16,7 @@ import {
   Database
 } from 'lucide-react'
 
-const SLIDES_COUNT = 11
+const SLIDES_COUNT = 12
 
 const usePrefersReducedMotion = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
@@ -46,9 +46,10 @@ export const Pitch: React.FC = () => {
     '06. Content Metamorphosis',
     '07. Enterprise Scale',
     '08. Beyond Completion',
-    '09. Minimal Sellable Product',
-    '10. The Ultimate Vision',
-    '11. Transform Now'
+    '09. The End-to-End Advantage',
+    '10. Minimal Sellable Product',
+    '11. The Ultimate Vision',
+    '12. Transform Now'
   ]
 
   const changeSlide = (nextIndex: number) => {
@@ -1042,35 +1043,287 @@ export const Pitch: React.FC = () => {
           </div>
         </section>
 
-        {/* SLIDE 8: The Minimum Sellable Product (MSP) */}
+        {/* SLIDE 8: The End-to-End Advantage */}
         <section 
           data-slide-index="8"
           data-slide-item
-          className={`absolute inset-0 h-full w-full flex flex-col justify-center items-center p-6 md:p-12 bg-radial from-[#091f36] to-[#0A192F] transition-all duration-1000 ease-out ${
+          className={`absolute inset-0 h-full w-full flex flex-col justify-center items-center p-6 md:p-12 bg-radial from-[#091526] to-[#0A192F] transition-all duration-1000 ease-out ${
             getSlideTransitionClass(8)
+          }`}
+        >
+          <div className="max-w-6xl w-full z-10 text-center flex flex-col justify-between h-full max-h-[85vh]">
+            <div>
+              <span className={`text-brand-gold text-xs font-mono uppercase tracking-widest mb-2 inline-block transition-all duration-700 transform ${
+                activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              } delay-[100ms]`}>
+                08. THE END-TO-END ADVANTAGE
+              </span>
+              
+              <h2 className={`font-h1 text-white font-bold mb-3 transition-all duration-700 transform ${
+                activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              } delay-[250ms]`}>
+                One Partner. The Complete Digital Ecosystem.
+              </h2>
+              
+              <p className={`text-slate-300 font-body max-w-3xl mx-auto leading-relaxed text-sm transition-all duration-700 transform ${
+                activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              } delay-[400ms]`}>
+                ProjectSeaT is more than software development. We provide the complete technical foundation required to build, secure, deploy, operate, and scale the maritime training platform.
+              </p>
+            </div>
+
+            {/* End-to-End Connected Ecosystem Diagram */}
+            <div className="my-2 relative flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-12 w-full">
+              
+              {/* Flow Row (Top on Mobile, Left/Center/Right on Desktop) */}
+              <div className="flex flex-row lg:hidden items-center justify-center gap-2 md:gap-4 w-full mb-2">
+                {/* Input node */}
+                <div 
+                  className={`px-3 py-1.5 rounded-xl bg-brand-navy/60 border border-brand-blue/30 text-center transition-all duration-700 transform ${
+                    activeSlide === 8 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
+                  style={{ transitionDelay: activeSlide === 8 ? '400ms' : '0ms' }}
+                >
+                  <span className="text-[7px] font-mono text-brand-gold uppercase tracking-wider block">Knowledge</span>
+                  <h4 className="text-[9px] font-bold text-white uppercase">Your Training Knowledge</h4>
+                </div>
+
+                <ArrowRight className="h-3 w-3 text-brand-gold shrink-0 animate-pulse" />
+
+                {/* Central Partner node */}
+                <div 
+                  className={`px-3 py-1.5 rounded-xl bg-gradient-to-br from-brand-navy to-[#12355B] border border-brand-gold text-center transition-all duration-700 transform ${
+                    activeSlide === 8 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
+                  style={{ transitionDelay: activeSlide === 8 ? '1200ms' : '0ms' }}
+                >
+                  <span className="text-[7px] font-mono text-slate-400 uppercase tracking-wider block">Partner</span>
+                  <h4 className="text-[9px] font-bold text-brand-gold uppercase">ProjectSeaT</h4>
+                </div>
+
+                <ArrowRight className="h-3 w-3 text-brand-gold shrink-0 animate-pulse" />
+
+                {/* Output node */}
+                <div 
+                  className={`px-3 py-1.5 rounded-xl bg-brand-navy/60 border border-brand-gold/30 text-center transition-all duration-700 transform ${
+                    activeSlide === 8 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
+                  style={{ transitionDelay: activeSlide === 8 ? '2500ms' : '0ms' }}
+                >
+                  <span className="text-[7px] font-mono text-brand-gold uppercase tracking-wider block">Platform</span>
+                  <h4 className="text-[9px] font-bold text-white uppercase">Complete Platform</h4>
+                </div>
+              </div>
+
+              {/* DESKTOP FLOW: Left Input Card */}
+              <div 
+                className={`hidden lg:block w-48 p-4 rounded-2xl bg-brand-navy/60 border border-brand-blue/30 z-10 transition-all duration-700 transform ${
+                  activeSlide === 8 ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 -translate-x-8 scale-95'
+                }`}
+                style={{ transitionDelay: activeSlide === 8 ? '400ms' : '0ms' }}
+              >
+                <span className="text-[10px] font-mono text-brand-gold uppercase tracking-wider block mb-1">Knowledge Base</span>
+                <h4 className="text-xs font-bold text-white uppercase">Your Training Knowledge</h4>
+              </div>
+
+              {/* DESKTOP FLOW: Connecting Line 1 */}
+              <div className="absolute left-[20%] w-[15%] h-0.5 hidden lg:block z-0 pointer-events-none overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-brand-blue to-brand-gold transition-all duration-1000 ease-out"
+                  style={{ 
+                    width: activeSlide === 8 ? '100%' : '0%',
+                    transitionDelay: activeSlide === 8 ? '800ms' : '0ms' 
+                  }}
+                />
+              </div>
+
+              {/* DESKTOP FLOW: Center Partner Node */}
+              <div 
+                className={`hidden lg:flex relative items-center justify-center z-10 transition-all duration-1000 transform ${
+                  activeSlide === 8 ? 'opacity-100 scale-100 shadow-[0_0_30px_rgba(244,162,97,0.25)]' : 'opacity-0 scale-75'
+                }`}
+                style={{ transitionDelay: activeSlide === 8 ? '1200ms' : '0ms' }}
+              >
+                <div className="h-24 w-24 rounded-full bg-gradient-to-br from-brand-navy via-[#12355B] to-brand-navy border-2 border-brand-gold flex flex-col items-center justify-center p-3 text-center">
+                  <Compass className="h-6 w-6 text-brand-gold mb-1 animate-spin-slow" />
+                  <span className="text-[10px] font-mono font-bold text-white uppercase tracking-wider">ProjectSeaT</span>
+                  <span className="text-[7px] font-mono text-brand-gold uppercase mt-0.5">Central Partner</span>
+                </div>
+                
+                {/* SVG Connections from Center to Triad groups */}
+                <svg className="absolute inset-0 w-96 h-96 -translate-x-36 -translate-y-36 pointer-events-none z-0" viewBox="0 0 384 384">
+                  <line 
+                    x1="192" y1="192" x2="320" y2="80" 
+                    className="stroke-brand-gold stroke-2"
+                    style={{ 
+                      strokeDasharray: '400',
+                      strokeDashoffset: activeSlide === 8 ? '0' : '400',
+                      transition: 'stroke-dashoffset 1000ms ease-out',
+                      transitionDelay: activeSlide === 8 ? '1600ms' : '0ms',
+                      opacity: 0.3
+                    }}
+                  />
+                  <line 
+                    x1="192" y1="192" x2="350" y2="192" 
+                    className="stroke-brand-blue stroke-2"
+                    style={{ 
+                      strokeDasharray: '400',
+                      strokeDashoffset: activeSlide === 8 ? '0' : '400',
+                      transition: 'stroke-dashoffset 1000ms ease-out',
+                      transitionDelay: activeSlide === 8 ? '1900ms' : '0ms',
+                      opacity: 0.3
+                    }}
+                  />
+                  <line 
+                    x1="192" y1="192" x2="320" y2="304" 
+                    className="stroke-brand-coral stroke-2"
+                    style={{ 
+                      strokeDasharray: '400',
+                      strokeDashoffset: activeSlide === 8 ? '0' : '400',
+                      transition: 'stroke-dashoffset 1000ms ease-out',
+                      transitionDelay: activeSlide === 8 ? '2200ms' : '0ms',
+                      opacity: 0.3
+                    }}
+                  />
+                </svg>
+              </div>
+
+              {/* Responsive Triad Groups (Grid on mobile/tablet, stack on desktop) */}
+              <div className="grid grid-cols-3 lg:flex lg:flex-col gap-2 md:gap-3 lg:gap-4 z-10 w-full lg:w-72 text-left">
+                {/* Product Group */}
+                <div 
+                  className={`bg-[#12355B]/40 hover:bg-[#12355B]/60 border border-brand-gold/30 p-2 md:p-3 rounded-xl transition-all duration-700 transform ${
+                    activeSlide === 8 ? 'opacity-100 translate-y-0 lg:translate-x-0 scale-100' : 'opacity-0 translate-y-2 lg:translate-x-8 scale-95'
+                  }`}
+                  style={{ transitionDelay: activeSlide === 8 ? '1600ms' : '0ms' }}
+                >
+                  <div className="flex items-center gap-1.5 mb-1 md:mb-1.5">
+                    <div className="h-4 w-4 md:h-6 md:w-6 rounded bg-brand-gold/20 flex items-center justify-center text-brand-gold text-[8px] md:text-[10px] font-bold">A</div>
+                    <span className="text-[8px] md:text-[10px] font-mono uppercase tracking-wider text-brand-gold font-bold">Product</span>
+                  </div>
+                  <div className="flex flex-col lg:flex-row lg:flex-wrap gap-1">
+                    {['Software Development', 'Interactive Experiences', 'Product Evolution'].map((tag, tIdx) => (
+                      <span key={tIdx} className="text-[7px] md:text-[8px] bg-brand-navy/60 text-slate-300 px-1 py-0.5 rounded border border-brand-blue/10 truncate">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Platform Group */}
+                <div 
+                  className={`bg-[#12355B]/40 hover:bg-[#12355B]/60 border border-brand-blue/30 p-2 md:p-3 rounded-xl transition-all duration-700 transform ${
+                    activeSlide === 8 ? 'opacity-100 translate-y-0 lg:translate-x-0 scale-100' : 'opacity-0 translate-y-2 lg:translate-x-8 scale-95'
+                  }`}
+                  style={{ transitionDelay: activeSlide === 8 ? '1900ms' : '0ms' }}
+                >
+                  <div className="flex items-center gap-1.5 mb-1 md:mb-1.5">
+                    <div className="h-4 w-4 md:h-6 md:w-6 rounded bg-brand-blue/20 flex items-center justify-center text-brand-blue text-[8px] md:text-[10px] font-bold">B</div>
+                    <span className="text-[8px] md:text-[10px] font-mono uppercase tracking-wider text-brand-blue font-bold">Platform</span>
+                  </div>
+                  <div className="flex flex-col lg:flex-row lg:flex-wrap gap-1">
+                    {['Cloud Infrastructure', 'Deployment & Operations', 'Database Management'].map((tag, tIdx) => (
+                      <span key={tIdx} className="text-[7px] md:text-[8px] bg-brand-navy/60 text-slate-300 px-1 py-0.5 rounded border border-brand-blue/10 truncate">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Protection Group */}
+                <div 
+                  className={`bg-[#12355B]/40 hover:bg-[#12355B]/60 border border-brand-coral/30 p-2 md:p-3 rounded-xl transition-all duration-700 transform ${
+                    activeSlide === 8 ? 'opacity-100 translate-y-0 lg:translate-x-0 scale-100' : 'opacity-0 translate-y-2 lg:translate-x-8 scale-95'
+                  }`}
+                  style={{ transitionDelay: activeSlide === 8 ? '2200ms' : '0ms' }}
+                >
+                  <div className="flex items-center gap-1.5 mb-1 md:mb-1.5">
+                    <div className="h-4 w-4 md:h-6 md:w-6 rounded bg-brand-coral/20 flex items-center justify-center text-brand-coral text-[8px] md:text-[10px] font-bold">C</div>
+                    <span className="text-[8px] md:text-[10px] font-mono uppercase tracking-wider text-brand-coral font-bold">Protection</span>
+                  </div>
+                  <div className="flex flex-col lg:flex-row lg:flex-wrap gap-1">
+                    {['Cybersecurity', 'Identity & User Management', 'Data Protection'].map((tag, tIdx) => (
+                      <span key={tIdx} className="text-[7px] md:text-[8px] bg-brand-navy/60 text-slate-300 px-1 py-0.5 rounded border border-brand-blue/10 truncate">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* DESKTOP FLOW: Connecting Line 3 */}
+              <div className="absolute right-[12%] w-[12%] h-0.5 hidden lg:block z-0 pointer-events-none overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-brand-blue to-brand-gold transition-all duration-1000 ease-out"
+                  style={{ 
+                    width: activeSlide === 8 ? '100%' : '0%',
+                    transitionDelay: activeSlide === 8 ? '2500ms' : '0ms' 
+                  }}
+                />
+              </div>
+
+              {/* DESKTOP FLOW: Right Output Card */}
+              <div 
+                className={`hidden lg:block w-48 p-4 rounded-2xl bg-brand-navy/60 border border-brand-gold/30 z-10 transition-all duration-700 transform ${
+                  activeSlide === 8 ? 'opacity-100 translate-x-0 scale-100 shadow-[0_0_15px_rgba(244,162,97,0.15)]' : 'opacity-0 translate-x-8 scale-95'
+                }`}
+                style={{ transitionDelay: activeSlide === 8 ? '2500ms' : '0ms' }}
+              >
+                <span className="text-[10px] font-mono text-brand-gold uppercase tracking-wider block mb-1">Operational End-Result</span>
+                <h4 className="text-xs font-bold text-white uppercase">Complete Training Platform</h4>
+              </div>
+
+            </div>
+
+            {/* Bottom Commercial lifecycle and business relationship statements */}
+            <div className="mt-2 text-center max-w-4xl mx-auto space-y-4">
+              <div 
+                className={`bg-[#12355B]/20 border border-brand-gold/30 rounded-2xl p-4 md:p-6 transition-all duration-1000 transform ${
+                  activeSlide === 8 ? 'opacity-100 scale-100 shadow-[0_0_20px_rgba(244,162,97,0.1)]' : 'opacity-0 scale-95'
+                }`}
+                style={{ transitionDelay: activeSlide === 8 ? '2900ms' : '0ms' }}
+              >
+                <h3 className="text-white text-base md:text-lg font-bold mb-2 uppercase tracking-wide">
+                  One technical partner across the complete platform lifecycle.
+                </h3>
+                
+                <p className="text-slate-300 text-xs md:text-sm font-body max-w-2xl mx-auto mb-4 leading-normal">
+                  From product development to infrastructure, security, identity, data, deployment, and ongoing platform evolution.
+                </p>
+                
+                <div className="h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent my-3" />
+                
+                <p className="text-brand-gold text-xs font-semibold font-mono tracking-wide leading-relaxed">
+                  You provide the maritime training knowledge. ProjectSeaT provides the digital ecosystem required to transform it into a secure, operational, and scalable training experience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SLIDE 9: The Minimum Sellable Product (MSP) */}
+        <section 
+          data-slide-index="9"
+          data-slide-item
+          className={`absolute inset-0 h-full w-full flex flex-col justify-center items-center p-6 md:p-12 bg-radial from-[#091f36] to-[#0A192F] transition-all duration-1000 ease-out ${
+            getSlideTransitionClass(9)
           }`}
         >
           <div className="max-w-6xl w-full z-10 text-center">
             <span className={`text-brand-gold text-xs font-mono uppercase tracking-widest mb-3 inline-block transition-all duration-700 transform ${
-              activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              activeSlide === 9 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             } delay-[100ms]`}>
-              08. The Commercial Baseline
+              09. The Commercial Baseline
             </span>
             
             <h2 className={`font-h1 text-white font-bold mb-6 transition-all duration-700 transform ${
-              activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              activeSlide === 9 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             } delay-[250ms]`}>
               The Minimum Sellable Product <span className="text-brand-gold">(MSP)</span>
             </h2>
             
             <p className={`text-slate-300 font-body max-w-2xl mx-auto leading-relaxed mb-12 transition-all duration-700 transform ${
-              activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              activeSlide === 9 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             } delay-[400ms]`}>
               Start focused. Prove the experience. Scale the platform. The ProjectSeaT MSP delivers the complete operational training lifecycle.
             </p>
 
             <div className={`p-4 bg-brand-blue/10 border border-brand-blue/30 rounded-2xl max-w-2xl mx-auto mb-8 text-center text-xs transition-all duration-700 transform ${
-              activeSlide === 8 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              activeSlide === 9 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             } delay-[600ms]`}>
               <span className="text-brand-gold font-semibold uppercase block mb-1">MSP Objective</span>
               <span className="text-slate-300">Prove that existing maritime training content can be transformed into an engaging, repeatable, and interactive learning experience.</span>
@@ -1079,9 +1332,9 @@ export const Pitch: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
               {/* Card 1 */}
               <div className={`bg-[#12355B]/40 border border-brand-blue/20 p-6 rounded-2xl shadow-medium flex flex-col justify-between transition-all duration-700 transform ${
-                activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                activeSlide === 9 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
-              style={{ transitionDelay: activeSlide === 8 ? '800ms' : '0ms' }}
+              style={{ transitionDelay: activeSlide === 9 ? '800ms' : '0ms' }}
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4">
@@ -1101,9 +1354,9 @@ export const Pitch: React.FC = () => {
                       <li 
                         key={bulletIdx} 
                         className={`flex gap-2 transition-all duration-500 transform ${
-                          activeSlide === 8 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
+                          activeSlide === 9 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
                         }`}
-                        style={{ transitionDelay: activeSlide === 8 ? `${1400 + bulletIdx * 100}ms` : '0ms' }}
+                        style={{ transitionDelay: activeSlide === 9 ? `${1400 + bulletIdx * 100}ms` : '0ms' }}
                       >
                         <span className="text-brand-gold">➔</span> <span>{item}</span>
                       </li>
@@ -1114,9 +1367,9 @@ export const Pitch: React.FC = () => {
 
               {/* Card 2 */}
               <div className={`bg-[#12355B]/40 border border-brand-blue/20 p-6 rounded-2xl shadow-medium flex flex-col justify-between transition-all duration-700 transform ${
-                activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                activeSlide === 9 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
-              style={{ transitionDelay: activeSlide === 8 ? '1000ms' : '0ms' }}
+              style={{ transitionDelay: activeSlide === 9 ? '1000ms' : '0ms' }}
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4">
@@ -1136,9 +1389,9 @@ export const Pitch: React.FC = () => {
                       <li 
                         key={bulletIdx} 
                         className={`flex gap-2 transition-all duration-500 transform ${
-                          activeSlide === 8 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
+                          activeSlide === 9 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
                         }`}
-                        style={{ transitionDelay: activeSlide === 8 ? `${1900 + bulletIdx * 100}ms` : '0ms' }}
+                        style={{ transitionDelay: activeSlide === 9 ? `${1900 + bulletIdx * 100}ms` : '0ms' }}
                       >
                         <span className="text-brand-gold">➔</span> <span>{item}</span>
                       </li>
@@ -1149,9 +1402,9 @@ export const Pitch: React.FC = () => {
 
               {/* Card 3 */}
               <div className={`bg-[#12355B]/40 border border-brand-blue/20 p-6 rounded-2xl shadow-medium flex flex-col justify-between transition-all duration-700 transform ${
-                activeSlide === 8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                activeSlide === 9 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
-              style={{ transitionDelay: activeSlide === 8 ? '1200ms' : '0ms' }}
+              style={{ transitionDelay: activeSlide === 9 ? '1200ms' : '0ms' }}
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4">
@@ -1169,9 +1422,9 @@ export const Pitch: React.FC = () => {
                       <li 
                         key={bulletIdx} 
                         className={`flex gap-2 transition-all duration-500 transform ${
-                          activeSlide === 8 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
+                          activeSlide === 9 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
                         }`}
-                        style={{ transitionDelay: activeSlide === 8 ? `${2400 + bulletIdx * 100}ms` : '0ms' }}
+                        style={{ transitionDelay: activeSlide === 9 ? `${2400 + bulletIdx * 100}ms` : '0ms' }}
                       >
                         <span className="text-brand-gold">➔</span> <span>{item}</span>
                       </li>
@@ -1183,23 +1436,23 @@ export const Pitch: React.FC = () => {
           </div>
         </section>
 
-        {/* SLIDE 9: Vision & Core Philosophy */}
+        {/* SLIDE 10: Vision & Core Philosophy */}
         <section 
-          data-slide-index="9"
+          data-slide-index="10"
           data-slide-item
           className={`absolute inset-0 h-full w-full flex flex-col justify-center items-center p-6 md:p-12 bg-[#091526] transition-all duration-1000 ease-out ${
-            getSlideTransitionClass(9)
+            getSlideTransitionClass(10)
           }`}
         >
           <div className="max-w-4xl text-center z-10">
             <span className={`text-brand-blue text-xs font-mono uppercase tracking-widest mb-3 inline-block transition-all duration-700 transform ${
-              activeSlide === 9 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              activeSlide === 10 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             } delay-[100ms]`}>
-              09. The Vision
+              10. The Vision
             </span>
             
             <h2 className={`font-h1 text-white font-bold mb-8 transition-all duration-700 transform ${
-              activeSlide === 9 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              activeSlide === 10 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             } delay-[250ms]`}>
               A Training Ecosystem Built Around Maritime Experience
             </h2>
@@ -1207,9 +1460,9 @@ export const Pitch: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10 text-left">
               {/* Today Card */}
               <div className={`p-6 bg-brand-navy/60 border border-brand-blue/20 rounded-2xl transition-all duration-700 transform ${
-                activeSlide === 9 ? 'opacity-70 scale-100 translate-x-0' : 'opacity-0 scale-95 -translate-x-4'
+                activeSlide === 10 ? 'opacity-70 scale-100 translate-x-0' : 'opacity-0 scale-95 -translate-x-4'
               }`}
-              style={{ transitionDelay: activeSlide === 9 ? '500ms' : '0ms' }}
+              style={{ transitionDelay: activeSlide === 10 ? '500ms' : '0ms' }}
               >
                 <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest block mb-2">Today</span>
                 <span className="text-sm font-semibold text-white">One Training Module ➔ One Interactive Experience</span>
@@ -1217,9 +1470,9 @@ export const Pitch: React.FC = () => {
               
               {/* Opportunity Card (pulses/glows) */}
               <div className={`p-6 bg-[#12355B]/60 border rounded-2xl transition-all duration-700 transform ${
-                activeSlide === 9 ? 'opacity-100 scale-105 translate-x-0 border-brand-gold/60 shadow-[0_0_20px_rgba(244,162,97,0.2)]' : 'opacity-0 scale-95 translate-x-4 border-brand-blue/20 shadow-none'
+                activeSlide === 10 ? 'opacity-100 scale-105 translate-x-0 border-brand-gold/60 shadow-[0_0_20px_rgba(244,162,97,0.2)]' : 'opacity-0 scale-95 translate-x-4 border-brand-blue/20 shadow-none'
               }`}
-              style={{ transitionDelay: activeSlide === 9 ? '750ms' : '0ms' }}
+              style={{ transitionDelay: activeSlide === 10 ? '750ms' : '0ms' }}
               >
                 <span className="text-[10px] font-mono text-brand-gold uppercase tracking-widest block mb-2 font-bold animate-pulse">The Opportunity</span>
                 <span className="text-sm font-semibold text-white">Hundreds of Training Modules ➔ A Maritime Training Ecosystem</span>
@@ -1227,9 +1480,9 @@ export const Pitch: React.FC = () => {
             </div>
             
             <div className={`p-6 md:p-8 bg-[#12355B]/30 border border-brand-blue/20 rounded-3xl shadow-large max-w-3xl mx-auto text-left relative overflow-hidden transition-all duration-1000 transform ${
-              activeSlide === 9 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+              activeSlide === 10 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
             }`}
-            style={{ transitionDelay: activeSlide === 9 ? '1100ms' : '0ms' }}
+            style={{ transitionDelay: activeSlide === 10 ? '1100ms' : '0ms' }}
             >
               <span className="text-6xl text-brand-blue/20 font-serif absolute -top-2 left-4 pointer-events-none">“</span>
               <p className="text-slate-200 font-body italic leading-relaxed relative z-10">
@@ -1242,23 +1495,23 @@ export const Pitch: React.FC = () => {
           </div>
         </section>
 
-        {/* SLIDE 10: Closing CTA */}
+        {/* SLIDE 11: Closing CTA */}
         <section 
-          data-slide-index="10"
+          data-slide-index="11"
           data-slide-item
           className={`absolute inset-0 h-full w-full flex flex-col justify-center items-center p-6 md:p-12 bg-gradient-to-b from-[#0A192F] via-[#12355B] to-[#0A192F] transition-all duration-1000 ease-out ${
-            getSlideTransitionClass(10)
+            getSlideTransitionClass(11)
           }`}
         >
           <div className="max-w-4xl text-center z-10">
             <span className={`text-brand-gold text-xs font-mono uppercase tracking-widest mb-3 inline-block transition-all duration-700 transform ${
-              activeSlide === 10 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              activeSlide === 11 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             } delay-[100ms]`}>
               ⚓ ProjectSeaT
             </span>
             
             <h2 className={`font-display text-white text-4xl md:text-6xl font-extrabold leading-tight mb-4 transition-all duration-700 transform ${
-              activeSlide === 10 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+              activeSlide === 11 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
             } delay-[250ms]`}>
               Your Training Knowledge. <br />
               <span className="bg-gradient-to-r from-brand-gold to-brand-coral bg-clip-text text-transparent font-extrabold shadow-sunset">
@@ -1267,7 +1520,7 @@ export const Pitch: React.FC = () => {
             </h2>
             
             <p className={`text-slate-300 font-h3 font-semibold mb-12 transition-all duration-700 transform ${
-              activeSlide === 10 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              activeSlide === 11 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             } delay-[550ms]`}>
               Train. Decide. Experience.
             </p>
@@ -1276,9 +1529,9 @@ export const Pitch: React.FC = () => {
               <Link 
                 to="/landing" 
                 className={`w-full transition-all duration-700 transform ${
-                  activeSlide === 10 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+                  activeSlide === 11 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
                 }`}
-                style={{ transitionDelay: activeSlide === 10 ? '800ms' : '0ms' }}
+                style={{ transitionDelay: activeSlide === 11 ? '800ms' : '0ms' }}
               >
                 <button className="group w-full px-6 py-4 bg-brand-gold hover:bg-brand-gold/80 text-brand-navy font-bold rounded-xl flex items-center justify-center gap-2 shadow-medium hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
                   Experience ProjectSeaT{' '}
@@ -1289,9 +1542,9 @@ export const Pitch: React.FC = () => {
               <button 
                 onClick={() => scrollToSlide(0)}
                 className={`w-full px-6 py-4 bg-transparent hover:bg-brand-blue/20 border-2 border-brand-blue text-brand-pearl font-bold rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer transition-all duration-700 transform ${
-                  activeSlide === 10 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+                  activeSlide === 11 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
                 }`}
-                style={{ transitionDelay: activeSlide === 10 ? '1000ms' : '0ms' }}
+                style={{ transitionDelay: activeSlide === 11 ? '1000ms' : '0ms' }}
               >
                 Back to Beginning <RefreshCw className="h-4 w-4" />
               </button>
@@ -1299,7 +1552,7 @@ export const Pitch: React.FC = () => {
           </div>
 
           <div className={`absolute bottom-6 left-6 right-6 flex flex-col md:flex-row justify-between items-center gap-2 text-slate-500 text-[10px] font-mono tracking-widest uppercase transition-all duration-700 ${
-            activeSlide === 10 ? 'opacity-100' : 'opacity-0'
+            activeSlide === 11 ? 'opacity-100' : 'opacity-0'
           } delay-[1300ms]`}>
             <span>ProjectSeaT © 2026. All rights reserved.</span>
             <span>From watching training to experiencing it.</span>
